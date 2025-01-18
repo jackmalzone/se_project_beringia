@@ -1,6 +1,7 @@
 import HeroBanner from '../HeroBanner/HeroBanner'
 import ExpertiseSection from '../ExpertiseSection/ExpertiseSection'
-import Contributions from '../Contributions/Contributions'
+import Contributions from '../Contributions/Constributions'
+import Contact from '../Contact/Contact'
 
 import './Home.css'
 
@@ -26,6 +27,7 @@ const Home = () => {
       
       <ExpertiseSection />
       <Contributions />
+      <Contact />
     </div>
   )
 }

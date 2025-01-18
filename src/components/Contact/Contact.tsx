@@ -84,7 +84,7 @@ const ContactForm = () => {
 const Contact = () => {
   return (
     <section className="contact">
-      <div className="container">
+      <div className="contact__container">
         <div className="contact__card">
           <ContactInfo />
           <ContactForm />
