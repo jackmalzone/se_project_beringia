@@ -1,0 +1,60 @@
+.selling-points {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.selling-points__title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.selling-points__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.selling-points__card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.selling-points__icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+}
+
+.selling-points__card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.selling-points__description {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.selling-points__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selling-points__feature {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.selling-points__feature::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00a2b0;
+}

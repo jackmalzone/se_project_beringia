@@ -1,29 +1,32 @@
-.about {
+.home {
   min-height: 100vh;
+}
+
+.home__section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.home__section_mission {
   background-color: #fff;
 }
 
-.about__content {
+.home__container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
 }
 
-.about__title {
+.home__title {
   font-family: "Domitian", serif;
   color: #214751;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  text-align: center;
 }
 
-.about__text {
+.home__text {
   font-size: 1.2rem;
   line-height: 1.6;
   color: #1b444e;
-  margin-bottom: 1.5rem;
-}
-
-.about__text:last-child {
-  margin-bottom: 0;
+  max-width: 800px;
+  margin: 0 auto;
 }

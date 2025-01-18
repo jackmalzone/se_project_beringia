@@ -1,0 +1,96 @@
+.contact {
+  padding: 4rem 0;
+  background-color: #fff;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.contact__card {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact__info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact__title {
+  font-family: "Domitian", serif;
+  color: #214751;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact__detail {
+  margin: 0;
+}
+
+.contact__link {
+  color: #00a2b0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact__link:hover {
+  color: #007a85;
+  text-decoration: underline;
+}
+
+.contact__link--linkedin {
+  color: #0077b5;
+}
+
+.contact__form {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact__input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.contact__input-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact__submit {
+  padding: 0.75rem 1.5rem;
+  background-color: #00a2b0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+}
+
+.contact__submit:hover {
+  background-color: #007a85;
+}

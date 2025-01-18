@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Domitian";
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  font-display: swap;
+  src: url("./fonts/Domitian-Roman.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Domitian";
+  font-style: italic;
+  font-weight: 400; /* Regular Italic */
+  font-display: swap;
+  src: url("./fonts/Domitian-Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Domitian";
+  font-style: normal;
+  font-weight: 700; /* Bold */
+  font-display: swap;
+  src: url("./fonts/Domitian-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Domitian";
+  font-style: italic;
+  font-weight: 700; /* Bold Italic */
+  font-display: swap;
+  src: url("./fonts/Domitian-BoldItalic.otf") format("opentype");
+}

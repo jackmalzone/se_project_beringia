@@ -1,0 +1,132 @@
+.expertise {
+  padding: 6rem 0;
+  background-color: #f0f4f8;
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00a2b0, #008791, #00a2b0);
+}
+
+.expertise__title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: #1a1a1a;
+}
+
+.expertise__subtitle {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: #00a2b0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+}
+
+.expertise-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.expertise-card {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #00a2b0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.expertise-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.expertise-card:hover::before {
+  opacity: 1;
+}
+
+.expertise-card__title {
+  color: #00a2b0;
+  margin-bottom: 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.expertise-card__subtitle {
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.expertise-card__description {
+  color: #4a4a4a;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.expertise-card__cta {
+  background-color: transparent;
+  color: #00a2b0;
+  border: 2px solid #00a2b0;
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.expertise-card__cta:hover {
+  background-color: #00a2b0;
+  color: white;
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .expertise {
+    padding: 4rem 0;
+  }
+
+  .expertise-cards {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+
+  .expertise__title {
+    font-size: 2rem;
+  }
+
+  .expertise__subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+  }
+}
