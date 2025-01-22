@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { ROUTES } from '../../../../utils/constants'
+import { ROUTES } from '../../../utils/constants.ts'
 import './ClientNav.css'
 
 interface ClientNavProps {

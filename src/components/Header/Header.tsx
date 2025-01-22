@@ -2,9 +2,9 @@ import { FC, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ConfigContext } from '../../contexts/ConfigContext'
 import { ROUTES } from '../../utils/constants'
-import logo from '../../assets/favicon-b-nobuffer.png'
+import logo from '../../assets/beringia/favicon-abstract-grdnt-nobuffer.png'
 import './Header.css'
-import { clients } from '../../data/clients/index'
+import { clients } from '../../data/index.ts'
 
 interface HeaderProps {
   isLoading?: boolean;
