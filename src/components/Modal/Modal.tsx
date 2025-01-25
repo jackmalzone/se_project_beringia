@@ -22,9 +22,7 @@ const Modal = () => {
             ×
           </button>
           {title && <h2 className="modal__title">{title}</h2>}
-          <div className="modal__body">
-            {modalContent}
-          </div>
+          {modalContent}
         </div>
       </div>
     </div>

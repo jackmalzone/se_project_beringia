@@ -1,6 +1,8 @@
 import { useState, FormEvent } from 'react';
 import { useModal } from '../../contexts/ModalContext'
 import './ExpertiseSection.css'
+import '../ModalContact/ModalContact.css'
+import ModalContact from '../ModalContact/ModalContact'
 
 interface ExpertiseCard {
   title: string;
@@ -57,65 +59,8 @@ const ExpertiseSection = () => {
     message: ''
   })
 
-  const handleExpertiseClick = (expertise: ExpertiseCard) => {
-    openModal(
-      <div className="modal-contact">
-        <h2 className="modal-contact__title">Contact Us</h2>
-        <div className="contact__details">
-          <p className="contact__detail">
-            <strong>Email:</strong> 
-            <a href="mailto:info@beringia-marine.com" className="contact__link">
-              info@beringia-marine.com
-            </a>
-          </p>
-          <p className="contact__detail">
-            <strong>Phone:</strong> 
-            <a href="tel:+18057040462" className="contact__link">
-              +1 805 704 0462
-            </a>
-          </p>
-        </div>
-        <form className="contact__form" onSubmit={(e) => {
-          e.preventDefault();
-          console.log('Form submitted:', formData);
-          closeModal();
-        }}>
-          <input
-            type="text"
-            placeholder="Name"
-            required
-            className="contact__input"
-            value={formData.name}
-            onChange={e => setFormData({...formData, name: e.target.value})}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            required
-            className="contact__input"
-            value={formData.email}
-            onChange={e => setFormData({...formData, email: e.target.value})}
-          />
-          <input
-            type="text"
-            placeholder="Subject"
-            required
-            className="contact__input"
-            value={formData.subject}
-            onChange={e => setFormData({...formData, subject: e.target.value})}
-          />
-          <textarea
-            placeholder="Message"
-            required
-            className="contact__input contact__input--textarea"
-            value={formData.message}
-            onChange={e => setFormData({...formData, message: e.target.value})}
-          />
-          <button type="submit" className="contact__submit">Submit</button>
-        </form>
-      </div>,
-      { title: expertise.title, size: 'small' }
-    )
+  const handleExpertiseClick = () => {
+    openModal(<ModalContact />, { size: 'small' })
   }
 
   return (
@@ -124,15 +69,15 @@ const ExpertiseSection = () => {
         <h2 className="expertise__title">Our Expertise</h2>
         <h3 className="expertise__subtitle">Validate - Execute - Grow - Productize - Scale</h3>
         
-        <div className="expertise__cards">
+        <div className="expertise-cards">
           {expertiseData.map((card, index) => (
-            <div key={index} className="expertise__card">
-              <h4 className="expertise__card-title">{card.title}</h4>
-              <h5 className="expertise__card-subtitle">{card.subtitle}</h5>
-              <p className="expertise__card-description">{card.description}</p>
+            <div key={index} className="expertise-card">
+              <h4 className="expertise-card__title">{card.title}</h4>
+              <h5 className="expertise-card__subtitle">{card.subtitle}</h5>
+              <p className="expertise-card__description">{card.description}</p>
               <button 
-                className="expertise__card-cta"
-                onClick={() => handleExpertiseClick(card)}
+                className="expertise-card__cta"
+                onClick={() => handleExpertiseClick()}
               >
                 {card.ctaText}
               </button>

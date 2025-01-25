@@ -1,0 +1,112 @@
+.modal-contact {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  height: auto;
+  min-height: min-content;
+}
+
+.modal-contact__title {
+  font-family: "Domitian", serif;
+  color: #214751;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.modal-contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  background-color: #f8f9fa;
+  padding: 1.25rem;
+  border-radius: 8px;
+}
+
+.modal-contact__detail {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-contact__link {
+  color: #00a2b0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.modal-contact__link:hover {
+  color: #007a85;
+  text-decoration: underline;
+}
+
+.modal-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-contact__input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #fff;
+}
+
+.modal-contact__input:focus {
+  outline: none;
+  border-color: #00a2b0;
+  box-shadow: 0 0 0 3px rgba(0, 162, 176, 0.1);
+}
+
+.modal-contact__input--textarea {
+  min-height: 100px;
+  resize: vertical;
+  max-height: 200px;
+}
+
+.modal-contact__submit {
+  background-color: #00a2b0;
+  color: white;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.modal-contact__submit:hover {
+  background-color: #007a85;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 162, 176, 0.15);
+}
+
+.modal-contact__submit:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .modal-contact {
+    padding: 0;
+  }
+
+  .modal-contact__title {
+    font-size: 1.75rem;
+  }
+
+  .modal-contact__details {
+    padding: 1rem;
+  }
+}
