@@ -5,15 +5,51 @@
 .home__section {
   padding: 4rem 2rem;
   text-align: center;
+  position: relative;
 }
 
 .home__section_mission {
   background-color: #fff;
+  padding-bottom: 4rem;
+}
+
+.home__section_about {
+  background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
+  margin-top: -2rem;
+  padding-top: 4rem;
+  clip-path: polygon(0 0, 100% 2rem, 100% 100%, 0 100%);
 }
 
 .home__container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.home__section_about::before,
+.home__section_about::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 162, 176, 0.05) 0%,
+    rgba(0, 162, 176, 0) 70%
+  );
+  z-index: 0;
+}
+
+.home__section_about::before {
+  top: 0;
+  left: -100px;
+}
+
+.home__section_about::after {
+  bottom: 0;
+  right: -100px;
 }
 
 .home__title {

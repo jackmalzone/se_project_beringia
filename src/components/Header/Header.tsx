@@ -40,7 +40,6 @@ const Header: FC<HeaderProps> = ({ isLoading = false }) => {
       <nav className="header__nav" role="navigation">
         {[
           { path: ROUTES.HOME, label: 'Home' },
-          { path: ROUTES.ABOUT, label: 'About' },
           { path: ROUTES.SERVICES, label: 'Services' },
           ...Object.values(clients).map(client => ({
             path: ROUTES.CLIENT(client.slug),

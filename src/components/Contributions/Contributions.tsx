@@ -71,10 +71,12 @@ const ContributionsTitle = ({ title }: { title: string }) => {
   return Array.isArray(titles) ? (
     <div className="contributions__titles">
       {titles.map((title, index) => (
-        <h3 key={index} className="contributions__title">
-          <span className="contributions__title-bullet">•</span>
-          {title}
-        </h3>
+        <div key={index} className="contributions__title-wrapper">
+          <span className="contributions__title-number">{index + 1}</span>
+          <h3 className="contributions__title">
+            {title}
+          </h3>
+        </div>
       ))}
     </div>
   ) : (
@@ -89,7 +91,7 @@ const ContributionsContent = ({ content }: { content: string }) => {
     <div className="contributions__content-multiple">
       {items.map((item, index) => (
         <div key={index} className="contributions__content-item">
-          <span className="contributions__content-bullet">•</span>
+          <span className="contributions__content-number">{index + 1}</span>
           <p>{item}</p>
         </div>
       ))}

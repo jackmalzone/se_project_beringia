@@ -1,6 +1,7 @@
 import HeroBanner from '../HeroBanner/HeroBanner'
 import ExpertiseSection from '../ExpertiseSection/ExpertiseSection'
-import Contributions from '../Contributions/Constributions'
+import Contributions from '../Contributions/Contributions'
+import { AboutContent } from '../About/About'
 import Contact from '../Contact/Contact'
 
 import './Home.css'
@@ -24,10 +25,13 @@ const Home = () => {
           </p>
         </div>
       </section>
+
+      <section className="home__section home__section_about">
+        <AboutContent />
+      </section>
       
       <ExpertiseSection />
       <Contributions />
-      <Contact />
     </div>
   )
 }

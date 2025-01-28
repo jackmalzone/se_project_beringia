@@ -6,15 +6,29 @@
 .about__content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .about__title {
   font-family: "Domitian", serif;
   color: #214751;
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   text-align: center;
+  position: relative;
+}
+
+.about__title::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #00a2b0, #008791, #00a2b0);
 }
 
 .about__text {
@@ -22,6 +36,9 @@
   line-height: 1.6;
   color: #1b444e;
   margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .about__text:last-child {
