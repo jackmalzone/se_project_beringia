@@ -1,7 +1,6 @@
 import HeroBanner from '../HeroBanner/HeroBanner'
 import ExpertiseSection from '../ExpertiseSection/ExpertiseSection'
 import Contributions from '../Contributions/Contributions'
-import { AboutContent } from '../About/About'
 import Contact from '../Contact/Contact'
 
 import './Home.css'
@@ -24,10 +23,6 @@ const Home = () => {
             solutions for our oceans. Whether you're an established player or a start up, Beringia has the expertise, network and passion to rapidly scale your success. 
           </p>
         </div>
-      </section>
-
-      <section className="home__section home__section_about">
-        <AboutContent />
       </section>
       
       <ExpertiseSection />

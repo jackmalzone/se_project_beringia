@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer.tsx'
 import Modal from '../Modal/Modal'
 import Main from '../Main/Main'
 import Terms from '../Terms/Terms.tsx'
+import About from '../About/About.tsx'
 import { ConfigContext } from '../../contexts/ConfigContext'
 import Client from '../Client/Client'
 import { ROUTES } from '../../utils/constants'
@@ -26,6 +27,7 @@ function App() {
               <Header />
               <Routes>
                 <Route path="/terms" element={<Terms />} />
+                <Route path="/about" element={<About />} />
                 <Route path={`${ROUTES.CLIENTS}/:clientSlug/*`} element={<Client />} />
                 <Route path="*" element={<Main />} />
               </Routes>

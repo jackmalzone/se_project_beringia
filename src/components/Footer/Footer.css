@@ -29,6 +29,7 @@
 .footer__text {
   line-height: 1.6;
   opacity: 0.9;
+  margin: 0;
 }
 
 .footer__list {
@@ -70,6 +71,18 @@
   text-align: center;
   opacity: 0.7;
   font-size: 0.875rem;
+}
+
+.footer__text-link {
+  color: #00a2b0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer__text-link:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {

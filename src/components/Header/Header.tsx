@@ -14,6 +14,7 @@ const Header: FC<HeaderProps> = ({ isLoading = false }) => {
   const location = useLocation()
   const config = useContext(ConfigContext)
   const [showSolutions, setShowSolutions] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   if (isLoading) {
     return (
@@ -63,6 +64,10 @@ const Header: FC<HeaderProps> = ({ isLoading = false }) => {
             </div>
           )}
         </div>
+
+        <Link to={ROUTES.ABOUT} className="header__nav-link">
+          About
+        </Link>
 
         <Link to={ROUTES.CONTACT} className="header__nav-link">
           Contact

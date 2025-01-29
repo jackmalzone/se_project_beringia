@@ -4,6 +4,102 @@
 }
 
 .about__content {
+  position: relative;
+  z-index: 1;
+}
+
+.about__hero {
+  background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.about__hero::before,
+.about__hero::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 162, 176, 0.05) 0%,
+    rgba(0, 162, 176, 0) 70%
+  );
+  z-index: 0;
+}
+
+.about__hero::before {
+  top: 0;
+  left: -100px;
+}
+
+.about__hero::after {
+  bottom: 0;
+  right: -100px;
+}
+
+.about__hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.about__hero-title {
+  font-family: "Domitian", serif;
+  color: #214751;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+.about__hero-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.about__hero-image-container {
+  width: 300px;
+  height: 225px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 162, 176, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f0f4f8;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about__hero-image {
+  max-width: 300px;
+  max-height: 225px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.about__hero-image-caption {
+  font-family: "Courier New", monospace;
+  color: #214751;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 300px;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.about__container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
@@ -43,4 +139,30 @@
 
 .about__text:last-child {
   margin-bottom: 0;
+}
+
+.about__subtitle {
+  font-family: "Domitian", serif;
+  color: #214751;
+  font-size: 1.75rem;
+  margin: 2rem 0 1rem;
+  text-align: center;
+}
+
+.about__social {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.about__social-link {
+  color: #00a2b0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.about__social-link:hover {
+  color: #214751;
 }

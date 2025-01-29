@@ -11,6 +11,7 @@ const Footer = () => {
           <h3 className="footer__title">About Beringia</h3>
           <p className="footer__text">
             Providing experience and passion necessary for increasing our knowledge of the oceans.
+            <Link to={ROUTES.ABOUT} className="footer__text-link"> Learn more →</Link>
           </p>
         </div>
 
