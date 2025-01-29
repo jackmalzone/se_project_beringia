@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react'
+import { FC, useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ConfigContext } from '../../contexts/ConfigContext'
 import { ROUTES } from '../../utils/constants'
@@ -13,6 +13,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ isLoading = false }) => {
   const location = useLocation()
   const config = useContext(ConfigContext)
+  const [showSolutions, setShowSolutions] = useState(false)
 
   if (isLoading) {
     return (
@@ -38,25 +39,38 @@ const Header: FC<HeaderProps> = ({ isLoading = false }) => {
       </div>
       
       <nav className="header__nav" role="navigation">
-        {[
-          { path: ROUTES.HOME, label: 'Home' },
-          ...Object.values(clients).map(client => ({
-            path: ROUTES.CLIENT(client.slug),
-            label: client.name
-          })),
-          { path: ROUTES.CONTACT, label: 'Contact' },
-          { path: ROUTES.TERMS, label: 'Terms' }
-        ].map(({ path, label }) => (
-          <Link 
-            key={path}
-            to={path}
-            className={`header__nav-link ${
-              location.pathname === path ? 'header__nav-link--active' : ''
-            }`}
-          >
-            {label}
-          </Link>
-        ))}
+        <Link to={ROUTES.HOME} className="header__nav-link">
+          Home
+        </Link>
+        
+        <div 
+          className="header__nav-dropdown"
+          onMouseEnter={() => setShowSolutions(true)}
+          onMouseLeave={() => setShowSolutions(false)}
+        >
+          <span className="header__nav-link">Solutions</span>
+          {showSolutions && (
+            <div className="header__solutions-menu">
+              {Object.values(clients).map(client => (
+                <Link
+                  key={client.slug}
+                  to={ROUTES.CLIENT(client.slug)}
+                  className="header__solutions-link"
+                >
+                  {client.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <Link to={ROUTES.CONTACT} className="header__nav-link">
+          Contact
+        </Link>
+
+        <Link to={ROUTES.TERMS} className="header__nav-link">
+          Terms
+        </Link>
       </nav>
     </header>
   )
