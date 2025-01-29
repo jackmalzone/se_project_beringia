@@ -1,4 +1,5 @@
 import { ClientData } from '../types'
+import headerImage from '../../assets/clients/advanced-navigation/header.jpg'
 
 export const advancedNavigation: ClientData = {
   id: 'advanced-navigation',
@@ -12,7 +13,7 @@ export const advancedNavigation: ClientData = {
   overview: {
     title: 'Advanced Navigation',
     description: 'Advanced Navigation is a global leader in navigation and autonomous systems. By leveraging capabilities in software-enhanced hardware, every solution delivers unrivalled capabilities and exceptional performance across land, air, sea and space applications where GPS is unreliable. Headquartered in Sydney, Australia, with research and production facilities nationwide and offices globally, Advanced Navigation is an Australian manufacturer exporting worldwide.',
-    headerImage: '/images/clients/advanced-navigation/header.jpg'
+    headerImage: headerImage
   },
   sellingPoints: {
     title: 'Core Solutions',
