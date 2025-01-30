@@ -1,5 +1,8 @@
 import { ClientData } from '../types'
 import headerImage from '../../assets/clients/advanced-navigation/header.jpg'
+import hydrusIcon from '../../assets/clients/advanced-navigation/hydrus-icon.webp'
+import subsonusIcon from '../../assets/clients/advanced-navigation/subsonus-icon.webp'
+import subsonusTagIcon from '../../assets/clients/advanced-navigation/subsonus-tag-icon.webp'
 
 export const advancedNavigation: ClientData = {
   id: 'advanced-navigation',
@@ -20,7 +23,7 @@ export const advancedNavigation: ClientData = {
     points: [
       {
         id: 'hydrus',
-        title: 'Hydrus',
+        title: 'HYDRUS',
         description: 'Hydrus is a hovering micro autonomous underwater vehicle (AUV) revolutionising underwater data collection across reef monitoring and subsea inspections.',
         features: [
           'Fully autonomous with advanced navigation and communication systems',
@@ -30,7 +33,7 @@ export const advancedNavigation: ClientData = {
           'Hand deployable from small boats',
           'Obstacle detection and collision avoidance'
         ],
-        icon: '/icons/hydrus.svg'
+        icon: hydrusIcon
       },
       {
         id: 'subsonus',
@@ -46,7 +49,7 @@ export const advancedNavigation: ClientData = {
           'Fully integrated miniature enclosure',
           'Built-in acoustic modem functionality'
         ],
-        icon: '/icons/subsonus.svg'
+        icon: subsonusIcon
       },
       {
         id: 'subsonus-tag',
@@ -59,7 +62,7 @@ export const advancedNavigation: ClientData = {
           'Hermetically sealed design requiring no servicing',
           'Wireless Qi charging and Bluetooth configuration'
         ],
-        icon: '/icons/subsonus-tag.svg'
+        icon: subsonusTagIcon
       }
     ]
   },

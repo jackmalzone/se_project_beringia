@@ -4,6 +4,9 @@
 }
 
 .selling-points__title {
+  font-family: "Domitian", serif;
+  font-weight: 700;
+  font-size: 2rem;
   text-align: center;
   margin-bottom: 3rem;
 }
@@ -28,12 +31,15 @@
 }
 
 .selling-points__card-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #333;
 }
 
 .selling-points__description {
+  font-family: "Inter", sans-serif;
   color: #666;
   margin-bottom: 1.5rem;
   line-height: 1.6;
@@ -46,6 +52,7 @@
 }
 
 .selling-points__feature {
+  font-family: "Inter", sans-serif;
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: 0.75rem;

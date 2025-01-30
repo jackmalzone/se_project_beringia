@@ -40,6 +40,8 @@
 }
 
 .overview__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
   font-size: 3rem;
   margin-bottom: 1.5rem;
   color: #fff;
@@ -47,6 +49,7 @@
 }
 
 .overview__description {
+  font-family: "Inter", sans-serif;
   font-size: 1.25rem;
   line-height: 1.6;
   color: #fff;

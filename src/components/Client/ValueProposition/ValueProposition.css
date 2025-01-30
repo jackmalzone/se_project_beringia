@@ -9,6 +9,7 @@
 }
 
 .value-proposition__description {
+  font-family: "Inter", sans-serif;
   max-width: 800px;
   margin: 0 auto 3rem;
   text-align: center;
@@ -45,6 +46,7 @@
 }
 
 .value-proposition__highlight-text {
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #333;

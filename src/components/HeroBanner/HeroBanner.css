@@ -36,6 +36,7 @@
 }
 
 .hero-banner__subtitle {
+  font-family: "Inter", sans-serif;
   font-size: 1.5rem;
   opacity: 0.9;
 }

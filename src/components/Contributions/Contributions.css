@@ -6,7 +6,6 @@
   width: 100%;
 }
 
-/* Add decorative elements */
 .contributions::before,
 .contributions::after {
   content: "";
@@ -119,6 +118,7 @@
 }
 
 .contributions__period {
+  font-family: "Inter", sans-serif;
   font-weight: 600;
   color: #00a2b0;
   margin-bottom: 0.75rem;
@@ -131,6 +131,7 @@
 }
 
 .contributions__content p {
+  font-family: "Inter", sans-serif;
   margin-top: 1rem;
   color: #666;
 }
