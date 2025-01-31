@@ -2,7 +2,7 @@ import HeroBanner from '../HeroBanner/HeroBanner'
 import ExpertiseSection from '../ExpertiseSection/ExpertiseSection'
 import Contributions from '../Contributions/Contributions'
 import Contact from '../Contact/Contact'
-
+import seascapeWallpaper from '../../assets/beringia/seascape-wallpaper.jpg'
 import './Home.css'
 
 const Home = () => {
@@ -11,6 +11,7 @@ const Home = () => {
       <HeroBanner
         title="Beringia Marine Technologies"
         subtitle="Sales Engineering & Consulting"
+        backgroundImage={seascapeWallpaper}
       />
       
       <section className="home__section home__section_mission">
