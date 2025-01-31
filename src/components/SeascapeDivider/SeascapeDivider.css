@@ -2,23 +2,17 @@
   position: relative;
   width: 100%;
   background-size: cover;
-  background-position: center 65%;
-  background-attachment: fixed;
+  background-position: center bottom;
   margin: -2rem 0;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    black 25%,
-    black 75%,
-    transparent
-  );
+  mask-image: linear-gradient(to bottom, black, black);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .seascape-divider__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 65%;
+  object-position: center bottom;
   opacity: 0.15;
   filter: saturate(0.8);
 }

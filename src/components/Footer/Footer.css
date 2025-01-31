@@ -4,27 +4,18 @@
   padding: 4rem 0 2rem;
   margin-top: auto;
   position: relative;
+  overflow: hidden;
 }
 
-.footer__divider {
+.footer__wave {
   position: absolute;
-  top: -1px;
+  top: -50px;
   left: 0;
   width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  transform: rotate(180deg);
-}
-
-.footer__divider svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 70px;
-}
-
-.footer__divider .shape-fill {
-  fill: #214751;
+  height: 50px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23214751' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .footer__content {
@@ -84,9 +75,11 @@
 .footer__bottom {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 2rem 0;
+  padding: 2rem 2rem 120px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 3rem;
+  position: relative;
+  z-index: 2;
 }
 
 .footer__copyright {
@@ -105,6 +98,15 @@
 .footer__text-link:hover {
   color: #fff;
   text-decoration: underline;
+}
+
+/* Position the seascape divider at the bottom of the footer */
+.footer .seascape-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
