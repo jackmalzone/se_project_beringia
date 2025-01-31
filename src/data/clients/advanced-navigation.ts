@@ -1,4 +1,5 @@
 import { ClientData } from '../types'
+import { SKETCHFAB_MODEL_IDS } from '../../utils/sketchfab'
 import headerImage from '../../assets/clients/advanced-navigation/header.jpg'
 import hydrusIcon from '../../assets/clients/advanced-navigation/hydrus-icon.webp'
 import subsonusIcon from '../../assets/clients/advanced-navigation/subsonus-icon.webp'
@@ -8,6 +9,7 @@ export const advancedNavigation: ClientData = {
   id: 'advanced-navigation',
   name: 'Advanced Navigation',
   slug: 'advanced-navigation',
+  modelId: SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK,
   seo: {
     title: 'Advanced Navigation | Marine Technology Solutions',
     description: 'Global leader in navigation and autonomous systems. Made possible with extensive research, testing and vertically integrated manufacturing, the company has progressed into deep technology fields, including robotics, underwater acoustics, inertial, photonic and quantum sensing.',
@@ -116,6 +118,56 @@ export const advancedNavigation: ClientData = {
       url: '/images/clients/advanced-navigation/subsonus-tag-product.jpg',
       alt: 'Subsonus Tag acoustic positioning transponder',
       type: 'image'
+    },
+    {
+      id: 'hydrus-3d',
+      url: `https://sketchfab.com/models/${SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}`,
+      alt: 'Hydrus AUV 3D Model',
+      type: 'sketchfab',
+      modelId: SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK
+    },
+    {
+      id: 'subsonus-3d',
+      url: 'https://sketchfab.com/models/[model-id]',
+      alt: 'Subsonus 3D Model',
+      type: 'sketchfab',
+      modelId: '[model-id]'
     }
-  ]
+  ],
+  useCases: {
+    title: 'Applications',
+    description: 'Advanced Navigation provides cutting-edge solutions across multiple marine sectors',
+    cases: [
+      {
+        id: 'subsea',
+        title: 'Subsea Navigation',
+        description: 'High-precision navigation solutions for ROVs, AUVs, and subsea vehicles.',
+        keyPoints: [
+          'Ultra-short baseline (USBL) positioning',
+          'Inertial navigation systems (INS)',
+          'Depth-rated solutions to 4000m'
+        ]
+      },
+      {
+        id: 'survey',
+        title: 'Hydrographic Survey',
+        description: 'Professional-grade solutions for marine survey and mapping operations.',
+        keyPoints: [
+          'Multibeam integration',
+          'High-accuracy positioning',
+          'Motion compensation'
+        ]
+      },
+      {
+        id: 'vessel',
+        title: 'Vessel Navigation',
+        description: 'Advanced navigation and positioning systems for marine vessels of all sizes.',
+        keyPoints: [
+          'Dynamic positioning reference',
+          'Heading and attitude solutions',
+          'GPS-denied navigation capability'
+        ]
+      }
+    ]
+  }
 }

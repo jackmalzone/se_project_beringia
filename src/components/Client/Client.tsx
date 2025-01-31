@@ -10,6 +10,8 @@ import { ValueProposition } from './ValueProposition/ValueProposition.tsx'
 import { MediaLinks } from './MediaLinks/MediaLinks.tsx'
 import { MediaGallery } from './MediaGallery/MediaGallery.tsx'
 import ClientNav from './ClientNav/ClientNav.tsx'
+import { UseCases } from './UseCases/UseCases'
+import { Interactive } from './Interactive/Interactive'
 import './Client.css'
 
 const Client = () => {
@@ -55,6 +57,14 @@ const Client = () => {
       </div>
       <div ref={featuresRef}>
         <SellingPoints {...clientData.sellingPoints} />
+        {clientData.id === 'advanced-navigation' && (
+          <Interactive 
+            modelId="[hydrus-model-id]"
+            title="Hydrus"
+            description="Get hands-on with Hydrus. Explore every detail of this revolutionary autonomous underwater vehicle. Rotate, zoom, and discover its innovative features through interactive annotations."
+          />
+        )}
+        <UseCases {...clientData.useCases} />
       </div>
       <div ref={valueRef}>
         <ValueProposition {...clientData.valueProposition} />

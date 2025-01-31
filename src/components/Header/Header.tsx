@@ -2,6 +2,7 @@ import { FC, useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ConfigContext } from '../../contexts/ConfigContext'
 import { ROUTES } from '../../utils/constants'
+import { SKETCHFAB_MODEL_IDS } from '../../utils/sketchfab'
 import logo from '../../assets/beringia/favicon-abstract-grdnt-nobuffer.png'
 import './Header.css'
 import { clients } from '../../data/index.ts'
@@ -10,11 +11,10 @@ interface HeaderProps {
   isLoading?: boolean;
 }
 
-const Header: FC<HeaderProps> = ({ isLoading = false }) => {
+const Header: FC<HeaderProps> = ({ isLoading }) => {
   const location = useLocation()
   const config = useContext(ConfigContext)
   const [showSolutions, setShowSolutions] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
 
   if (isLoading) {
     return (

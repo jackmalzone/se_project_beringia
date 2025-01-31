@@ -29,3 +29,27 @@
 .client-nav__link:hover {
   background-color: rgba(0, 162, 176, 0.05);
 }
+
+/* Add styles for 3D model link */
+.client-nav__link--3d {
+  background-color: rgba(0, 162, 176, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.client-nav__link--3d:hover {
+  background-color: rgba(0, 162, 176, 0.2);
+  transform: translateY(-1px);
+}
+
+.client-nav__link--3d:active {
+  transform: translateY(0);
+}
+
+.client-nav__link--3d.client-nav__link--active {
+  background-color: rgba(0, 162, 176, 0.2);
+  color: #00a2b0;
+}

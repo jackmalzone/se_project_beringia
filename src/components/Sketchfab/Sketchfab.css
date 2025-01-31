@@ -1,0 +1,80 @@
+.sketchfab {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #f0f4f8;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sketchfab__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.sketchfab__loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f4f8;
+  z-index: 1;
+}
+
+.sketchfab__loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #00a2b0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.sketchfab__loader-text {
+  margin-top: 1rem;
+  color: #214751;
+  font-size: 1.1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sketchfab--error {
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 0.375rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.sketchfab__error {
+  color: #e53e3e;
+}
+
+.sketchfab__error-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.sketchfab__error-details {
+  color: #718096;
+  font-size: 0.875rem;
+}

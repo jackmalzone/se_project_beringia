@@ -2,6 +2,7 @@ export interface ClientData {
     id: string;
     name: string;
     slug: string;
+    modelId?: string;
     seo: {
       title: string;
       description: string;
@@ -22,6 +23,16 @@ export interface ClientData {
         features: string[];
       }>;
     };
+    useCases: {
+      title: string;
+      description: string;
+      cases: Array<{
+        id: string;
+        title: string;
+        description: string;
+        keyPoints: string[];
+      }>;
+    };
     valueProposition: {
       title: string;
       description: string;
@@ -32,11 +43,13 @@ export interface ClientData {
       youtube?: string;
       linkedin?: string;
       sketchfab?: string;
+      email?: string;
     };
     gallery: Array<{
       id: string;
       url: string;
       alt: string;
-      type: 'image' | 'video';
+      type: 'image' | 'video' | 'sketchfab';
+      modelId?: string;
     }>;
   }
