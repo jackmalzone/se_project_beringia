@@ -3,6 +3,28 @@
   color: #fff;
   padding: 4rem 0 2rem;
   margin-top: auto;
+  position: relative;
+}
+
+.footer__divider {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.footer__divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 70px;
+}
+
+.footer__divider .shape-fill {
+  fill: #214751;
 }
 
 .footer__content {
