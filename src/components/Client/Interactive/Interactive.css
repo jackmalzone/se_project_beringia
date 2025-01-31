@@ -1,63 +1,94 @@
 .interactive {
-  padding: 6rem 2rem;
-  background: linear-gradient(180deg, #f0f4f8 0%, #ffffff 100%);
+  background-color: #214751; /* Dark blue-gray from our palette */
+  color: #ffffff;
+  padding: 2rem 0;
+  min-height: calc(100vh - 200px); /* Account for header/nav height */
 }
 
 .interactive__container {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+  padding: 0 2rem;
 }
 
 .interactive__title {
-  font-family: "Domitian", serif;
-  color: #214751;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  color: #ffffff;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .interactive__description {
+  color: #e0e0e0;
+  text-align: center;
   max-width: 800px;
-  margin: 0 auto 3rem;
-  font-size: 1.2rem;
+  margin: 0 auto 2rem;
   line-height: 1.6;
-  color: #1b444e;
+}
+
+.interactive__controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.interactive__control {
+  background-color: rgba(0, 162, 176, 0.2); /* Teal with transparency */
+  border: 1px solid rgba(0, 162, 176, 0.3);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.interactive__control:hover {
+  background-color: rgba(0, 162, 176, 0.3);
+  transform: translateY(-1px);
+}
+
+.interactive__control--active {
+  background-color: rgba(0, 162, 176, 0.4);
+  border-color: rgba(0, 162, 176, 0.5);
 }
 
 .interactive__model {
-  max-width: 1000px;
-  margin: 0 auto 3rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .interactive__instructions {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 162, 176, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
 }
 
 .interactive__instructions-title {
-  font-family: "Domitian", serif;
-  color: #214751;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  color: #00a2b0;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .interactive__instructions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
-  list-style: none;
-  padding: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .interactive__instructions-list li {
+  color: #e0e0e0;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  color: #1b444e;
-  font-size: 1.1rem;
 }
