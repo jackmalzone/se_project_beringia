@@ -108,8 +108,8 @@ const Contributions = () => {
   return (
     <section className="contributions">
       <div className="contributions__background" style={{ backgroundImage: `url(${seascapeImage})` }} />
-      <div className="container">
-        <h2>Notable Contributions</h2>
+      <div className="contributions__container">
+        <h2 className="contributions__heading">Notable Contributions</h2>
         <div className="contributions__items">
           {contributionsData.map((item, index) => (
             <div 

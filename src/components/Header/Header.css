@@ -32,6 +32,7 @@
 
 .header__title {
   font-size: 20px;
+  font-family: "Inter", sans-serif;
   line-height: 1.2;
   color: #052533;
   margin: 0;
@@ -120,24 +121,4 @@
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid #f8f9fa;
-}
-
-.header__nav-link--3d {
-  background-color: rgba(0, 162, 176, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.header__nav-link--3d:hover {
-  background-color: rgba(0, 162, 176, 0.2);
-  transform: translateY(-1px);
-}
-
-.header__nav-link--3d:active {
-  transform: translateY(0);
 }

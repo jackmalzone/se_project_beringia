@@ -35,9 +35,10 @@
 }
 
 /* Style the header */
-.contributions h2 {
+.contributions__heading {
   text-align: center;
   font-size: 2.5rem;
+  font-family: "Inter", sans-serif;
   color: white;
   margin-bottom: 1rem;
   position: relative;
