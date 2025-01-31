@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import seascapeImage from '../../assets/beringia/galapagos-seascape.jpg'
 import './Contributions.css'
 
 interface ContributionsItem {
@@ -106,6 +107,7 @@ const Contributions = () => {
 
   return (
     <section className="contributions">
+      <div className="contributions__background" style={{ backgroundImage: `url(${seascapeImage})` }} />
       <div className="container">
         <h2>Notable Contributions</h2>
         <div className="contributions__items">

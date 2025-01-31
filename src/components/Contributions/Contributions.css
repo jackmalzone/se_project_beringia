@@ -1,41 +1,44 @@
 .contributions {
   padding: 6rem 0;
-  background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
+  color: white;
 }
 
-.contributions::before,
-.contributions::after {
-  content: "";
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(0, 162, 176, 0.05) 0%,
-    rgba(0, 162, 176, 0) 70%
-  );
-  z-index: 0;
+.contributions__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -1;
+  opacity: 0.15;
 }
 
 .contributions::before {
-  top: -100px;
-  left: -100px;
-}
-
-.contributions::after {
-  bottom: -100px;
-  right: -100px;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(33, 71, 81, 0.95),
+    rgba(33, 71, 81, 0.98)
+  );
+  z-index: -1;
 }
 
 /* Style the header */
 .contributions h2 {
   text-align: center;
   font-size: 2.5rem;
-  color: #214751;
+  color: white;
   margin-bottom: 1rem;
   position: relative;
 }
@@ -68,9 +71,11 @@
   margin: 2rem 0;
   cursor: pointer;
   padding: 1.5rem;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -105,7 +110,8 @@
 
 .contributions__item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 162, 176, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .contributions__item:hover::before {
@@ -114,7 +120,15 @@
 }
 
 .contributions__item--expanded {
-  background: linear-gradient(135deg, white, #f8f9fa);
+  background-color: rgba(0, 162, 176, 0.05);
+  border-color: rgba(0, 162, 176, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  cursor: default;
+}
+
+.contributions__item--expanded:hover {
+  transform: none;
+  background-color: rgba(0, 162, 176, 0.05);
 }
 
 .contributions__period {
@@ -127,13 +141,16 @@
 
 .contributions__content h3 {
   margin: 0;
-  color: #333;
+  color: white;
+  font-size: 1.2rem;
+  line-height: 1.4;
 }
 
 .contributions__content p {
   font-family: "Inter", sans-serif;
   margin-top: 1rem;
-  color: #666;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
 }
 
 .contributions__titles {

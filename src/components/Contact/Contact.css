@@ -1,8 +1,25 @@
 .contact {
   width: 100%;
+  position: relative;
+  background-color: #214751;
+  padding: 6rem 0;
+  color: white;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #214751);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .contact__container {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
@@ -13,7 +30,12 @@
   gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contact__info {
@@ -23,15 +45,17 @@
 
 .contact__title {
   font-family: "Domitian", serif;
-  color: #214751;
+  color: white;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .contact__details {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .contact__detail {
@@ -45,7 +69,7 @@
 }
 
 .contact__link:hover {
-  color: #007a85;
+  color: #4dd1db;
   text-decoration: underline;
 }
 
