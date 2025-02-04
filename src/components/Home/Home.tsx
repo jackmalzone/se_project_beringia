@@ -1,7 +1,6 @@
 import HeroBanner from '../HeroBanner/HeroBanner'
 import ExpertiseSection from '../ExpertiseSection/ExpertiseSection'
 import Contributions from '../Contributions/Contributions'
-import Contact from '../Contact/Contact'
 import seascapeWallpaper from '../../assets/beringia/seascape-wallpaper.jpg'
 import './Home.css'
 

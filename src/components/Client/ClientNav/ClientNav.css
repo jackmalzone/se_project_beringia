@@ -5,11 +5,15 @@
   padding: 1rem 0;
   border-bottom: 1px solid #eee;
   margin-bottom: 2rem;
-  background-color: #f8f9fa;
+  background-color: rgba(248, 249, 250, 0.95);
+  backdrop-filter: blur(8px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 0;
-  z-index: 100;
+  /* Account for main header height */
+  top: 80px;
+  z-index: 900;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
 .client-nav__link {

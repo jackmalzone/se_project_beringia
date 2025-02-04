@@ -1,5 +1,5 @@
 import { FC, useContext, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ConfigContext } from '../../contexts/ConfigContext'
 import { ROUTES } from '../../utils/constants'
 import logo from '../../assets/beringia/favicon-abstract-grdnt-nobuffer.png'
