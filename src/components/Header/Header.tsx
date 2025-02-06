@@ -13,6 +13,7 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ isLoading }) => {
   const config = useContext(ConfigContext)
   const [showSolutions, setShowSolutions] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   if (isLoading) {
     return (
@@ -20,6 +21,11 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
         <div className="header__loading">Loading...</div>
       </header>
     )
+  }
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+    setShowSolutions(false)
   }
 
   return (
@@ -37,8 +43,16 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
         </h1>
       </div>
       
-      <nav className="header__nav" role="navigation">
-        <Link to={ROUTES.HOME} className="header__nav-link">
+      <button 
+        className="header__mobile-menu-button"
+        onClick={toggleMobileMenu}
+        aria-label="Toggle mobile menu"
+      >
+        {isMobileMenuOpen ? '✕' : '☰'}
+      </button>
+
+      <nav className={`header__nav ${isMobileMenuOpen ? 'active' : ''}`} role="navigation">
+        <Link to={ROUTES.HOME} className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
           Home
         </Link>
         
@@ -55,6 +69,7 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
                   key={client.slug}
                   to={ROUTES.CLIENT(client.slug)}
                   className="header__solutions-link"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {client.name}
                 </Link>
@@ -63,15 +78,15 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
           )}
         </div>
 
-        <Link to={ROUTES.ABOUT} className="header__nav-link">
+        <Link to={ROUTES.ABOUT} className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
           About
         </Link>
 
-        <Link to={ROUTES.CONTACT} className="header__nav-link">
+        <Link to={ROUTES.CONTACT} className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
           Contact
         </Link>
 
-        <Link to={ROUTES.TERMS} className="header__nav-link">
+        <Link to={ROUTES.TERMS} className="header__nav-link" onClick={() => setIsMobileMenuOpen(false)}>
           Terms
         </Link>
       </nav>

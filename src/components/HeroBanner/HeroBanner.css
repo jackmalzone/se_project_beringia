@@ -42,11 +42,39 @@
 }
 
 @media (max-width: 768px) {
+  .hero-banner {
+    min-height: 500px;
+    padding: 1.5rem;
+  }
+
   .hero-banner__title {
     font-size: 2.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .hero-banner__subtitle {
     font-size: 1.25rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    min-height: 400px;
+    padding: 1rem;
+  }
+
+  .hero-banner__title {
+    font-size: 2rem;
+  }
+
+  .hero-banner__subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-height: 600px) {
+  .hero-banner {
+    min-height: 450px;
   }
 }
