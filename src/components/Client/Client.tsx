@@ -3,6 +3,7 @@ import { useParams, Routes, Route, useLocation } from 'react-router-dom'
 import { ClientData } from '../../data/types.ts'
 import { clients } from '../../data'
 import { ROUTES } from '../../utils/constants.ts'
+import { SKETCHFAB_MODEL_IDS } from '../../utils/sketchfab'
 import { SEOHead } from '../shared/SEOHead.tsx'
 import { Overview } from './Overview/Overview.tsx'
 import { SellingPoints } from './SellingPoints/SellingPoints.tsx'
@@ -23,6 +24,7 @@ const Client = () => {
   const featuresRef = useRef<HTMLDivElement>(null)
   const valueRef = useRef<HTMLDivElement>(null)
   const mediaRef = useRef<HTMLDivElement>(null)
+  const interactiveRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (clientSlug) {
@@ -32,16 +34,29 @@ const Client = () => {
   }, [clientSlug])
 
   useEffect(() => {
+    if (!clientSlug) return;
+    
     const refs = {
       [ROUTES.CLIENT(clientSlug)]: overviewRef,
       [`${ROUTES.CLIENT(clientSlug)}/features`]: featuresRef,
       [`${ROUTES.CLIENT(clientSlug)}/value`]: valueRef,
       [`${ROUTES.CLIENT(clientSlug)}/media`]: mediaRef,
+      [`${ROUTES.CLIENT(clientSlug)}/interactive`]: interactiveRef,
     }
     
     const targetRef = refs[location.pathname]
     if (targetRef?.current) {
-      targetRef.current.scrollIntoView({ behavior: 'smooth' })
+      const headerHeight = 80;
+      const navHeight = 60;
+      const totalOffset = headerHeight + navHeight;
+      
+      const elementPosition = targetRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   }, [location.pathname, clientSlug])
 
@@ -57,14 +72,16 @@ const Client = () => {
       </div>
       <div ref={featuresRef}>
         <SellingPoints {...clientData.sellingPoints} />
+        <UseCases {...clientData.useCases} />
+      </div>
+      <div ref={interactiveRef}>
         {clientData.id === 'advanced-navigation' && (
           <Interactive 
-            modelId="[hydrus-model-id]"
+            modelId={SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}
             title="Hydrus"
             description="Get hands-on with Hydrus. Explore every detail of this revolutionary autonomous underwater vehicle. Rotate, zoom, and discover its innovative features through interactive annotations."
           />
         )}
-        <UseCases {...clientData.useCases} />
       </div>
       <div ref={valueRef}>
         <ValueProposition {...clientData.valueProposition} />

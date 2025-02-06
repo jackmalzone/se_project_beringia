@@ -5,7 +5,8 @@ interface MediaItem {
   id: string;
   url: string;
   alt: string;
-  type: 'image' | 'video';
+  type: 'image' | 'video' | 'sketchfab';
+  modelId?: string;
 }
 
 interface MediaGalleryProps {
