@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, Link, Routes, Route } from 'react-router-dom'
 import { ClientData } from '../../data/types.ts'
 import { clients } from '../../data'
 import { ROUTES } from '../../utils/constants.ts'
@@ -13,6 +13,7 @@ import { MediaGallery } from './MediaGallery/MediaGallery.tsx'
 import ClientNav from './ClientNav/ClientNav.tsx'
 import { UseCases } from './UseCases/UseCases'
 import { Interactive } from './Interactive/Interactive'
+import { useScroll } from '../../hooks/useScroll'
 import './Client.css'
 
 const Client = () => {
@@ -25,6 +26,7 @@ const Client = () => {
   const valueRef = useRef<HTMLDivElement>(null)
   const mediaRef = useRef<HTMLDivElement>(null)
   const interactiveRef = useRef<HTMLDivElement>(null)
+  const { scrollDirection, isScrolled } = useScroll(80)
 
   useEffect(() => {
     if (clientSlug) {
@@ -62,10 +64,17 @@ const Client = () => {
 
   if (!clientData) return null
 
+  const navClasses = [
+    'client__nav',
+    scrollDirection === 'down' && isScrolled ? 'client__nav--header-hidden' : ''
+  ].filter(Boolean).join(' ')
+
   return (
     <div className="client-page">
       <SEOHead {...clientData.seo} />
-      <ClientNav clientSlug={clientData.slug} />
+      <nav className={navClasses}>
+        <ClientNav clientSlug={clientData.slug} />
+      </nav>
       
       <div ref={overviewRef}>
         <Overview {...clientData.overview} />

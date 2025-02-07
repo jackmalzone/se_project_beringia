@@ -1,4 +1,5 @@
-import { useState, FormEvent } from 'react'
+import { FormEvent } from 'react'
+import { useForm } from '../../hooks/useForm'
 import './Contact.css'
 
 const ContactInfo = () => (
@@ -21,7 +22,7 @@ const ContactInfo = () => (
         href="https://linkedin.com/company/beringia-marine" 
         target="_blank" 
         rel="noopener noreferrer" 
-        className="contact__link contact__link--linkedin"
+        className="contact__link contact__link-linkedin"
       >
         Connect on LinkedIn
       </a>
@@ -30,53 +31,97 @@ const ContactInfo = () => (
 )
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
+  const {
+    formData,
+    errors,
+    isSubmitting,
+    handleChange,
+    handleSubmit
+  } = useForm(
+    {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    },
+    {
+      name: {
+        required: true,
+        minLength: 2
+      },
+      email: {
+        required: true,
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      },
+      subject: {
+        required: true,
+        minLength: 3
+      },
+      message: {
+        required: true,
+        minLength: 10
+      }
+    }
+  )
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
+  const onSubmit = async (data: typeof formData) => {
     // Add form submission logic here
-    console.log('Form submitted:', formData)
+    console.log('Form submitted:', data)
+    // You would typically make an API call here
   }
 
   return (
-    <form className="contact__form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Name"
-        required
-        className="contact__input"
-        value={formData.name}
-        onChange={e => setFormData({...formData, name: e.target.value})}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        required
-        className="contact__input"
-        value={formData.email}
-        onChange={e => setFormData({...formData, email: e.target.value})}
-      />
-      <input
-        type="text"
-        placeholder="Subject"
-        required
-        className="contact__input"
-        value={formData.subject}
-        onChange={e => setFormData({...formData, subject: e.target.value})}
-      />
-      <textarea
-        placeholder="Message"
-        required
-        className="contact__input contact__input--textarea"
-        value={formData.message}
-        onChange={e => setFormData({...formData, message: e.target.value})}
-      />
-      <button type="submit" className="contact__submit">Submit</button>
+    <form className="contact__form" onSubmit={(e) => handleSubmit(onSubmit, e)}>
+      <div className="contact__input-group">
+        <input
+          type="text"
+          placeholder="Name"
+          className={`contact__input ${errors.name ? 'contact__input--error' : ''}`}
+          value={formData.name}
+          onChange={(e) => handleChange('name', e.target.value)}
+        />
+        {errors.name && <span className="contact__error">{errors.name}</span>}
+      </div>
+
+      <div className="contact__input-group">
+        <input
+          type="email"
+          placeholder="Email"
+          className={`contact__input ${errors.email ? 'contact__input--error' : ''}`}
+          value={formData.email}
+          onChange={(e) => handleChange('email', e.target.value)}
+        />
+        {errors.email && <span className="contact__error">{errors.email}</span>}
+      </div>
+
+      <div className="contact__input-group">
+        <input
+          type="text"
+          placeholder="Subject"
+          className={`contact__input ${errors.subject ? 'contact__input--error' : ''}`}
+          value={formData.subject}
+          onChange={(e) => handleChange('subject', e.target.value)}
+        />
+        {errors.subject && <span className="contact__error">{errors.subject}</span>}
+      </div>
+
+      <div className="contact__input-group">
+        <textarea
+          placeholder="Message"
+          className={`contact__input contact__input-textarea ${errors.message ? 'contact__input--error' : ''}`}
+          value={formData.message}
+          onChange={(e) => handleChange('message', e.target.value)}
+        />
+        {errors.message && <span className="contact__error">{errors.message}</span>}
+      </div>
+
+      <button 
+        type="submit" 
+        className="contact__submit"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Sending...' : 'Submit'}
+      </button>
     </form>
   )
 }

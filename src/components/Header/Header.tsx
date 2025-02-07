@@ -1,6 +1,11 @@
 import { FC, useContext, useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ConfigContext } from '../../contexts/ConfigContext'
+import { useTheme } from '../../contexts/ThemeContext'
+import { useLoading } from '../../contexts/LoadingContext'
+import { useViewport } from '../../hooks/useViewport'
+import { useScroll } from '../../hooks/useScroll'
+import { useNavigation } from '../../contexts/NavigationContext'
 import { ROUTES } from '../../utils/constants'
 import logo from '../../assets/beringia/logo-bridge-white.webp'
 import searchIcon from '../../assets/search.svg'
@@ -11,14 +16,29 @@ interface HeaderProps {
   isLoading?: boolean;
 }
 
-const Header: FC<HeaderProps> = ({ isLoading }) => {
+const Header: FC<HeaderProps> = () => {
   const config = useContext(ConfigContext)
+  const { theme, toggleTheme } = useTheme()
+  const { isLoading } = useLoading()
+  const { isMobile } = useViewport()
+  const { scrollDirection, isScrolled } = useScroll(50)
   const location = useLocation()
+  const { isHeaderVisible, setHeaderVisibility, setCurrentSection } = useNavigation()
   const [showSolutions, setShowSolutions] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [isSearchActive, setIsSearchActive] = useState(false)
   const solutionsRef = useRef<HTMLDivElement>(null)
+
+  // Update header visibility based on scroll
+  useEffect(() => {
+    setHeaderVisibility(!(scrollDirection === 'down' && isScrolled))
+  }, [scrollDirection, isScrolled, setHeaderVisibility])
+
+  // Update current section on route change
+  useEffect(() => {
+    setCurrentSection(location.pathname)
+  }, [location.pathname, setCurrentSection])
 
   // Reset mobile menu state on route change
   useEffect(() => {
@@ -72,19 +92,19 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
   }
 
   const handleSolutionsMouseEnter = () => {
-    if (window.innerWidth > 768) { // Only for desktop
+    if (!isMobile) {
       setShowSolutions(true)
     }
   }
 
   const handleSolutionsMouseLeave = () => {
-    if (window.innerWidth > 768) { // Only for desktop
+    if (!isMobile) {
       setShowSolutions(false)
     }
   }
 
   const handleSolutionsClick = (e: React.MouseEvent) => {
-    if (window.innerWidth <= 768) { // Only for mobile
+    if (isMobile) {
       e.stopPropagation()
       setShowSolutions(!showSolutions)
     }
@@ -100,16 +120,24 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
     setIsSearchActive(!isSearchActive)
   }
 
+  const headerClasses = [
+    'header',
+    theme === 'dark' ? 'header--dark' : '',
+    isLoading ? 'header--loading' : '',
+    !isHeaderVisible ? 'header--hidden' : '',
+    isScrolled ? 'header--scrolled' : ''
+  ].filter(Boolean).join(' ')
+
   if (isLoading) {
     return (
-      <header className="header header-loading">
+      <header className={headerClasses}>
         <div className="header__loading">Loading...</div>
       </header>
     )
   }
 
   return (
-    <header className="header" role="banner">
+    <header className={headerClasses} role="banner">
       <div className="header__left">
         <Link to={ROUTES.HOME} className="header__logo" aria-label="Home" onClick={handleNavClick}>
           <img 
@@ -122,25 +150,27 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
           {config?.title || 'Beringia Marine'}
         </h1>
       </div>
-      
-      <button 
-        className="header__mobile-menu-button"
-        onClick={toggleMobileMenu}
-        aria-label="Toggle mobile menu"
-      >
-        {isMobileMenuOpen ? '✕' : '☰'}
-      </button>
+
+      {isMobile && (
+        <button 
+          className="header__mobile-menu-button"
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          {isMobileMenuOpen ? '✕' : '☰'}
+        </button>
+      )}
 
       <div 
-        className={`header__nav-overlay ${isMobileMenuOpen ? 'header__nav-overlay-visible' : ''}`}
+        className={`header__nav-overlay ${isMobileMenuOpen ? 'header__nav-overlay--visible' : ''}`}
         onClick={toggleMobileMenu}
       />
 
       <nav 
-        className={`header__nav ${isMobileMenuOpen ? 'header__nav-expanded' : ''}`} 
+        className={`header__nav ${isMobileMenuOpen ? 'header__nav--expanded' : ''}`} 
         role="navigation"
       >
-        <div className={`header__search ${isSearchActive ? 'header__search-expanded' : ''}`}>
+        <div className={`header__search ${isSearchActive ? 'header__search--expanded' : ''}`}>
           <input
             type="text"
             className="header__search-input"
@@ -159,7 +189,7 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
         <div className="header__nav-content">
           <Link 
             to={ROUTES.HOME} 
-            className={`header__nav-link ${location.pathname === ROUTES.HOME ? 'header__nav-link-current' : ''}`}
+            className="header__nav-link"
             onClick={handleNavClick}
           >
             Home
@@ -167,7 +197,7 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
           
           <div 
             ref={solutionsRef}
-            className={`header__nav-dropdown ${showSolutions ? 'header__nav-dropdown-expanded' : ''}`}
+            className={`header__nav-dropdown ${showSolutions ? 'header__nav-dropdown--expanded' : ''}`}
             onClick={handleSolutionsClick}
             onMouseEnter={handleSolutionsMouseEnter}
             onMouseLeave={handleSolutionsMouseLeave}
@@ -178,9 +208,7 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
                 <Link
                   key={client.slug}
                   to={ROUTES.CLIENT(client.slug)}
-                  className={`header__solutions-link ${
-                    location.pathname === ROUTES.CLIENT(client.slug) ? 'header__solutions-link-current' : ''
-                  }`}
+                  className="header__solutions-link"
                   onClick={handleNavClick}
                 >
                   {client.name}
@@ -191,7 +219,7 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
 
           <Link 
             to={ROUTES.ABOUT} 
-            className={`header__nav-link ${location.pathname === ROUTES.ABOUT ? 'header__nav-link-current' : ''}`}
+            className="header__nav-link"
             onClick={handleNavClick}
           >
             About
@@ -199,7 +227,7 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
 
           <Link 
             to={ROUTES.CONTACT} 
-            className={`header__nav-link ${location.pathname === ROUTES.CONTACT ? 'header__nav-link-current' : ''}`}
+            className="header__nav-link"
             onClick={handleNavClick}
           >
             Contact
@@ -207,11 +235,19 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
 
           <Link 
             to={ROUTES.TERMS} 
-            className={`header__nav-link ${location.pathname === ROUTES.TERMS ? 'header__nav-link-current' : ''}`}
+            className="header__nav-link"
             onClick={handleNavClick}
           >
             Terms
           </Link>
+
+          <button 
+            className="header__theme-toggle" 
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
         </div>
 
         <div className="header__footer">

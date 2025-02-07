@@ -2,14 +2,27 @@ import { Link } from 'react-router-dom'
 import { ROUTES } from '../../utils/constants'
 import { clients } from '../../data'
 import { SeascapeDivider } from '../SeascapeDivider/SeascapeDivider'
+import { useTheme } from '../../contexts/ThemeContext'
+import { useViewport } from '../../hooks/useViewport'
+import { useScroll } from '../../hooks/useScroll'
 import './Footer.css'
 
 const Footer = () => {
+  const { theme } = useTheme()
+  const { isMobile } = useViewport()
+  const { isScrolled } = useScroll(300)
+
+  const footerClasses = [
+    'footer',
+    theme === 'dark' ? 'footer--dark' : '',
+    isScrolled ? 'footer--visible' : ''
+  ].filter(Boolean).join(' ')
+
   return (
-    <footer className="footer">
+    <footer className={footerClasses}>
       <div className="footer__content">
         <div className="footer__column">
-          <h3 className="footer__title">About Beringia</h3>
+          <div className="footer__title">About Beringia</div>
           <p className="footer__text">
             Providing experience and passion necessary for increasing our knowledge of the oceans.
             <Link to={ROUTES.ABOUT} className="footer__text-link"> Learn more →</Link>
@@ -17,7 +30,7 @@ const Footer = () => {
         </div>
 
         <div className="footer__column">
-          <h3 className="footer__title">Solutions</h3>
+          <div className="footer__title">Solutions</div>
           <ul className="footer__list">
             {Object.values(clients).map(client => (
               <li key={client.slug} className="footer__list-item">
@@ -30,7 +43,7 @@ const Footer = () => {
         </div>
 
         <div className="footer__column">
-          <h3 className="footer__title">Quick Links</h3>
+          <div className="footer__title">Quick Links</div>
           <ul className="footer__list">
             <li className="footer__list-item">
               <Link to={ROUTES.HOME} className="footer__link">Home</Link>
@@ -48,7 +61,7 @@ const Footer = () => {
         </div>
 
         <div className="footer__column">
-          <h3 className="footer__title">Contact</h3>
+          <div className="footer__title">Contact</div>
           <ul className="footer__list">
             <li className="footer__list-item">
               <a href="mailto:info@beringia.com" className="footer__link">info@beringia.com</a>
@@ -62,8 +75,17 @@ const Footer = () => {
         <p className="footer__copyright">
           © {new Date().getFullYear()} Beringia Marine Technologies. All rights reserved.
         </p>
+        {!isMobile && (
+          <button 
+            className="footer__scroll-top" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Scroll to top"
+          >
+            ↑
+          </button>
+        )}
       </div>
-      <SeascapeDivider height={100} opacity={0.15} />
+      <SeascapeDivider height={100} opacity={theme === 'dark' ? 0.1 : 0.15} />
     </footer>
   )
 }

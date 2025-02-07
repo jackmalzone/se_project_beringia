@@ -85,11 +85,46 @@
   gap: 1rem;
 }
 
+.contact__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
 .contact__input {
   padding: 0.75rem;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.contact__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact__input:focus {
+  outline: none;
+  border-color: #00a2b0;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.contact__input--error {
+  border-color: #ff4d4d;
+  background-color: rgba(255, 77, 77, 0.05);
+}
+
+.contact__input--error:focus {
+  border-color: #ff4d4d;
+}
+
+.contact__error {
+  color: #ff4d4d;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 }
 
 .contact__input-textarea {
@@ -104,10 +139,16 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
-.contact__submit:hover {
+.contact__submit:hover:not(:disabled) {
   background-color: #007a85;
+}
+
+.contact__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }

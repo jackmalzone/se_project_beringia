@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ModalProvider } from '../../contexts/ModalContext'
+import { ThemeProvider } from '../../contexts/ThemeContext'
+import { LoadingProvider } from '../../contexts/LoadingContext'
+import { NavigationProvider } from '../../contexts/NavigationContext'
 import Header from '../Header/Header.tsx'
 import Footer from '../Footer/Footer.tsx'
 import Modal from '../Modal/Modal'
@@ -38,21 +41,27 @@ function App() {
   return (
     <HelmetProvider>
       <ConfigContext.Provider value={config}>
-        <ModalProvider>
-          <Router>
-            <div className="app">
-              <Header />
-              <Routes>
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/about" element={<About />} />
-                <Route path={`${ROUTES.CLIENTS}/:clientSlug/*`} element={<Client />} />
-                <Route path="*" element={<Main />} />
-              </Routes>
-              <Footer />
-              <Modal />
-            </div>
-          </Router>
-        </ModalProvider>
+        <ThemeProvider>
+          <LoadingProvider>
+            <ModalProvider>
+              <Router>
+                <NavigationProvider>
+                  <div className="app">
+                    <Header />
+                    <Routes>
+                      <Route path="/terms" element={<Terms />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path={`${ROUTES.CLIENTS}/:clientSlug/*`} element={<Client />} />
+                      <Route path="*" element={<Main />} />
+                    </Routes>
+                    <Footer />
+                    <Modal />
+                  </div>
+                </NavigationProvider>
+              </Router>
+            </ModalProvider>
+          </LoadingProvider>
+        </ThemeProvider>
       </ConfigContext.Provider>
     </HelmetProvider>
   )

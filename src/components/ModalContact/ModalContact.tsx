@@ -1,19 +1,45 @@
-import { useState, FormEvent } from 'react'
+import { FormEvent } from 'react'
 import { useModal } from '../../contexts/ModalContext'
+import { useForm } from '../../hooks/useForm'
 import './ModalContact.css'
 
 const ModalContact = () => {
   const { closeModal } = useModal()
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
+  const {
+    formData,
+    errors,
+    handleChange,
+    handleSubmit,
+    isSubmitting
+  } = useForm(
+    {
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    },
+    {
+      name: { 
+        required: true,
+        minLength: 2,
+      },
+      email: { 
+        required: true, 
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      },
+      subject: { 
+        required: true,
+        minLength: 3
+      },
+      message: { 
+        required: true,
+        minLength: 10
+      }
+    }
+  )
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
+  const onSubmit = async (data: typeof formData) => {
+    console.log('Form submitted:', data)
     closeModal()
   }
 
@@ -34,39 +60,49 @@ const ModalContact = () => {
           </a>
         </p>
       </div>
-      <form className="modal-contact__form" onSubmit={handleSubmit}>
+      <form className="modal-contact__form" onSubmit={(e) => handleSubmit(onSubmit, e)}>
         <input
           type="text"
           placeholder="Name"
-          required
-          className="modal-contact__input"
+          className={`modal-contact__input ${errors.name ? 'modal-contact__input--error' : ''}`}
           value={formData.name}
-          onChange={e => setFormData({...formData, name: e.target.value})}
+          onChange={(e) => handleChange('name', e.target.value)}
         />
+        {errors.name && <div className="modal-contact__error">{errors.name}</div>}
+        
         <input
           type="email"
           placeholder="Email"
-          required
-          className="modal-contact__input"
+          className={`modal-contact__input ${errors.email ? 'modal-contact__input--error' : ''}`}
           value={formData.email}
-          onChange={e => setFormData({...formData, email: e.target.value})}
+          onChange={(e) => handleChange('email', e.target.value)}
         />
+        {errors.email && <div className="modal-contact__error">{errors.email}</div>}
+        
         <input
           type="text"
           placeholder="Subject"
-          required
-          className="modal-contact__input"
+          className={`modal-contact__input ${errors.subject ? 'modal-contact__input--error' : ''}`}
           value={formData.subject}
-          onChange={e => setFormData({...formData, subject: e.target.value})}
+          onChange={(e) => handleChange('subject', e.target.value)}
         />
+        {errors.subject && <div className="modal-contact__error">{errors.subject}</div>}
+        
         <textarea
           placeholder="Message"
-          required
-          className="modal-contact__input modal-contact__input-textarea"
+          className={`modal-contact__input modal-contact__input-textarea ${errors.message ? 'modal-contact__input--error' : ''}`}
           value={formData.message}
-          onChange={e => setFormData({...formData, message: e.target.value})}
+          onChange={(e) => handleChange('message', e.target.value)}
         />
-        <button type="submit" className="modal-contact__submit">Submit</button>
+        {errors.message && <div className="modal-contact__error">{errors.message}</div>}
+        
+        <button 
+          type="submit" 
+          className="modal-contact__submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Sending...' : 'Submit'}
+        </button>
       </form>
     </div>
   )
