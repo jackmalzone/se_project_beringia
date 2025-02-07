@@ -1,14 +1,12 @@
 import { FC, useContext, useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ConfigContext } from '../../contexts/ConfigContext'
-import { useTheme } from '../../contexts/ThemeContext'
 import { useLoading } from '../../contexts/LoadingContext'
 import { useViewport } from '../../hooks/useViewport'
 import { useScroll } from '../../hooks/useScroll'
 import { useNavigation } from '../../contexts/NavigationContext'
 import { ROUTES } from '../../utils/constants'
 import logo from '../../assets/beringia/logo-bridge-white.webp'
-import searchIcon from '../../assets/search.svg'
 import './Header.css'
 import { clients } from '../../data/index.ts'
 
@@ -18,7 +16,6 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = () => {
   const config = useContext(ConfigContext)
-  const { theme, toggleTheme } = useTheme()
   const { isLoading } = useLoading()
   const { isMobile } = useViewport()
   const { scrollDirection, isScrolled } = useScroll(50)
@@ -26,8 +23,6 @@ const Header: FC<HeaderProps> = () => {
   const { isHeaderVisible, setHeaderVisibility, setCurrentSection } = useNavigation()
   const [showSolutions, setShowSolutions] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [isSearchActive, setIsSearchActive] = useState(false)
   const solutionsRef = useRef<HTMLDivElement>(null)
 
   // Update header visibility based on scroll
@@ -44,7 +39,6 @@ const Header: FC<HeaderProps> = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false)
     setShowSolutions(false)
-    setIsSearchActive(false)
   }, [location.pathname])
 
   // Handle clicks outside solutions menu
@@ -88,7 +82,6 @@ const Header: FC<HeaderProps> = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
     setShowSolutions(false)
-    setIsSearchActive(false)
   }
 
   const handleSolutionsMouseEnter = () => {
@@ -113,16 +106,10 @@ const Header: FC<HeaderProps> = () => {
   const handleNavClick = () => {
     setIsMobileMenuOpen(false)
     setShowSolutions(false)
-    setIsSearchActive(false)
-  }
-
-  const toggleSearch = () => {
-    setIsSearchActive(!isSearchActive)
   }
 
   const headerClasses = [
     'header',
-    theme === 'dark' ? 'header--dark' : '',
     isLoading ? 'header--loading' : '',
     !isHeaderVisible ? 'header--hidden' : '',
     isScrolled ? 'header--scrolled' : ''
@@ -170,22 +157,6 @@ const Header: FC<HeaderProps> = () => {
         className={`header__nav ${isMobileMenuOpen ? 'header__nav--expanded' : ''}`} 
         role="navigation"
       >
-        <div className={`header__search ${isSearchActive ? 'header__search--expanded' : ''}`}>
-          <input
-            type="text"
-            className="header__search-input"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <img 
-            src={searchIcon} 
-            className="header__search-icon" 
-            onClick={toggleSearch}
-            alt="Search"
-          />
-        </div>
-
         <div className="header__nav-content">
           <Link 
             to={ROUTES.HOME} 
@@ -202,7 +173,7 @@ const Header: FC<HeaderProps> = () => {
             onMouseEnter={handleSolutionsMouseEnter}
             onMouseLeave={handleSolutionsMouseLeave}
           >
-            <span className="header__nav-link">Solutions</span>
+            <div className="header__nav-link header__nav-link--solutions">Solutions</div>
             <div className="header__solutions-menu">
               {Object.values(clients).map(client => (
                 <Link
@@ -240,14 +211,6 @@ const Header: FC<HeaderProps> = () => {
           >
             Terms
           </Link>
-
-          <button 
-            className="header__theme-toggle" 
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          >
-            {theme === 'light' ? '🌙' : '☀️'}
-          </button>
         </div>
 
         <div className="header__footer">

@@ -8,7 +8,7 @@ import { useScroll } from '../../hooks/useScroll'
 import './Footer.css'
 
 const Footer = () => {
-  const { theme } = useTheme()
+  const { theme, toggleTheme } = useTheme()
   const { isMobile } = useViewport()
   const { isScrolled } = useScroll(300)
 
@@ -75,15 +75,24 @@ const Footer = () => {
         <p className="footer__copyright">
           © {new Date().getFullYear()} Beringia Marine Technologies. All rights reserved.
         </p>
-        {!isMobile && (
+        <div className="footer__actions">
           <button 
-            className="footer__scroll-top" 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label="Scroll to top"
+            className="footer__theme-toggle" 
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
           >
-            ↑
+            {theme === 'light' ? '🌙' : '☀️'}
           </button>
-        )}
+          {!isMobile && (
+            <button 
+              className="footer__scroll-top" 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              aria-label="Scroll to top"
+            >
+              ↑
+            </button>
+          )}
+        </div>
       </div>
       <SeascapeDivider height={100} opacity={theme === 'dark' ? 0.1 : 0.15} />
     </footer>

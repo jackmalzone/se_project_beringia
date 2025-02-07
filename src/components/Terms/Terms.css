@@ -1,7 +1,7 @@
 .terms {
-  max-width: 1000px;
-  margin: 4rem auto;
-  padding: 0 2rem;
+  padding: 120px 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
   color: #214751;
 }
 
@@ -10,7 +10,7 @@
   font-size: 2.5rem;
   color: #214751;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .terms__content {
@@ -80,12 +80,12 @@
 
 @media (max-width: 768px) {
   .terms {
-    margin: 2rem auto;
+    padding: 100px 1.5rem 3rem;
   }
 
   .terms__title {
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .terms__content {
@@ -99,5 +99,16 @@
 
   .terms__section-title {
     font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms {
+    padding: 90px 1rem 2rem;
+  }
+
+  .terms__title {
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
   }
 }

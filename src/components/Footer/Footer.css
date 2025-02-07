@@ -239,3 +239,25 @@
     font-size: 0.95rem;
   }
 }
+
+.footer__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer__theme-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  opacity: 0.7;
+}
+
+.footer__theme-toggle:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
