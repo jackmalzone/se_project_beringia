@@ -4,13 +4,25 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #0a0f1f;
+  background: linear-gradient(135deg, #052533 0%, #003b4a 100%);
   color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.loading-container-fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .logo-container {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .logo {
@@ -18,6 +30,7 @@
   height: auto;
   position: relative;
   z-index: 2;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .pulse-ring {
@@ -27,16 +40,19 @@
   transform: translate(-50%, -50%);
   width: 200px;
   height: 200px;
-  border: 2px solid rgba(0, 102, 255, 0.5);
+  border: 2px solid rgba(0, 162, 176, 0.5);
   border-radius: 50%;
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .phrases {
   position: relative;
-  height: 30px;
+  height: 24px;
   text-align: center;
   overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.3s forwards;
+  min-width: 300px;
 }
 
 .phrase {
@@ -44,12 +60,14 @@
   width: 100%;
   left: 0;
   top: 0;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInOut 21s infinite; /* 3s per phrase * 7 phrases */
-  color: #0066ff;
-  font-size: 1.2rem;
+  opacity: 1;
+  transform: translateY(0);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
   letter-spacing: 0.5px;
+  animation: slideUp 0.4s ease-out;
 }
 
 @keyframes pulse {
@@ -67,15 +85,23 @@
   }
 }
 
-@keyframes fadeInOut {
-  0%,
-  95%,
-  100% {
+@keyframes slideUp {
+  0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
-  5%,
-  90% {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
     opacity: 1;
     transform: translateY(0);
   }

@@ -1,8 +1,8 @@
-import { FC, useContext, useState, useEffect } from 'react'
+import { FC, useContext, useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ConfigContext } from '../../contexts/ConfigContext'
 import { ROUTES } from '../../utils/constants'
-import logo from '../../assets/beringia/favicon-abstract-grdnt-nobuffer.png'
+import logo from '../../assets/beringia/logo-bridge-white.webp'
 import searchIcon from '../../assets/search.svg'
 import './Header.css'
 import { clients } from '../../data/index.ts'
@@ -18,6 +18,7 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [isSearchActive, setIsSearchActive] = useState(false)
+  const solutionsRef = useRef<HTMLDivElement>(null)
 
   // Reset mobile menu state on route change
   useEffect(() => {
@@ -25,6 +26,20 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
     setShowSolutions(false)
     setIsSearchActive(false)
   }, [location.pathname])
+
+  // Handle clicks outside solutions menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (solutionsRef.current && !solutionsRef.current.contains(event.target as Node)) {
+        setShowSolutions(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   // Handle body overflow
   useEffect(() => {
@@ -56,9 +71,23 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
     setIsSearchActive(false)
   }
 
+  const handleSolutionsMouseEnter = () => {
+    if (window.innerWidth > 768) { // Only for desktop
+      setShowSolutions(true)
+    }
+  }
+
+  const handleSolutionsMouseLeave = () => {
+    if (window.innerWidth > 768) { // Only for desktop
+      setShowSolutions(false)
+    }
+  }
+
   const handleSolutionsClick = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    setShowSolutions(!showSolutions)
+    if (window.innerWidth <= 768) { // Only for mobile
+      e.stopPropagation()
+      setShowSolutions(!showSolutions)
+    }
   }
 
   const handleNavClick = () => {
@@ -73,7 +102,7 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
 
   if (isLoading) {
     return (
-      <header className="header header--loading">
+      <header className="header header-loading">
         <div className="header__loading">Loading...</div>
       </header>
     )
@@ -103,12 +132,15 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
       </button>
 
       <div 
-        className={`header__nav-overlay ${isMobileMenuOpen ? 'active' : ''}`}
+        className={`header__nav-overlay ${isMobileMenuOpen ? 'header__nav-overlay-visible' : ''}`}
         onClick={toggleMobileMenu}
       />
 
-      <nav className={`header__nav ${isMobileMenuOpen ? 'active' : ''}`} role="navigation">
-        <div className={`header__search ${isSearchActive ? 'active' : ''}`}>
+      <nav 
+        className={`header__nav ${isMobileMenuOpen ? 'header__nav-expanded' : ''}`} 
+        role="navigation"
+      >
+        <div className={`header__search ${isSearchActive ? 'header__search-expanded' : ''}`}>
           <input
             type="text"
             className="header__search-input"
@@ -125,13 +157,20 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
         </div>
 
         <div className="header__nav-content">
-          <Link to={ROUTES.HOME} className="header__nav-link" onClick={handleNavClick}>
+          <Link 
+            to={ROUTES.HOME} 
+            className={`header__nav-link ${location.pathname === ROUTES.HOME ? 'header__nav-link-current' : ''}`}
+            onClick={handleNavClick}
+          >
             Home
           </Link>
           
           <div 
-            className={`header__nav-dropdown ${showSolutions ? 'active' : ''}`}
+            ref={solutionsRef}
+            className={`header__nav-dropdown ${showSolutions ? 'header__nav-dropdown-expanded' : ''}`}
             onClick={handleSolutionsClick}
+            onMouseEnter={handleSolutionsMouseEnter}
+            onMouseLeave={handleSolutionsMouseLeave}
           >
             <span className="header__nav-link">Solutions</span>
             <div className="header__solutions-menu">
@@ -139,7 +178,9 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
                 <Link
                   key={client.slug}
                   to={ROUTES.CLIENT(client.slug)}
-                  className="header__solutions-link"
+                  className={`header__solutions-link ${
+                    location.pathname === ROUTES.CLIENT(client.slug) ? 'header__solutions-link-current' : ''
+                  }`}
                   onClick={handleNavClick}
                 >
                   {client.name}
@@ -148,15 +189,27 @@ const Header: FC<HeaderProps> = ({ isLoading }) => {
             </div>
           </div>
 
-          <Link to={ROUTES.ABOUT} className="header__nav-link" onClick={handleNavClick}>
+          <Link 
+            to={ROUTES.ABOUT} 
+            className={`header__nav-link ${location.pathname === ROUTES.ABOUT ? 'header__nav-link-current' : ''}`}
+            onClick={handleNavClick}
+          >
             About
           </Link>
 
-          <Link to={ROUTES.CONTACT} className="header__nav-link" onClick={handleNavClick}>
+          <Link 
+            to={ROUTES.CONTACT} 
+            className={`header__nav-link ${location.pathname === ROUTES.CONTACT ? 'header__nav-link-current' : ''}`}
+            onClick={handleNavClick}
+          >
             Contact
           </Link>
 
-          <Link to={ROUTES.TERMS} className="header__nav-link" onClick={handleNavClick}>
+          <Link 
+            to={ROUTES.TERMS} 
+            className={`header__nav-link ${location.pathname === ROUTES.TERMS ? 'header__nav-link-current' : ''}`}
+            onClick={handleNavClick}
+          >
             Terms
           </Link>
         </div>

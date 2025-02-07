@@ -10,12 +10,29 @@ import { ConfigContext } from '../../contexts/ConfigContext'
 import Client from '../Client/Client'
 import { ROUTES } from '../../utils/constants'
 import { HelmetProvider } from 'react-helmet-async'
+import { useEffect, useState } from 'react'
+import { Loading } from '../shared/Loading'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
   const config = {
     baseUrl: import.meta.env.PROD
       ? 'https://api.beringia-marine.com' 
       : 'http://localhost:3001'
+  }
+
+  useEffect(() => {
+    // Simulate initial app loading
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000) // Show loading for 3 seconds
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return <Loading />
   }
 
   return (

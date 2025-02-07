@@ -68,7 +68,7 @@
   box-shadow: 0 0 0 3px rgba(0, 162, 176, 0.1);
 }
 
-.modal-contact__input--textarea {
+.modal-contact__input-textarea {
   min-height: 100px;
   resize: vertical;
   max-height: 200px;

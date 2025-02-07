@@ -17,7 +17,7 @@ const Modal = () => {
   return (
     <div className="modal">
       <div className="modal__overlay" onClick={closeModal}>
-        <div className={`modal__content modal__content--${size}`} onClick={(e) => e.stopPropagation()}>
+        <div className={`modal__content modal__content-${size}`} onClick={(e) => e.stopPropagation()}>
           <button className="modal__close" onClick={closeModal}>
             ×
           </button>

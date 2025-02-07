@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { useParams, Routes, Route, useLocation } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { ClientData } from '../../data/types.ts'
 import { clients } from '../../data'
 import { ROUTES } from '../../utils/constants.ts'

@@ -56,13 +56,13 @@ export const Interactive = ({ modelId, title, description }: InteractiveProps) =
         
         <div className="interactive__controls">
           <button 
-            className={`interactive__control ${isRotating ? 'interactive__control--active' : ''}`}
+            className={`interactive__control ${isRotating ? 'interactive__control-active' : ''}`}
             onClick={toggleRotation}
           >
             {isRotating ? '⏸ Pause Rotation' : '▶ Start Rotation'}
           </button>
           <button 
-            className={`interactive__control ${showAnnotations ? 'interactive__control--active' : ''}`}
+            className={`interactive__control ${showAnnotations ? 'interactive__control-active' : ''}`}
             onClick={toggleAnnotations}
           >
             {showAnnotations ? '👁 Hide Labels' : '👁 Show Labels'}

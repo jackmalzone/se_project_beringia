@@ -93,12 +93,12 @@ const ContributionsContent = ({ content }: { content: string }) => {
       {items.map((item, index) => (
         <div key={index} className="contributions__content-item">
           <span className="contributions__content-number">{index + 1}</span>
-          <p>{item}</p>
+          <p className="contributions__content-item-text">{item}</p>
         </div>
       ))}
     </div>
   ) : (
-    <p>{content}</p>
+    <div className="contributions__description">{content}</div>
   )
 }
 
@@ -114,7 +114,7 @@ const Contributions = () => {
           {contributionsData.map((item, index) => (
             <div 
               key={index} 
-              className={`contributions__item ${expandedItem === index ? 'contributions__item--expanded' : ''}`}
+              className={`contributions__item ${expandedItem === index ? 'contributions__item-expanded' : ''}`}
               onClick={() => setExpandedItem(expandedItem === index ? null : index)}
             >
               <div className="contributions__period">{item.period}</div>

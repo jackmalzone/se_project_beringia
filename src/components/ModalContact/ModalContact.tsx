@@ -62,7 +62,7 @@ const ModalContact = () => {
         <textarea
           placeholder="Message"
           required
-          className="modal-contact__input modal-contact__input--textarea"
+          className="modal-contact__input modal-contact__input-textarea"
           value={formData.message}
           onChange={e => setFormData({...formData, message: e.target.value})}
         />

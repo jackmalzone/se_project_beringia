@@ -37,22 +37,27 @@
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
   font-weight: 600;
+  font-family: "Inter", sans-serif;
 }
 
 .footer__text {
   line-height: 1.6;
   opacity: 0.9;
   margin: 0;
+  font-family: "Inter", sans-serif;
 }
 
 .footer__list {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.footer__list li {
-  margin-bottom: 0.75rem;
+.footer__list-item {
+  font-family: "Inter", sans-serif;
 }
 
 .footer__link {
@@ -60,6 +65,7 @@
   text-decoration: none;
   opacity: 0.9;
   transition: opacity 0.2s ease;
+  font-family: "Inter", sans-serif;
 }
 
 .footer__link:hover {
@@ -70,6 +76,7 @@
 .footer__contact-item {
   margin-bottom: 0.75rem;
   opacity: 0.9;
+  font-family: "Inter", sans-serif;
 }
 
 .footer__bottom {
@@ -86,6 +93,8 @@
   text-align: center;
   opacity: 0.7;
   font-size: 0.875rem;
+  font-family: "Inter", sans-serif;
+  margin: 0;
 }
 
 .footer__text-link {
@@ -93,6 +102,7 @@
   text-decoration: none;
   transition: color 0.2s ease;
   white-space: nowrap;
+  font-family: "Inter", sans-serif;
 }
 
 .footer__text-link:hover {

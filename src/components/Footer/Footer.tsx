@@ -20,7 +20,7 @@ const Footer = () => {
           <h3 className="footer__title">Solutions</h3>
           <ul className="footer__list">
             {Object.values(clients).map(client => (
-              <li key={client.slug}>
+              <li key={client.slug} className="footer__list-item">
                 <Link to={ROUTES.CLIENT(client.slug)} className="footer__link">
                   {client.name}
                 </Link>
@@ -32,20 +32,28 @@ const Footer = () => {
         <div className="footer__column">
           <h3 className="footer__title">Quick Links</h3>
           <ul className="footer__list">
-            <li><Link to={ROUTES.HOME} className="footer__link">Home</Link></li>
-            <li><Link to={ROUTES.ABOUT} className="footer__link">About Us</Link></li>
-            <li><Link to={ROUTES.CONTACT} className="footer__link">Contact</Link></li>
-            <li><Link to={ROUTES.TERMS} className="footer__link">Terms & Conditions</Link></li>
+            <li className="footer__list-item">
+              <Link to={ROUTES.HOME} className="footer__link">Home</Link>
+            </li>
+            <li className="footer__list-item">
+              <Link to={ROUTES.ABOUT} className="footer__link">About Us</Link>
+            </li>
+            <li className="footer__list-item">
+              <Link to={ROUTES.CONTACT} className="footer__link">Contact</Link>
+            </li>
+            <li className="footer__list-item">
+              <Link to={ROUTES.TERMS} className="footer__link">Terms & Conditions</Link>
+            </li>
           </ul>
         </div>
 
         <div className="footer__column">
           <h3 className="footer__title">Contact</h3>
           <ul className="footer__list">
-            <li className="footer__contact-item">
+            <li className="footer__list-item">
               <a href="mailto:info@beringia.com" className="footer__link">info@beringia.com</a>
             </li>
-            <li className="footer__contact-item">San Luis Obispo, CA</li>
+            <li className="footer__list-item footer__contact-item">San Luis Obispo, CA</li>
           </ul>
         </div>
       </div>

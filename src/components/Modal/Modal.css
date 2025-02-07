@@ -31,15 +31,15 @@
   display: block;
 }
 
-.modal__content--small {
+.modal__content-small {
   max-width: 500px;
 }
 
-.modal__content--medium {
+.modal__content-medium {
   max-width: 800px;
 }
 
-.modal__content--large {
+.modal__content-large {
   max-width: 1200px;
 }
 
