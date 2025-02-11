@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Loading.css'
-import beringiaLogo from '../../assets/beringia/logo-bridge-white.webp'
+import beringiaLogo from '../../../assets/beringia/logo-bridge-white.webp'
 
 const loadingPhrases = [
   'Initializing marine systems...',

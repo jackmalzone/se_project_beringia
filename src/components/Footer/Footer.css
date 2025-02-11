@@ -261,3 +261,13 @@
   transform: scale(1.1);
   opacity: 1;
 }
+
+.footer__error {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  background: rgba(255, 77, 77, 0.1);
+  border-top: 1px solid rgba(255, 77, 77, 0.2);
+  font-family: "Inter", sans-serif;
+}

@@ -4,6 +4,26 @@ import headerImage from '../../assets/clients/advanced-navigation/header.jpg'
 import hydrusIcon from '../../assets/clients/advanced-navigation/hydrus-icon.webp'
 import subsonusIcon from '../../assets/clients/advanced-navigation/subsonus-icon.webp'
 import subsonusTagIcon from '../../assets/clients/advanced-navigation/subsonus-tag-icon.webp'
+import pptxHydrus from '../../assets/clients/advanced-navigation/pptx-hydrus.jpg'
+import pptxHydrusAuv from '../../assets/clients/advanced-navigation/pptx-hydrus-auv.jpg'
+import pptxHydrusRev from '../../assets/clients/advanced-navigation/pptx-hydrus-rev.jpg'
+import pptxSubsonus from '../../assets/clients/advanced-navigation/pptx-subsonus.jpg'
+import pptxSubsonusUsbl from '../../assets/clients/advanced-navigation/pptx-subsonus-usbl.jpg'
+import pptxSubsonusSpecs from '../../assets/clients/advanced-navigation/pptx-subsonus-specs.jpg'
+import pptxSubsonusTagSpecs from '../../assets/clients/advanced-navigation/pptx-subsonustag-specs.jpg'
+import pptxAcousticNav from '../../assets/clients/advanced-navigation/pptx-acousticnav.jpg'
+import pptxAcousticNavSpecs from '../../assets/clients/advanced-navigation/pptx-acousticnav-specs.jpg'
+import pptxFeatures from '../../assets/clients/advanced-navigation/pptx-features.jpg'
+import pptxPayload from '../../assets/clients/advanced-navigation/pptx-payload.jpg'
+import pptxNavigation from '../../assets/clients/advanced-navigation/pptx-navigation.jpg'
+import pptxCurrents from '../../assets/clients/advanced-navigation/pptx-currents.jpg'
+import pptxShipwreck from '../../assets/clients/advanced-navigation/pptx-shipwreck.jpg'
+import pptxPhotogrammetry from '../../assets/clients/advanced-navigation/pptx-photogrammatry.jpg'
+import pptx3dData from '../../assets/clients/advanced-navigation/pptx-3d-data.jpg'
+import pptxSolutions from '../../assets/clients/advanced-navigation/pptx-solutions.jpg'
+import pptxTrust from '../../assets/clients/advanced-navigation/pptx-trust.jpg'
+import pptxCatalyst from '../../assets/clients/advanced-navigation/pptx-catalyst.jpg'
+import pptxHistory from '../../assets/clients/advanced-navigation/pptx-history.jpg'
 
 export const advancedNavigation: ClientData = {
   id: 'advanced-navigation',
@@ -90,33 +110,123 @@ export const advancedNavigation: ClientData = {
   },
   gallery: [
     {
-      id: 'hydrus-product',
-      url: '/images/clients/advanced-navigation/hydrus-product.jpg',
-      alt: 'Hydrus autonomous underwater vehicle product image',
+      id: 'hydrus-overview',
+      url: pptxHydrus,
+      alt: 'Overview of Hydrus autonomous underwater vehicle',
       type: 'image'
     },
     {
-      id: 'hydrus-field',
-      url: '/images/clients/advanced-navigation/hydrus-field.jpg',
-      alt: 'Hydrus AUV operating in the field',
+      id: 'hydrus-auv',
+      url: pptxHydrusAuv,
+      alt: 'Detailed specifications of Hydrus AUV system',
       type: 'image'
     },
     {
-      id: 'hydrus-footage',
-      url: '/images/clients/advanced-navigation/hydrus-footage.mp4',
-      alt: 'Video footage captured by Hydrus',
-      type: 'video'
-    },
-    {
-      id: 'subsonus-product',
-      url: '/images/clients/advanced-navigation/subsonus-product.jpg',
-      alt: 'Subsonus underwater acoustic positioning system',
+      id: 'hydrus-revolution',
+      url: pptxHydrusRev,
+      alt: 'Revolutionary features of Hydrus platform',
       type: 'image'
     },
     {
-      id: 'subsonus-tag-product',
-      url: '/images/clients/advanced-navigation/subsonus-tag-product.jpg',
-      alt: 'Subsonus Tag acoustic positioning transponder',
+      id: 'subsonus-overview',
+      url: pptxSubsonus,
+      alt: 'Overview of Subsonus underwater positioning system',
+      type: 'image'
+    },
+    {
+      id: 'subsonus-usbl',
+      url: pptxSubsonusUsbl,
+      alt: 'Subsonus USBL system capabilities',
+      type: 'image'
+    },
+    {
+      id: 'subsonus-specifications',
+      url: pptxSubsonusSpecs,
+      alt: 'Technical specifications of Subsonus system',
+      type: 'image'
+    },
+    {
+      id: 'subsonus-tag-specs',
+      url: pptxSubsonusTagSpecs,
+      alt: 'Specifications of Subsonus Tag transponder',
+      type: 'image'
+    },
+    {
+      id: 'acoustic-navigation',
+      url: pptxAcousticNav,
+      alt: 'Acoustic navigation system overview',
+      type: 'image'
+    },
+    {
+      id: 'acoustic-nav-specs',
+      url: pptxAcousticNavSpecs,
+      alt: 'Acoustic navigation system specifications',
+      type: 'image'
+    },
+    {
+      id: 'hydrus-features',
+      url: pptxFeatures,
+      alt: 'Key features of Hydrus platform',
+      type: 'image'
+    },
+    {
+      id: 'hydrus-payload',
+      url: pptxPayload,
+      alt: 'Hydrus payload capabilities',
+      type: 'image'
+    },
+    {
+      id: 'navigation-capabilities',
+      url: pptxNavigation,
+      alt: 'Advanced navigation capabilities',
+      type: 'image'
+    },
+    {
+      id: 'current-analysis',
+      url: pptxCurrents,
+      alt: 'Current analysis and monitoring capabilities',
+      type: 'image'
+    },
+    {
+      id: 'shipwreck-survey',
+      url: pptxShipwreck,
+      alt: 'Shipwreck survey capabilities',
+      type: 'image'
+    },
+    {
+      id: 'photogrammetry',
+      url: pptxPhotogrammetry,
+      alt: 'Underwater photogrammetry capabilities',
+      type: 'image'
+    },
+    {
+      id: '3d-data',
+      url: pptx3dData,
+      alt: '3D data collection and processing',
+      type: 'image'
+    },
+    {
+      id: 'solutions-overview',
+      url: pptxSolutions,
+      alt: 'Overview of Advanced Navigation solutions',
+      type: 'image'
+    },
+    {
+      id: 'trust-factors',
+      url: pptxTrust,
+      alt: 'Why trust Advanced Navigation',
+      type: 'image'
+    },
+    {
+      id: 'catalyst-tech',
+      url: pptxCatalyst,
+      alt: 'Catalyst technology overview',
+      type: 'image'
+    },
+    {
+      id: 'company-history',
+      url: pptxHistory,
+      alt: 'Advanced Navigation company history',
       type: 'image'
     },
     {

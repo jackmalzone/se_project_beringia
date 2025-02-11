@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Home from '../Home/Home'
 import Contact from '../Contact/Contact'
+import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 
 const Main = () => {
   const location = useLocation()
@@ -22,12 +23,16 @@ const Main = () => {
 
   return (
     <main className="main">
-      <section ref={homeRef} id="home">
-        <Home />
-      </section>
-      <section ref={contactRef} id="contact">
-        <Contact />
-      </section>
+      <ErrorBoundary>
+        <section ref={homeRef} id="home">
+          <Home />
+        </section>
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <section ref={contactRef} id="contact">
+          <Contact />
+        </section>
+      </ErrorBoundary>
     </main>
   )
 }

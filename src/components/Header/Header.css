@@ -420,13 +420,15 @@
     background: rgba(0, 0, 0, 0.2);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+    opacity: 0;
   }
 
   .header__solutions-link {
     width: 100%;
     margin: 0 auto;
     padding: 16px 48px;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -467,4 +469,14 @@
   .header__contact-button:hover {
     background: #007a85;
   }
+}
+
+.header__error {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  background: rgba(255, 77, 77, 0.1);
+  border-bottom: 1px solid rgba(255, 77, 77, 0.2);
+  font-family: "Inter", sans-serif;
 }

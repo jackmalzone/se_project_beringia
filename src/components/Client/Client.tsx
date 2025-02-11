@@ -15,6 +15,7 @@ import { UseCases } from './UseCases/UseCases'
 import { Interactive } from './Interactive/Interactive'
 import { useScroll } from '../../hooks/useScroll'
 import './Client.css'
+import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 
 const Client = () => {
   const { clientSlug } = useParams()
@@ -73,31 +74,43 @@ const Client = () => {
     <div className="client-page">
       <SEOHead {...clientData.seo} />
       <nav className={navClasses}>
-        <ClientNav clientSlug={clientData.slug} />
+        <ErrorBoundary>
+          <ClientNav clientSlug={clientData.slug} />
+        </ErrorBoundary>
       </nav>
       
       <div ref={overviewRef}>
-        <Overview {...clientData.overview} />
+        <ErrorBoundary>
+          <Overview {...clientData.overview} />
+        </ErrorBoundary>
       </div>
       <div ref={featuresRef}>
-        <SellingPoints {...clientData.sellingPoints} />
-        <UseCases {...clientData.useCases} />
+        <ErrorBoundary>
+          <SellingPoints {...clientData.sellingPoints} />
+          <UseCases {...clientData.useCases} />
+        </ErrorBoundary>
       </div>
       <div ref={interactiveRef}>
         {clientData.id === 'advanced-navigation' && (
-          <Interactive 
-            modelId={SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}
-            title="Hydrus"
-            description="Get hands-on with Hydrus. Explore every detail of this revolutionary autonomous underwater vehicle. Rotate, zoom, and discover its innovative features through interactive annotations."
-          />
+          <ErrorBoundary>
+            <Interactive 
+              modelId={SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}
+              title="Hydrus"
+              description="Get hands-on with Hydrus. Explore every detail of this revolutionary autonomous underwater vehicle. Rotate, zoom, and discover its innovative features through interactive annotations."
+            />
+          </ErrorBoundary>
         )}
       </div>
       <div ref={valueRef}>
-        <ValueProposition {...clientData.valueProposition} />
+        <ErrorBoundary>
+          <ValueProposition {...clientData.valueProposition} />
+        </ErrorBoundary>
       </div>
       <div ref={mediaRef}>
-        <MediaLinks links={clientData.mediaLinks} />
-        <MediaGallery items={clientData.gallery} />
+        <ErrorBoundary>
+          <MediaLinks links={clientData.mediaLinks} />
+          <MediaGallery items={clientData.gallery} />
+        </ErrorBoundary>
       </div>
     </div>
   )

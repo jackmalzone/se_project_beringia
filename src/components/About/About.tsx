@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import penguinImage from '../../assets/beringia/penguin.jpeg';
 import './About.css';
+import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 
 export const AboutContent = () => {
   return (
@@ -58,7 +59,9 @@ export const AboutContent = () => {
 const About = () => {
   return (
     <div className="about">
-      <AboutContent />
+      <ErrorBoundary>
+        <AboutContent />
+      </ErrorBoundary>
     </div>
   );
 };

@@ -6,7 +6,7 @@
 .selling-points__container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 .selling-points__title {
@@ -70,4 +70,16 @@
   position: absolute;
   left: 0;
   color: #00a2b0;
+}
+
+@media (max-width: 768px) {
+  .selling-points__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .selling-points__title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
 }

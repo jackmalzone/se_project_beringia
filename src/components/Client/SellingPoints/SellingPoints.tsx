@@ -16,7 +16,7 @@ interface SellingPointsProps {
 export const SellingPoints = ({ title, points }: SellingPointsProps) => {
   return (
     <section className="selling-points">
-      <div className="container">
+      <div className="selling-points__container">
         <h2 className="selling-points__title">{title}</h2>
         <div className="selling-points__grid">
           {points.map((point) => (
