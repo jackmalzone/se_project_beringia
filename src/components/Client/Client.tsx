@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { useParams, useLocation, Link, Routes, Route } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { ClientData } from '../../data/types.ts'
 import { clients } from '../../data'
 import { ROUTES } from '../../utils/constants.ts'
@@ -73,11 +73,11 @@ const Client = () => {
   return (
     <div className="client-page">
       <SEOHead {...clientData.seo} />
-      <nav className={navClasses}>
-        <ErrorBoundary>
-          <ClientNav clientSlug={clientData.slug} />
-        </ErrorBoundary>
-      </nav>
+      <ErrorBoundary>
+        <ClientNav 
+          clientSlug={clientData.slug} 
+        />
+      </ErrorBoundary>
       
       <div ref={overviewRef}>
         <ErrorBoundary>

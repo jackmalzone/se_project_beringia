@@ -1,7 +1,6 @@
 .media-gallery {
-  width: 100%;
-  overflow: hidden;
-  padding: 2rem;
+  max-width: 100%;
+  padding: 2rem 0;
   background: linear-gradient(to right, #f8f9fa, #e9ecef);
   position: relative;
 }
@@ -26,6 +25,10 @@
   height: 4px;
   background: linear-gradient(to right, #0984e3, #00cec9);
   border-radius: 2px;
+}
+
+.media-gallery__container {
+  position: relative;
 }
 
 .media-gallery__grid {
@@ -90,8 +93,15 @@
 .media-gallery__item::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }

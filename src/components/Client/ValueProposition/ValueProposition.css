@@ -97,6 +97,7 @@
 .value-proposition__highlight:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .value-proposition__highlight-icon {

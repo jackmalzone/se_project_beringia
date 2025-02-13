@@ -63,7 +63,7 @@ export const anchorBot: ClientData = {
       },
       {
         id: 'inland-moorings',
-        title: 'Inland Moorings',
+        title: 'Marinas & Moorings',
         description: 'Professional mooring solutions for marinas, docks, and inland waterway infrastructure.',
         keyPoints: [
           'Suitable for varying bottom conditions',

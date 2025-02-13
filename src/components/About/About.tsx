@@ -47,8 +47,8 @@ export const AboutContent = () => {
       </p>
 
         <div className="about__social">
-          <a href="https://linkedin.com/company/beringia" target="_blank" rel="noopener noreferrer" className="about__social-link">LinkedIn</a>
-          <a href="https://instagram.com/beringia" target="_blank" rel="noopener noreferrer" className="about__social-link">Instagram</a>
+          <a href="https://linkedin.com/in/chrismalzone" target="_blank" rel="noopener noreferrer" className="about__social-link">LinkedIn</a>
+          <a href="https://instagram.com/inoceansgroup" target="_blank" rel="noopener noreferrer" className="about__social-link">Instagram</a>
         </div>
       </div>
     </div>

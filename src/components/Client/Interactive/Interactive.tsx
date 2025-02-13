@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { FaPlay, FaPause, FaEye, FaEyeSlash, FaUndo, FaMouse, FaSearchPlus, FaHandPointer } from 'react-icons/fa'
 import { Sketchfab } from '../../Sketchfab/Sketchfab'
 import { SketchfabClient } from '../../../api/sketchfab-client.ts'
 import './Interactive.css'
@@ -59,19 +60,19 @@ export const Interactive = ({ modelId, title, description }: InteractiveProps) =
             className={`interactive__control ${isRotating ? 'interactive__control-active' : ''}`}
             onClick={toggleRotation}
           >
-            {isRotating ? '⏸ Pause Rotation' : '▶ Start Rotation'}
+            {isRotating ? <><FaPause /> Pause Rotation</> : <><FaPlay /> Start Rotation</>}
           </button>
           <button 
             className={`interactive__control ${showAnnotations ? 'interactive__control-active' : ''}`}
             onClick={toggleAnnotations}
           >
-            {showAnnotations ? '👁 Hide Labels' : '👁 Show Labels'}
+            {showAnnotations ? <><FaEyeSlash /> Hide Labels</> : <><FaEye /> Show Labels</>}
           </button>
           <button 
             className="interactive__control" 
             onClick={handleResetView}
           >
-            🔄 Reset View
+            <><FaUndo /> Reset View</>
           </button>
         </div>
         
@@ -90,10 +91,10 @@ export const Interactive = ({ modelId, title, description }: InteractiveProps) =
         <div className="interactive__instructions">
           <h3 className="interactive__instructions-title">Interaction Guide</h3>
           <ul className="interactive__instructions-list">
-            <li>🖱️ Click and drag to rotate</li>
-            <li>⚡ Double click to focus on parts</li>
-            <li>🔍 Scroll to zoom in/out</li>
-            <li>👆 Click annotations to learn more</li>
+            <li><FaMouse /> Click and drag to rotate</li>
+            <li><FaHandPointer /> Double click to focus on parts</li>
+            <li><FaSearchPlus /> Scroll to zoom in/out</li>
+            <li><FaHandPointer /> Click annotations to learn more</li>
           </ul>
         </div>
       </div>

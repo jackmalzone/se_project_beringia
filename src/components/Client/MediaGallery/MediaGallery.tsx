@@ -102,27 +102,29 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   return (
     <section className="media-gallery">
       <h2 className="media-gallery__title">Gallery</h2>
-      <div className="media-gallery__grid" ref={gridRef}>
-        {items.map((item, index) => (
-          <div
-            key={item.id}
-            className="media-gallery__item"
-            onClick={() => handleItemClick(index)}
-          >
-            {item.type === 'image' ? (
-              <img
-                src={item.url}
-                alt={item.alt}
-                className="media-gallery__thumbnail"
-                loading="lazy"
-              />
-            ) : item.type === 'video' ? (
-              <div className="media-gallery__video-thumbnail">
-                <div className="media-gallery__play-icon">▶</div>
-              </div>
-            ) : null}
-          </div>
-        ))}
+      <div className="media-gallery__container">
+        <div className="media-gallery__grid" ref={gridRef}>
+          {items.map((item, index) => (
+            <div
+              key={item.id}
+              className="media-gallery__item"
+              onClick={() => handleItemClick(index)}
+            >
+              {item.type === 'image' ? (
+                <img
+                  src={item.url}
+                  alt={item.alt}
+                  className="media-gallery__thumbnail"
+                  loading="lazy"
+                />
+              ) : item.type === 'video' ? (
+                <div className="media-gallery__video-thumbnail">
+                  <div className="media-gallery__play-icon">▶</div>
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
       </div>
 
       {selectedIndex !== null && (

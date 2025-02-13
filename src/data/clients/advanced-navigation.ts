@@ -41,7 +41,7 @@ export const advancedNavigation: ClientData = {
     headerImage: headerImage
   },
   sellingPoints: {
-    title: 'Core Solutions',
+    title: 'Core Subsea Solutions',
     points: [
       {
         id: 'hydrus',
