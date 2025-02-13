@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { ConfigContext } from '../../contexts/ConfigContext'
 import { useLoading } from '../../contexts/LoadingContext'
 import { useViewport } from '../../contexts/ViewportContext'
-import { useScroll } from '../../hooks/useScroll'
+import { useScrollContext } from '../../contexts/ScrollContext'
 import { useNavigation } from '../../contexts/NavigationContext'
 import { ROUTES } from '../../utils/constants'
 import logo from '../../assets/beringia/logo-bridge-white.webp'
@@ -18,7 +18,7 @@ const Header: FC<HeaderProps> = () => {
   const config = useContext(ConfigContext)
   const { isLoading } = useLoading()
   const { isMobile } = useViewport()
-  const { scrollDirection, isScrolled } = useScroll(50)
+  const { scrollDirection, isScrolled } = useScrollContext()
   const location = useLocation()
   const { isHeaderVisible, setHeaderVisibility, setCurrentSection } = useNavigation()
   const [showSolutions, setShowSolutions] = useState(false)

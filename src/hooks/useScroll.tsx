@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface ScrollState {
   scrollY: number
@@ -12,25 +12,35 @@ export const useScroll = (threshold = 50): ScrollState => {
     scrollDirection: 'up',
     isScrolled: false
   })
+  
+  const lastScrollY = useRef(window.scrollY)
+  const ticking = useRef(false)
 
   useEffect(() => {
-    let lastScrollY = window.scrollY
-
     const updateScrollState = () => {
       const scrollY = window.scrollY
-      const direction = scrollY > lastScrollY ? 'down' : 'up'
       
       setScrollState({
         scrollY,
-        scrollDirection: direction,
+        scrollDirection: scrollY > lastScrollY.current ? 'down' : 'up',
         isScrolled: scrollY > threshold
       })
       
-      lastScrollY = scrollY
+      lastScrollY.current = scrollY
+      ticking.current = false
     }
 
-    window.addEventListener('scroll', updateScrollState, { passive: true })
-    return () => window.removeEventListener('scroll', updateScrollState)
+    const onScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          updateScrollState()
+        })
+        ticking.current = true
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [threshold])
 
   return scrollState

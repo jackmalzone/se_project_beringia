@@ -4,6 +4,7 @@ import { ThemeProvider } from '../../contexts/ThemeContext'
 import { LoadingProvider } from '../../contexts/LoadingContext'
 import { NavigationProvider } from '../../contexts/NavigationContext'
 import { ViewportProvider } from '../../contexts/ViewportContext'
+import { ScrollProvider } from '../../contexts/ScrollContext'
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -68,56 +69,58 @@ function App() {
         <ThemeProvider>
           <LoadingProvider>
             <ViewportProvider>
-              <ModalProvider>
-                <Router>
-                  <NavigationProvider>
-                    <ErrorBoundary onError={handleError}>
-                      <div className="app">
-                        <ErrorBoundary
-                          fallback={<HeaderErrorFallback />}
-                          onError={handleError}
-                        >
-                          <Header />
-                        </ErrorBoundary>
+              <ScrollProvider>
+                <ModalProvider>
+                  <Router>
+                    <NavigationProvider>
+                      <ErrorBoundary onError={handleError}>
+                        <div className="app">
+                          <ErrorBoundary
+                            fallback={<HeaderErrorFallback />}
+                            onError={handleError}
+                          >
+                            <Header />
+                          </ErrorBoundary>
 
-                        <ErrorBoundary>
-                          <Routes>
-                            <Route path="/terms" element={
-                              <ErrorBoundary>
-                                <Terms />
-                              </ErrorBoundary>
-                            } />
-                            <Route path="/about" element={
-                              <ErrorBoundary>
-                                <About />
-                              </ErrorBoundary>
-                            } />
-                            <Route path={`${ROUTES.CLIENTS}/:clientSlug/*`} element={
-                              <ErrorBoundary>
-                                <Client />
-                              </ErrorBoundary>
-                            } />
-                            <Route path="*" element={
-                              <ErrorBoundary>
-                                <Main />
-                              </ErrorBoundary>
-                            } />
-                          </Routes>
-                        </ErrorBoundary>
+                          <ErrorBoundary>
+                            <Routes>
+                              <Route path="/terms" element={
+                                <ErrorBoundary>
+                                  <Terms />
+                                </ErrorBoundary>
+                              } />
+                              <Route path="/about" element={
+                                <ErrorBoundary>
+                                  <About />
+                                </ErrorBoundary>
+                              } />
+                              <Route path={`${ROUTES.CLIENTS}/:clientSlug/*`} element={
+                                <ErrorBoundary>
+                                  <Client />
+                                </ErrorBoundary>
+                              } />
+                              <Route path="*" element={
+                                <ErrorBoundary>
+                                  <Main />
+                                </ErrorBoundary>
+                              } />
+                            </Routes>
+                          </ErrorBoundary>
 
-                        <ErrorBoundary
-                          fallback={<FooterErrorFallback />}
-                          onError={handleError}
-                        >
-                          <Footer />
-                        </ErrorBoundary>
+                          <ErrorBoundary
+                            fallback={<FooterErrorFallback />}
+                            onError={handleError}
+                          >
+                            <Footer />
+                          </ErrorBoundary>
 
-                        <Modal />
-                      </div>
-                    </ErrorBoundary>
-                  </NavigationProvider>
-                </Router>
-              </ModalProvider>
+                          <Modal />
+                        </div>
+                      </ErrorBoundary>
+                    </NavigationProvider>
+                  </Router>
+                </ModalProvider>
+              </ScrollProvider>
             </ViewportProvider>
           </LoadingProvider>
         </ThemeProvider>

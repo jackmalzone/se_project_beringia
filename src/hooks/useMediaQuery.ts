@@ -20,7 +20,7 @@ export const useMediaQuery = (queries: MediaQueryMap = defaultQueries) => {
 
   useEffect(() => {
     const mediaQueryLists: { [key: string]: MediaQueryList } = {}
-    const handlers: { [key: string]: (e: MediaQueryListEvent) => void } = {}
+    const handlers: { [key: string]: () => void } = {}
 
     const updateMatches = () => {
       const updatedMatches = Object.keys(queries).reduce((acc, key) => {
@@ -33,7 +33,7 @@ export const useMediaQuery = (queries: MediaQueryMap = defaultQueries) => {
 
     Object.keys(queries).forEach(key => {
       mediaQueryLists[key] = window.matchMedia(queries[key])
-      handlers[key] = (e: MediaQueryListEvent) => updateMatches()
+      handlers[key] = () => updateMatches()
       mediaQueryLists[key].addListener(handlers[key])
     })
 
