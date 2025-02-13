@@ -5,6 +5,7 @@ interface ScrollConfig {
   headerOffset?: number
   navOffset?: number
   behavior?: ScrollBehavior
+  onScrollComplete?: () => void
 }
 
 interface SectionRefs {
@@ -19,22 +20,38 @@ export const useScrollToSection = (
   const {
     headerOffset = 80,
     navOffset = 0,
-    behavior = 'smooth'
+    behavior = 'smooth',
+    onScrollComplete
   } = config
 
   useEffect(() => {
     const targetRef = refs[location.pathname]
-    if (targetRef?.current) {
-      const totalOffset = headerOffset + navOffset
-      const elementPosition = targetRef.current.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - totalOffset
+    if (!targetRef?.current) return
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior
-      })
+    const totalOffset = headerOffset + navOffset
+    const elementPosition = targetRef.current.getBoundingClientRect().top
+    const offsetPosition = elementPosition + window.pageYOffset - totalOffset
+
+    const scrollOptions = {
+      top: offsetPosition,
+      behavior
     }
-  }, [location.pathname, refs, headerOffset, navOffset, behavior])
+
+    window.scrollTo(scrollOptions)
+
+    if (onScrollComplete) {
+      // Wait for scroll to complete before calling callback
+      const checkScrollComplete = setInterval(() => {
+        if (Math.abs(window.pageYOffset - offsetPosition) < 2) {
+          clearInterval(checkScrollComplete)
+          onScrollComplete()
+        }
+      }, 100)
+
+      // Cleanup interval if component unmounts during scroll
+      return () => clearInterval(checkScrollComplete)
+    }
+  }, [location.pathname, refs, headerOffset, navOffset, behavior, onScrollComplete])
 
   return null
 } 

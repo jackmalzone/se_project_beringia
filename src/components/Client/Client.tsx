@@ -14,6 +14,7 @@ import ClientNav from './ClientNav/ClientNav.tsx'
 import { UseCases } from './UseCases/UseCases'
 import { Interactive } from './Interactive/Interactive'
 import { useScroll } from '../../hooks/useScroll'
+import { useScrollToSection } from '../../hooks/useScrollToSection'
 import './Client.css'
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 
@@ -36,32 +37,21 @@ const Client = () => {
     }
   }, [clientSlug])
 
-  useEffect(() => {
-    if (!clientSlug) return;
-    
-    const refs = {
-      [ROUTES.CLIENT(clientSlug)]: overviewRef,
-      [`${ROUTES.CLIENT(clientSlug)}/features`]: featuresRef,
-      [`${ROUTES.CLIENT(clientSlug)}/value`]: valueRef,
-      [`${ROUTES.CLIENT(clientSlug)}/media`]: mediaRef,
-      [`${ROUTES.CLIENT(clientSlug)}/interactive`]: interactiveRef,
-    }
-    
-    const targetRef = refs[location.pathname]
-    if (targetRef?.current) {
-      const headerHeight = 80;
-      const navHeight = 60;
-      const totalOffset = headerHeight + navHeight;
-      
-      const elementPosition = targetRef.current.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+  // Set up section refs for scrolling
+  const sectionRefs = {
+    [ROUTES.CLIENT(clientSlug || '')]: overviewRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/features`]: featuresRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/value`]: valueRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/media`]: mediaRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/interactive`]: interactiveRef,
+  }
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  }, [location.pathname, clientSlug])
+  // Use the scroll to section hook
+  useScrollToSection(sectionRefs, {
+    headerOffset: 80,
+    navOffset: 60,
+    behavior: 'smooth'
+  })
 
   if (!clientData) return null
 
