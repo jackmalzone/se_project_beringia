@@ -3,13 +3,13 @@ import { ROUTES } from '../../utils/constants'
 import { clients } from '../../data'
 import { SeascapeDivider } from '../SeascapeDivider/SeascapeDivider'
 import { useTheme } from '../../contexts/ThemeContext'
-import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { useViewport } from '../../contexts/ViewportContext'
 import { useScroll } from '../../hooks/useScroll'
 import './Footer.css'
 
 const Footer = () => {
   const { theme, toggleTheme } = useTheme()
-  const matches = useMediaQuery()
+  const { isMobile } = useViewport()
   const { isScrolled } = useScroll(300)
 
   const footerClasses = [
@@ -87,7 +87,7 @@ const Footer = () => {
           >
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
-          {!matches.mobile && (
+          {!isMobile && (
             <button 
               className="footer__scroll-top" 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
