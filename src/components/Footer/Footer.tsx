@@ -3,13 +3,13 @@ import { ROUTES } from '../../utils/constants'
 import { clients } from '../../data'
 import { SeascapeDivider } from '../SeascapeDivider/SeascapeDivider'
 import { useTheme } from '../../contexts/ThemeContext'
-import { useViewport } from '../../hooks/useViewport'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { useScroll } from '../../hooks/useScroll'
 import './Footer.css'
 
 const Footer = () => {
   const { theme, toggleTheme } = useTheme()
-  const { isMobile } = useViewport()
+  const matches = useMediaQuery()
   const { isScrolled } = useScroll(300)
 
   const footerClasses = [
@@ -18,6 +18,10 @@ const Footer = () => {
     isScrolled ? 'footer--visible' : ''
   ].filter(Boolean).join(' ')
 
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <footer className={footerClasses}>
       <div className="footer__content">
@@ -25,7 +29,7 @@ const Footer = () => {
           <div className="footer__title">About Beringia</div>
           <p className="footer__text">
             Providing experience and passion necessary for increasing our knowledge of the oceans.
-            <Link to={ROUTES.ABOUT} className="footer__text-link"> Learn more →</Link>
+            <Link to={ROUTES.ABOUT} className="footer__text-link" onClick={handleLinkClick}> Learn more →</Link>
           </p>
         </div>
 
@@ -34,7 +38,7 @@ const Footer = () => {
           <ul className="footer__list">
             {Object.values(clients).map(client => (
               <li key={client.slug} className="footer__list-item">
-                <Link to={ROUTES.CLIENT(client.slug)} className="footer__link">
+                <Link to={ROUTES.CLIENT(client.slug)} className="footer__link" onClick={handleLinkClick}>
                   {client.name}
                 </Link>
               </li>
@@ -46,16 +50,16 @@ const Footer = () => {
           <div className="footer__title">Quick Links</div>
           <ul className="footer__list">
             <li className="footer__list-item">
-              <Link to={ROUTES.HOME} className="footer__link">Home</Link>
+              <Link to={ROUTES.HOME} className="footer__link" onClick={handleLinkClick}>Home</Link>
             </li>
             <li className="footer__list-item">
-              <Link to={ROUTES.ABOUT} className="footer__link">About Us</Link>
+              <Link to={ROUTES.ABOUT} className="footer__link" onClick={handleLinkClick}>About Us</Link>
             </li>
             <li className="footer__list-item">
-              <Link to={ROUTES.CONTACT} className="footer__link">Contact</Link>
+              <Link to={ROUTES.CONTACT} className="footer__link" onClick={handleLinkClick}>Contact</Link>
             </li>
             <li className="footer__list-item">
-              <Link to={ROUTES.TERMS} className="footer__link">Terms & Conditions</Link>
+              <Link to={ROUTES.TERMS} className="footer__link" onClick={handleLinkClick}>Terms & Conditions</Link>
             </li>
           </ul>
         </div>
@@ -83,7 +87,7 @@ const Footer = () => {
           >
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
-          {!isMobile && (
+          {!matches.mobile && (
             <button 
               className="footer__scroll-top" 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
