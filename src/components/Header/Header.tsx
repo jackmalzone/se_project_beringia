@@ -24,6 +24,7 @@ const Header: FC<HeaderProps> = () => {
   const [showSolutions, setShowSolutions] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const solutionsRef = useRef<HTMLDivElement>(null)
+  const closeTimeoutRef = useRef<number>()
 
   // Update header visibility based on scroll
   useEffect(() => {
@@ -52,6 +53,15 @@ const Header: FC<HeaderProps> = () => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        window.clearTimeout(closeTimeoutRef.current)
+      }
     }
   }, [])
 
@@ -86,13 +96,21 @@ const Header: FC<HeaderProps> = () => {
 
   const handleSolutionsMouseEnter = () => {
     if (!isMobile) {
+      if (closeTimeoutRef.current) {
+        window.clearTimeout(closeTimeoutRef.current)
+      }
       setShowSolutions(true)
     }
   }
 
   const handleSolutionsMouseLeave = () => {
     if (!isMobile) {
-      setShowSolutions(false)
+      if (closeTimeoutRef.current) {
+        window.clearTimeout(closeTimeoutRef.current)
+      }
+      closeTimeoutRef.current = window.setTimeout(() => {
+        setShowSolutions(false)
+      }, 300) // 300ms delay before closing
     }
   }
 
