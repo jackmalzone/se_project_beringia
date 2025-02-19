@@ -16,7 +16,7 @@ export const useScroll = (threshold = 50): ScrollState => {
   const lastScrollY = useRef(window.scrollY)
   const lastDirection = useRef<'up' | 'down'>('up')
   const frameRequest = useRef<number>()
-  const minScrollDelta = 20 // Increased minimum delta for smoother updates
+  const minScrollDelta = 5 // Reduced for more responsive updates
 
   const updateScrollState = useCallback(() => {
     if (frameRequest.current) {
@@ -28,36 +28,17 @@ export const useScroll = (threshold = 50): ScrollState => {
       const scrollDiff = currentScrollY - lastScrollY.current
       const isScrolled = currentScrollY > threshold
       
-      // Only update if scroll change is significant
-      if (Math.abs(scrollDiff) >= minScrollDelta) {
-        const newDirection = scrollDiff > 0 ? 'down' : 'up'
-        
-        // Only update if direction changed
-        if (newDirection !== lastDirection.current) {
-          lastDirection.current = newDirection
-          setScrollState({
-            scrollY: currentScrollY,
-            scrollDirection: newDirection,
-            isScrolled
-          })
-        }
-      }
+      // Update direction immediately when scroll direction changes
+      const newDirection = scrollDiff > 0 ? 'down' : 'up'
       
-      // Always update scroll position and isScrolled state
-      setScrollState(prev => {
-        // Prevent unnecessary updates
-        if (
-          Math.abs(prev.scrollY - currentScrollY) < minScrollDelta &&
-          prev.isScrolled === isScrolled
-        ) {
-          return prev
-        }
-        return {
-          ...prev,
+      if (newDirection !== lastDirection.current || Math.abs(scrollDiff) >= minScrollDelta) {
+        lastDirection.current = newDirection
+        setScrollState({
           scrollY: currentScrollY,
+          scrollDirection: newDirection,
           isScrolled
-        }
-      })
+        })
+      }
       
       lastScrollY.current = currentScrollY
     })

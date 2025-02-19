@@ -13,7 +13,6 @@ import { MediaGallery } from './MediaGallery/MediaGallery.tsx'
 import ClientNav from './ClientNav/ClientNav.tsx'
 import { UseCases } from './UseCases/UseCases'
 import { Interactive } from './Interactive/Interactive'
-import { useScrollContext } from '../../contexts/ScrollContext'
 import { useScrollToSection } from '../../hooks/useScrollToSection'
 import './Client.css'
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
@@ -28,7 +27,6 @@ const Client = () => {
   const valueRef = useRef<HTMLDivElement>(null)
   const mediaRef = useRef<HTMLDivElement>(null)
   const interactiveRef = useRef<HTMLDivElement>(null)
-  const { scrollDirection, isScrolled } = useScrollContext()
 
   // Memoize section refs to prevent unnecessary re-renders
   const sectionRefs = useMemo(() => ({
@@ -57,11 +55,6 @@ const Client = () => {
   })
 
   if (!clientData) return null
-
-  const navClasses = [
-    'client__nav',
-    scrollDirection === 'down' && isScrolled ? 'client__nav--header-hidden' : ''
-  ].filter(Boolean).join(' ')
 
   return (
     <div className="client-page">

@@ -69,9 +69,9 @@ function App() {
         <ThemeProvider>
           <LoadingProvider>
             <ViewportProvider>
-              <ScrollProvider threshold={50}>
-                <Router>
-                  <NavigationProvider>
+              <Router>
+                <NavigationProvider>
+                  <ScrollProvider threshold={50}>
                     <ModalProvider>
                       <ErrorBoundary onError={handleError}>
                         <div className="app">
@@ -118,9 +118,9 @@ function App() {
                         </div>
                       </ErrorBoundary>
                     </ModalProvider>
-                  </NavigationProvider>
-                </Router>
-              </ScrollProvider>
+                  </ScrollProvider>
+                </NavigationProvider>
+              </Router>
             </ViewportProvider>
           </LoadingProvider>
         </ThemeProvider>

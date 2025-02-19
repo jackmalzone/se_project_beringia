@@ -3,29 +3,21 @@
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  /* Force GPU acceleration */
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  perspective: 1000;
-  -webkit-perspective: 1000;
   /* Optimize repaints */
   will-change: transform;
   /* Improve text rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 144px; /* Header (80px) + Nav (64px) */
 }
-
-/* Remove any client__nav classes since we're not using them anymore */
 
 .client-page__section {
   position: relative;
+  /* Remove padding-top and margin-top since we're handling it in the parent */
   /* Optimize rendering */
   contain: content;
   /* Prevent layout shifts */
   min-height: 100px;
-  /* Force GPU acceleration */
-  transform: translate3d(0, 0, 0);
   /* Reduce repaints */
   will-change: transform;
   /* Isolate rendering */
@@ -34,17 +26,14 @@
   z-index: 1;
 }
 
-/* Optimize fixed elements */
-.client-nav {
-  position: sticky;
-  top: 80px;
-  z-index: 899;
-  /* Force GPU acceleration */
-  transform: translate3d(0, 0, 0);
-  will-change: transform;
-  /* Reduce repaints */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  /* Improve performance */
-  contain: layout style paint;
+@media (max-width: 1024px) {
+  .client-page {
+    padding-top: 128px; /* Header (72px) + Nav (56px) */
+  }
+}
+
+@media (max-width: 768px) {
+  .client-page {
+    padding-top: 112px; /* Header (64px) + Nav (48px) */
+  }
 }

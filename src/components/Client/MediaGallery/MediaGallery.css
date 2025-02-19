@@ -193,7 +193,7 @@
 .media-gallery__modal-close {
   position: absolute;
   top: -40px;
-  right: 0;
+  right: -40px;
   background: none;
   border: none;
   color: white;

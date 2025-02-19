@@ -3,35 +3,32 @@
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
-  position: sticky;
-  top: 80px; /* Desktop header height */
-  z-index: 899;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 999;
   width: 100%;
+  height: 64px;
   box-sizing: border-box;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  /* Only transition specific properties */
-  transition: transform 0.2s ease-out;
-  transform: translateY(0);
   font-family: "Domitian", sans-serif;
-  background: rgba(
-    5,
-    37,
-    51,
-    0.95
-  ); /* Increased opacity for better performance */
+  background: rgba(5, 37, 51, 0.98);
   /* Only apply backdrop filter on non-mobile devices */
   @media (min-width: 1024px) {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin: 0;
+  pointer-events: auto;
+  transition: top 0.3s ease-in-out;
 }
 
 .client-nav--header-hidden {
-  transform: translateY(-80px); /* Use transform instead of changing top */
+  top: 0;
 }
 
 .client-nav__link {
@@ -80,7 +77,8 @@
 
 @media (max-width: 1024px) {
   .client-nav {
-    top: 72px; /* Tablet header height */
+    top: 72px;
+    height: 56px;
     padding: 0.875rem 1rem;
   }
 
@@ -91,10 +89,10 @@
 
 @media (max-width: 768px) {
   .client-nav {
-    top: 64px; /* Mobile header height */
-    gap: 0.5rem;
+    top: 64px;
+    height: 48px;
     padding: 0.75rem;
-    justify-content: center;
+    gap: 0.5rem;
   }
 
   .client-nav--header-hidden {
@@ -110,7 +108,8 @@
 /* Add a larger screen breakpoint to ensure consistency */
 @media (min-width: 1025px) {
   .client-nav {
-    top: 80px; /* Ensure desktop header height */
+    top: 80px;
+    height: 64px;
   }
 
   .client-nav--header-hidden {

@@ -3,7 +3,7 @@ import { FaCubes } from 'react-icons/fa'
 import { ROUTES } from '../../../utils/constants'
 import { clients } from '../../../data'
 import { SKETCHFAB_MODEL_IDS } from '../../../utils/sketchfab'
-import { useScroll } from '../../../hooks/useScroll'
+import { useNavigation } from '../../../contexts/NavigationContext'
 import './ClientNav.css'
 
 interface ClientNavProps {
@@ -12,16 +12,11 @@ interface ClientNavProps {
 
 const ClientNav = ({ clientSlug }: ClientNavProps) => {
   const location = useLocation()
-  const { scrollDirection, isScrolled } = useScroll(80)
+  const { isHeaderVisible } = useNavigation()
   
   // Check if client has 3D model
   const currentClient = clients[clientSlug as keyof typeof clients]
   const has3DModel = currentClient?.modelId === SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK
-
-  const navClasses = [
-    'client-nav',
-    scrollDirection === 'down' && isScrolled ? 'client-nav--header-hidden' : ''
-  ].filter(Boolean).join(' ')
 
   // Define all possible nav items in the desired order
   const navItems = [
@@ -36,6 +31,11 @@ const ClientNav = ({ clientSlug }: ClientNavProps) => {
     }] : []),
     { path: `${ROUTES.CLIENT(clientSlug)}/media`, label: 'Media' },
   ]
+
+  const navClasses = [
+    'client-nav',
+    !isHeaderVisible ? 'client-nav--header-hidden' : ''
+  ].filter(Boolean).join(' ')
 
   return (
     <nav className={navClasses}>
