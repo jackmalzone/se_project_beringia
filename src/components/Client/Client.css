@@ -3,6 +3,48 @@
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  /* Force GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000;
+  -webkit-perspective: 1000;
+  /* Optimize repaints */
+  will-change: transform;
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Remove any client__nav classes since we're not using them anymore */
+
+.client-page__section {
+  position: relative;
+  /* Optimize rendering */
+  contain: content;
+  /* Prevent layout shifts */
+  min-height: 100px;
+  /* Force GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  /* Reduce repaints */
+  will-change: transform;
+  /* Isolate rendering */
+  isolation: isolate;
+  /* Improve performance */
+  z-index: 1;
+}
+
+/* Optimize fixed elements */
+.client-nav {
+  position: sticky;
+  top: 80px;
+  z-index: 899;
+  /* Force GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  /* Reduce repaints */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Improve performance */
+  contain: layout style paint;
+}

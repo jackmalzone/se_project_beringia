@@ -10,19 +10,28 @@
   box-sizing: border-box;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform, top;
+  /* Only transition specific properties */
+  transition: transform 0.2s ease-out;
+  transform: translateY(0);
   font-family: "Domitian", sans-serif;
-  background: rgba(5, 37, 51, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(
+    5,
+    37,
+    51,
+    0.95
+  ); /* Increased opacity for better performance */
+  /* Only apply backdrop filter on non-mobile devices */
+  @media (min-width: 1024px) {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin: 0;
 }
 
 .client-nav--header-hidden {
-  top: 0;
+  transform: translateY(-80px); /* Use transform instead of changing top */
 }
 
 .client-nav__link {
@@ -30,7 +39,7 @@
   text-decoration: none;
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   font-weight: 600;
   white-space: nowrap;
 }

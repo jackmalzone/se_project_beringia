@@ -25,33 +25,38 @@ export const useScrollToSection = (
   } = config
 
   useEffect(() => {
+    // Only scroll when location changes and target exists
     const targetRef = refs[location.pathname]
     if (!targetRef?.current) return
 
-    const totalOffset = headerOffset + navOffset
-    const elementPosition = targetRef.current.getBoundingClientRect().top
-    const offsetPosition = elementPosition + window.pageYOffset - totalOffset
+    // Small delay to ensure layout is stable
+    const scrollTimeout = setTimeout(() => {
+      const totalOffset = headerOffset + navOffset
+      const elementPosition = targetRef.current!.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - totalOffset
 
-    const scrollOptions = {
-      top: offsetPosition,
-      behavior
-    }
+      window.scrollTo({
+        top: offsetPosition,
+        behavior
+      })
 
-    window.scrollTo(scrollOptions)
-
-    if (onScrollComplete) {
-      // Wait for scroll to complete before calling callback
-      const checkScrollComplete = setInterval(() => {
-        if (Math.abs(window.pageYOffset - offsetPosition) < 2) {
-          clearInterval(checkScrollComplete)
-          onScrollComplete()
+      if (onScrollComplete) {
+        // Wait for scroll to complete
+        const checkScrollComplete = () => {
+          if (Math.abs(window.pageYOffset - offsetPosition) < 2) {
+            onScrollComplete()
+          } else {
+            requestAnimationFrame(checkScrollComplete)
+          }
         }
-      }, 100)
+        requestAnimationFrame(checkScrollComplete)
+      }
+    }, 50)
 
-      // Cleanup interval if component unmounts during scroll
-      return () => clearInterval(checkScrollComplete)
+    return () => {
+      clearTimeout(scrollTimeout)
     }
-  }, [location.pathname, refs, headerOffset, navOffset, behavior, onScrollComplete])
+  }, [location.pathname]) // Only trigger on pathname change
 
   return null
 } 

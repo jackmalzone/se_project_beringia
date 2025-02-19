@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useMemo } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 import { ClientData } from '../../data/types.ts'
 import { clients } from '../../data'
@@ -13,7 +13,7 @@ import { MediaGallery } from './MediaGallery/MediaGallery.tsx'
 import ClientNav from './ClientNav/ClientNav.tsx'
 import { UseCases } from './UseCases/UseCases'
 import { Interactive } from './Interactive/Interactive'
-import { useScroll } from '../../hooks/useScroll'
+import { useScrollContext } from '../../contexts/ScrollContext'
 import { useScrollToSection } from '../../hooks/useScrollToSection'
 import './Client.css'
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
@@ -28,7 +28,16 @@ const Client = () => {
   const valueRef = useRef<HTMLDivElement>(null)
   const mediaRef = useRef<HTMLDivElement>(null)
   const interactiveRef = useRef<HTMLDivElement>(null)
-  const { scrollDirection, isScrolled } = useScroll(80)
+  const { scrollDirection, isScrolled } = useScrollContext()
+
+  // Memoize section refs to prevent unnecessary re-renders
+  const sectionRefs = useMemo(() => ({
+    [ROUTES.CLIENT(clientSlug || '')]: overviewRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/features`]: featuresRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/value`]: valueRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/media`]: mediaRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/interactive`]: interactiveRef,
+  }), [clientSlug])
 
   useEffect(() => {
     if (clientSlug) {
@@ -37,20 +46,14 @@ const Client = () => {
     }
   }, [clientSlug])
 
-  // Set up section refs for scrolling
-  const sectionRefs = {
-    [ROUTES.CLIENT(clientSlug || '')]: overviewRef,
-    [`${ROUTES.CLIENT(clientSlug || '')}/features`]: featuresRef,
-    [`${ROUTES.CLIENT(clientSlug || '')}/value`]: valueRef,
-    [`${ROUTES.CLIENT(clientSlug || '')}/media`]: mediaRef,
-    [`${ROUTES.CLIENT(clientSlug || '')}/interactive`]: interactiveRef,
-  }
-
-  // Use the scroll to section hook
+  // Use the scroll to section hook with optimized settings
   useScrollToSection(sectionRefs, {
     headerOffset: 80,
     navOffset: 60,
-    behavior: 'smooth'
+    behavior: 'smooth',
+    onScrollComplete: () => {
+      // Optional: Add scroll completion logic here
+    }
   })
 
   if (!clientData) return null
@@ -69,18 +72,18 @@ const Client = () => {
         />
       </ErrorBoundary>
       
-      <div ref={overviewRef}>
+      <div ref={overviewRef} className="client-page__section">
         <ErrorBoundary>
           <Overview {...clientData.overview} />
         </ErrorBoundary>
       </div>
-      <div ref={featuresRef}>
+      <div ref={featuresRef} className="client-page__section">
         <ErrorBoundary>
           <SellingPoints {...clientData.sellingPoints} />
           <UseCases {...clientData.useCases} />
         </ErrorBoundary>
       </div>
-      <div ref={interactiveRef}>
+      <div ref={interactiveRef} className="client-page__section">
         {clientData.id === 'advanced-navigation' && (
           <ErrorBoundary>
             <Interactive 
@@ -91,12 +94,12 @@ const Client = () => {
           </ErrorBoundary>
         )}
       </div>
-      <div ref={valueRef}>
+      <div ref={valueRef} className="client-page__section">
         <ErrorBoundary>
           <ValueProposition {...clientData.valueProposition} />
         </ErrorBoundary>
       </div>
-      <div ref={mediaRef}>
+      <div ref={mediaRef} className="client-page__section">
         <ErrorBoundary>
           <MediaLinks links={clientData.mediaLinks} />
           <MediaGallery items={clientData.gallery} />
