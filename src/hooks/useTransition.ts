@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from 'react'
 interface TransitionOptions {
   duration?: number
   delay?: number
-  timing?: string
   onStart?: () => void
   onComplete?: () => void
 }
@@ -31,7 +30,6 @@ export const useTransition = (
     const {
       duration = defaultOptions.duration || 300,
       delay = defaultOptions.delay || 0,
-      timing = defaultOptions.timing || 'ease',
       onStart = defaultOptions.onStart,
       onComplete = defaultOptions.onComplete
     } = options

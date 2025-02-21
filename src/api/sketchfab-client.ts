@@ -1,5 +1,3 @@
-import { version } from '../../package.json'
-
 interface SketchfabClientOptions {
   modelId: string;
   success?: (api: any) => void;

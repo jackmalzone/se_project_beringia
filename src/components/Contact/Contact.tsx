@@ -1,4 +1,3 @@
-import { FormEvent } from 'react'
 import { useForm } from '../../hooks/useForm'
 import './Contact.css'
 

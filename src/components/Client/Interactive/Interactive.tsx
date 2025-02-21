@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react'
 import { FaPlay, FaPause, FaEye, FaEyeSlash, FaUndo, FaMouse, FaSearchPlus, FaHandPointer } from 'react-icons/fa'
 import { Sketchfab } from '../../Sketchfab/Sketchfab'
-import { SketchfabClient } from '../../../api/sketchfab-client.ts'
 import './Interactive.css'
 
 interface InteractiveProps {
