@@ -42,7 +42,6 @@ function App() {
   }
 
   const handleError = (error: Error, errorInfo: ErrorInfo) => {
-    // Here you could send error to a logging service
     console.error('App Error:', error)
     console.error('Error Info:', errorInfo)
   }

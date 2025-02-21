@@ -65,9 +65,7 @@ const ContactForm = () => {
   )
 
   const onSubmit = async (data: typeof formData) => {
-    // Add form submission logic here
     console.log('Form submitted:', data)
-    // You would typically make an API call here
   }
 
   return (

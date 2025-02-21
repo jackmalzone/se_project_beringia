@@ -28,7 +28,7 @@ export const useScrollToSection = (
   const headerHeight = isMobile ? 64 : isTablet ? 72 : 80
 
   const {
-    headerOffset = isScrolled ? 0 : headerHeight, // Only include header offset if header is visible
+    headerOffset = headerHeight, 
     navOffset = navHeight, // Always include nav offset
     behavior = 'smooth',
     onScrollComplete

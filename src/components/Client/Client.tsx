@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useMemo } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { ClientData } from '../../data/types.ts'
 import { clients } from '../../data'
 import { ROUTES } from '../../utils/constants.ts'
@@ -19,7 +19,6 @@ import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 
 const Client = () => {
   const { clientSlug } = useParams()
-  const location = useLocation()
   const [clientData, setClientData] = useState<ClientData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   

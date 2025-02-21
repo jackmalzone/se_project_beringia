@@ -1,4 +1,3 @@
-import { useState, FormEvent } from 'react';
 import { useModal } from '../../contexts/ModalContext'
 import './ExpertiseSection.css'
 import '../ModalContact/ModalContact.css'
@@ -51,13 +50,7 @@ const expertiseData: ExpertiseCard[] = [
 ];
 
 const ExpertiseSection = () => {
-  const { openModal, closeModal } = useModal()
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
+  const { openModal } = useModal()
 
   const handleExpertiseClick = () => {
     openModal(<ModalContact />, { size: 'small' })

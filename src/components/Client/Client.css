@@ -4,24 +4,22 @@
   margin: 0;
   display: grid;
   grid-template-rows: auto 1fr;
-  /* Improve text rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #052533; /* Match the nav background color */
+  background: #052533;
 }
 
-/* This will act as a spacer that matches the nav's height */
 .client__nav-container {
-  height: 144px; /* Header + Nav height */
+  height: 144px;
   grid-row: 1;
-  background: rgba(5, 37, 51, 0.98); /* Match the nav background */
+  background: rgba(5, 37, 51, 0.98);
   position: relative;
 }
 
 .client__nav-container--loading::before {
   content: "";
   position: absolute;
-  top: 80px; /* Header height */
+  top: 80px;
   left: 0;
   right: 0;
   height: 64px;
@@ -55,7 +53,7 @@
 
 @media (max-width: 1024px) {
   .client__nav-container {
-    height: 128px; /* Header + Nav height for tablet */
+    height: 128px;
   }
 
   .client__nav-container--loading::before {
@@ -66,7 +64,7 @@
 
 @media (max-width: 768px) {
   .client__nav-container {
-    height: 112px; /* Header + Nav height for mobile */
+    height: 112px;
   }
 
   .client__nav-container--loading::before {

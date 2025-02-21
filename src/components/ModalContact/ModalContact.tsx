@@ -1,4 +1,3 @@
-import { FormEvent } from 'react'
 import { useModal } from '../../contexts/ModalContext'
 import { useForm } from '../../hooks/useForm'
 import './ModalContact.css'

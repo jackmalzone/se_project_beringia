@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import penguinImage from '../../assets/beringia/penguin.jpeg';
 import './About.css';
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
