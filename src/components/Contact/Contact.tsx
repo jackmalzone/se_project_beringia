@@ -14,7 +14,7 @@ const ContactInfo = () => (
       <p className="contact__detail">
         <strong>Phone:</strong> 
         <a href="tel:+18057040462" className="contact__link">
-          +1 805 704 0462
+          +1 805 316 1417
         </a>
       </p>
       <a 
