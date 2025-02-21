@@ -45,7 +45,7 @@ const ClientNav = ({ clientSlug }: ClientNavProps) => {
           to={path}
           className={`client-nav__link ${
             location.pathname === path ? 'client-nav__link--active' : ''
-          } ${is3D ? 'client-nav__link-3d' : ''}`}
+          } ${is3D ? 'client-nav__link--3d' : ''}`}
           onClick={(e) => {
             if (location.pathname === path) {
               e.preventDefault()

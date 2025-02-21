@@ -23,10 +23,6 @@
   transform: translateY(0);
 }
 
-/* .client-nav--header-hidden {
-  top: 0;
-} */
-
 .client-nav--scrolled {
   transform: translateY(-80px);
   background: rgba(5, 37, 51, 0.95);
@@ -54,7 +50,7 @@
 }
 
 /* Add styles for 3D model link */
-.client-nav__link-3d {
+.client-nav__link--3d {
   background-color: rgba(0, 162, 176, 0.2);
   display: flex;
   align-items: center;
@@ -63,18 +59,29 @@
   transition: all 0.2s ease;
 }
 
-.client-nav__link-3d:hover {
+.client-nav__link--3d:hover {
   background-color: rgba(0, 162, 176, 0.3);
   transform: translateY(-1px);
 }
 
-.client-nav__link-3d:active {
+.client-nav__link--3d:active {
   transform: translateY(0);
 }
 
-.client-nav__link-3d.client-nav__link-active {
+.client-nav__link--3d.client-nav__link--active {
   background-color: rgba(0, 162, 176, 0.3);
   color: #00a2b0;
+}
+
+@media (min-width: 1025px) {
+  .client-nav {
+    top: 80px;
+    height: 64px;
+  }
+
+  .client-nav--scrolled {
+    transform: translateY(-80px);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -104,17 +111,5 @@
   .client-nav__link {
     padding: 0.5rem;
     font-size: 0.9rem;
-  }
-}
-
-/* Add a larger screen breakpoint to ensure consistency */
-@media (min-width: 1025px) {
-  .client-nav {
-    top: 80px;
-    height: 64px;
-  }
-
-  .client-nav--scrolled {
-    transform: translateY(-80px);
   }
 }

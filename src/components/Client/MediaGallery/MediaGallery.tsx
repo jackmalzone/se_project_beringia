@@ -15,8 +15,8 @@ interface MediaGalleryProps {
 }
 
 const VideoThumbnail = () => (
-  <div className="media-gallery__video-thumbnail">
-    <FaPlay className="media-gallery__play-icon" />
+  <div className="media-gallery__item--video">
+    <FaPlay className="media-gallery__item-icon" />
   </div>
 );
 
@@ -120,7 +120,7 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
                 <img
                   src={item.url}
                   alt={item.alt}
-                  className="media-gallery__thumbnail"
+                  className="media-gallery__image"
                   loading="lazy"
                 />
               ) : item.type === 'video' ? (
@@ -136,33 +136,33 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
           className={`media-gallery__modal ${isModalVisible ? 'media-gallery__modal--visible' : ''}`}
           onClick={handleClose}
         >
-          <div className="media-gallery__modal-content" onClick={e => e.stopPropagation()}>
+          <div className="media-gallery__content" onClick={e => e.stopPropagation()}>
             {items[selectedIndex].type === 'image' ? (
               <img
                 src={items[selectedIndex].url}
                 alt={items[selectedIndex].alt}
-                className="media-gallery__modal-media"
+                className="media-gallery__media"
               />
             ) : items[selectedIndex].type === 'video' ? (
               <video
                 src={items[selectedIndex].url}
                 controls
                 autoPlay
-                className="media-gallery__modal-media"
+                className="media-gallery__media"
               />
             ) : null}
             
             {items.length > 1 && (
               <>
                 <button
-                  className="media-gallery__modal-nav media-gallery__modal-nav--prev"
+                  className="media-gallery__nav media-gallery__nav--prev"
                   onClick={handlePrevious}
                   aria-label="Previous image"
                 >
                   <FaChevronLeft size={20} />
                 </button>
                 <button
-                  className="media-gallery__modal-nav media-gallery__modal-nav--next"
+                  className="media-gallery__nav media-gallery__nav--next"
                   onClick={handleNext}
                   aria-label="Next image"
                 >
@@ -172,7 +172,7 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
             )}
             
             <button
-              className="media-gallery__modal-close"
+              className="media-gallery__close"
               onClick={handleClose}
               aria-label="Close modal"
             >

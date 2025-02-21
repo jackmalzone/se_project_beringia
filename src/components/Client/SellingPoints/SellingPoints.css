@@ -55,7 +55,7 @@
   gap: 2rem;
 }
 
-.selling-points__card {
+.selling-points__item {
   background: rgba(255, 255, 255, 0.03);
   padding: 2rem;
   border-radius: 12px;
@@ -65,7 +65,7 @@
   backdrop-filter: blur(10px);
 }
 
-.selling-points__card:hover {
+.selling-points__item:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 162, 176, 0.3);
@@ -79,11 +79,11 @@
   transition: transform 0.3s ease;
 }
 
-.selling-points__card:hover .selling-points__icon {
+.selling-points__item:hover .selling-points__icon {
   transform: scale(1.1);
 }
 
-.selling-points__card-title {
+.selling-points__item-title {
   font-family: "Domitian", serif;
   font-weight: 600;
   font-size: 1.5rem;
@@ -92,24 +92,24 @@
   transition: color 0.3s ease;
 }
 
-.selling-points__card:hover .selling-points__card-title {
+.selling-points__item:hover .selling-points__item-title {
   color: #00c2d1;
 }
 
-.selling-points__description {
+.selling-points__text {
   font-family: "Inter", sans-serif;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
 
-.selling-points__features {
+.selling-points__list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.selling-points__feature {
+.selling-points__list-item {
   font-family: "Inter", sans-serif;
   position: relative;
   padding-left: 1.5rem;
@@ -119,12 +119,12 @@
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.selling-points__feature:hover {
+.selling-points__list-item:hover {
   transform: translateX(4px);
   color: #00a2b0;
 }
 
-.selling-points__feature::before {
+.selling-points__list-item::before {
   content: "•";
   position: absolute;
   left: 0;
@@ -146,7 +146,7 @@
     margin-bottom: 2rem;
   }
 
-  .selling-points__card {
+  .selling-points__item {
     padding: 1.5rem;
   }
 }
@@ -160,7 +160,7 @@
     font-size: 1.75rem;
   }
 
-  .selling-points__card-title {
+  .selling-points__item-title {
     font-size: 1.25rem;
   }
 }

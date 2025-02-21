@@ -68,7 +68,7 @@
   left: 0;
   width: var(--scroll-width, 0%);
   height: 4px;
-  background: linear-gradient(to right, #0984e3, #00cec9);
+  background: linear-gradient(to right, #00a2b0, #008791);
   border-radius: 2px;
   transition: width 0.1s ease-out;
   z-index: 1;
@@ -113,13 +113,13 @@
   opacity: 1;
 }
 
-.media-gallery__thumbnail {
+.media-gallery__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.media-gallery__video-thumbnail {
+.media-gallery__item--video {
   width: 100%;
   height: 100%;
   background: rgba(5, 37, 51, 0.8);
@@ -128,14 +128,14 @@
   justify-content: center;
 }
 
-.media-gallery__play-icon {
+.media-gallery__item-icon {
   font-size: 3rem;
   color: #00a2b0;
   opacity: 0.9;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.media-gallery__item:hover .media-gallery__play-icon {
+.media-gallery__item:hover .media-gallery__item-icon {
   transform: scale(1.1);
   color: #00c2d1;
 }
@@ -159,7 +159,7 @@
   visibility: visible;
 }
 
-.media-gallery__modal-content {
+.media-gallery__content {
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
@@ -168,14 +168,14 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.media-gallery__modal-media {
+.media-gallery__media {
   max-width: 100%;
   max-height: 90vh;
   object-fit: contain;
   border-radius: 12px;
 }
 
-.media-gallery__modal-nav {
+.media-gallery__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -194,21 +194,21 @@
   z-index: 2;
 }
 
-.media-gallery__modal-nav:hover {
+.media-gallery__nav:hover {
   background: rgba(0, 162, 176, 0.3);
   transform: translateY(-50%) scale(1.1);
   border-color: rgba(0, 162, 176, 0.5);
 }
 
-.media-gallery__modal-nav--prev {
+.media-gallery__nav--prev {
   left: 20px;
 }
 
-.media-gallery__modal-nav--next {
+.media-gallery__nav--next {
   right: 20px;
 }
 
-.media-gallery__modal-close {
+.media-gallery__close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -229,7 +229,7 @@
   z-index: 2;
 }
 
-.media-gallery__modal-close:hover {
+.media-gallery__close:hover {
   transform: scale(1.1);
   background: rgba(0, 162, 176, 0.3);
   border-color: rgba(0, 162, 176, 0.5);
@@ -250,7 +250,7 @@
     height: 180px;
   }
 
-  .media-gallery__modal-nav {
+  .media-gallery__nav {
     width: 40px;
     height: 40px;
   }
@@ -262,15 +262,15 @@
     height: 150px;
   }
 
-  .media-gallery__modal-nav--prev {
+  .media-gallery__nav--prev {
     left: 10px;
   }
 
-  .media-gallery__modal-nav--next {
+  .media-gallery__nav--next {
     right: 10px;
   }
 
-  .media-gallery__modal-close {
+  .media-gallery__close {
     top: 10px;
     right: 10px;
   }
