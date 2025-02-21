@@ -7,5 +7,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     open: true
+  },
+  build: {
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
   }
 })
