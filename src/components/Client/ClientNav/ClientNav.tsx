@@ -3,7 +3,7 @@ import { FaCubes } from 'react-icons/fa'
 import { ROUTES } from '../../../utils/constants'
 import { clients } from '../../../data'
 import { SKETCHFAB_MODEL_IDS } from '../../../utils/sketchfab'
-import { useNavigation } from '../../../contexts/NavigationContext'
+import { useScrollContext } from '../../../contexts/ScrollContext'
 import './ClientNav.css'
 
 interface ClientNavProps {
@@ -12,7 +12,7 @@ interface ClientNavProps {
 
 const ClientNav = ({ clientSlug }: ClientNavProps) => {
   const location = useLocation()
-  const { isHeaderVisible } = useNavigation()
+  const { isScrolled } = useScrollContext()
   
   // Check if client has 3D model
   const currentClient = clients[clientSlug as keyof typeof clients]
@@ -34,7 +34,7 @@ const ClientNav = ({ clientSlug }: ClientNavProps) => {
 
   const navClasses = [
     'client-nav',
-    !isHeaderVisible ? 'client-nav--header-hidden' : ''
+    isScrolled ? 'client-nav--scrolled' : ''
   ].filter(Boolean).join(' ')
 
   return (

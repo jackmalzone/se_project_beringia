@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaTimes, FaPlay } from 'react-icons/fa';
 import './MediaGallery.css';
 
 interface MediaItem {
@@ -13,6 +13,12 @@ interface MediaItem {
 interface MediaGalleryProps {
   items: MediaItem[];
 }
+
+const VideoThumbnail = () => (
+  <div className="media-gallery__video-thumbnail">
+    <FaPlay className="media-gallery__play-icon" />
+  </div>
+);
 
 export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -118,9 +124,7 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
                   loading="lazy"
                 />
               ) : item.type === 'video' ? (
-                <div className="media-gallery__video-thumbnail">
-                  <div className="media-gallery__play-icon">▶</div>
-                </div>
+                <VideoThumbnail />
               ) : null}
             </div>
           ))}
@@ -147,26 +151,32 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
                 className="media-gallery__modal-media"
               />
             ) : null}
-            <button
-              className="media-gallery__modal-nav media-gallery__modal-nav--prev"
-              onClick={handlePrevious}
-              aria-label="Previous image"
-            >
-              <FaChevronLeft />
-            </button>
-            <button
-              className="media-gallery__modal-nav media-gallery__modal-nav--next"
-              onClick={handleNext}
-              aria-label="Next image"
-            >
-              <FaChevronRight />
-            </button>
+            
+            {items.length > 1 && (
+              <>
+                <button
+                  className="media-gallery__modal-nav media-gallery__modal-nav--prev"
+                  onClick={handlePrevious}
+                  aria-label="Previous image"
+                >
+                  <FaChevronLeft size={20} />
+                </button>
+                <button
+                  className="media-gallery__modal-nav media-gallery__modal-nav--next"
+                  onClick={handleNext}
+                  aria-label="Next image"
+                >
+                  <FaChevronRight size={20} />
+                </button>
+              </>
+            )}
+            
             <button
               className="media-gallery__modal-close"
               onClick={handleClose}
               aria-label="Close modal"
             >
-              <FaTimes />
+              <FaTimes size={20} />
             </button>
           </div>
         </div>

@@ -1,27 +1,58 @@
 .use-cases {
-  padding: 4rem 0;
-  background-color: #f8f9fa;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #003b4a 0%, #052533 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.use-cases::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 162, 176, 0.2),
+    transparent
+  );
 }
 
 .use-cases__container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
 }
 
 .use-cases__title {
   text-align: center;
   font-family: "Domitian", serif;
-  color: #214751;
+  color: #fff;
   font-size: 2.5rem;
   margin: 0 0 1rem;
+  position: relative;
+}
+
+.use-cases__title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, #008791, #00a2b0);
+  border-radius: 2px;
 }
 
 .use-cases__description {
   text-align: center;
   max-width: 800px;
   margin: 0 auto 3rem;
-  color: #1b444e;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
   line-height: 1.6;
 }
@@ -33,26 +64,36 @@
 }
 
 .use-cases__card {
-  background: white;
+  background: rgba(255, 255, 255, 0.03);
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .use-cases__card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 162, 176, 0.3);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .use-cases__card-title {
   font-family: "Domitian", serif;
-  color: #214751;
+  color: #00a2b0;
   font-size: 1.75rem;
   margin: 0 0 1rem;
+  transition: color 0.3s ease;
+}
+
+.use-cases__card:hover .use-cases__card-title {
+  color: #00c2d1;
 }
 
 .use-cases__card-description {
-  color: #1b444e;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.1rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
@@ -68,8 +109,14 @@
   position: relative;
   padding-left: 1.5rem;
   margin-bottom: 0.75rem;
-  color: #1b444e;
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.4;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.use-cases__card-point:hover {
+  transform: translateX(4px);
+  color: #00a2b0;
 }
 
 .use-cases__card-point::before {
@@ -77,4 +124,55 @@
   position: absolute;
   left: 0;
   color: #00a2b0;
+}
+
+@media (max-width: 768px) {
+  .use-cases {
+    padding: 3rem 1.5rem;
+  }
+
+  .use-cases__container {
+    padding: 0;
+  }
+
+  .use-cases__title {
+    font-size: 2rem;
+  }
+
+  .use-cases__description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+
+  .use-cases__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .use-cases__card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .use-cases {
+    padding: 2rem 1rem;
+  }
+
+  .use-cases__title {
+    font-size: 1.75rem;
+  }
+
+  .use-cases__description {
+    font-size: 1rem;
+  }
+
+  .use-cases__card-title {
+    font-size: 1.5rem;
+  }
+
+  .use-cases__card-description {
+    font-size: 1rem;
+  }
 }

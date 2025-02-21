@@ -35,10 +35,6 @@
   background: rgba(0, 0, 0, 0.95);
 }
 
-.header-loading {
-  /* styles for loading state */
-}
-
 .header__left {
   display: flex;
   align-items: center;
@@ -191,7 +187,7 @@
   padding: 0;
 }
 
-.header__footer {
+.header__end {
   display: flex;
   align-items: center;
 }
@@ -447,7 +443,7 @@
     opacity: 1;
   }
 
-  .header__footer {
+  .header__end {
     padding: 0;
     background: transparent;
     border-top: none;

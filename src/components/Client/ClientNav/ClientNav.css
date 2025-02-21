@@ -15,20 +15,22 @@
   -webkit-overflow-scrolling: touch;
   font-family: "Domitian", sans-serif;
   background: rgba(5, 37, 51, 0.98);
-  /* Only apply backdrop filter on non-mobile devices */
-  @media (min-width: 1024px) {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin: 0;
   pointer-events: auto;
-  transition: top 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(0);
 }
 
-.client-nav--header-hidden {
+/* .client-nav--header-hidden {
   top: 0;
+} */
+
+.client-nav--scrolled {
+  transform: translateY(-80px);
+  background: rgba(5, 37, 51, 0.95);
+  backdrop-filter: blur(8px);
 }
 
 .client-nav__link {
@@ -82,8 +84,8 @@
     padding: 0.875rem 1rem;
   }
 
-  .client-nav--header-hidden {
-    top: 0;
+  .client-nav--scrolled {
+    transform: translateY(-72px);
   }
 }
 
@@ -95,8 +97,8 @@
     gap: 0.5rem;
   }
 
-  .client-nav--header-hidden {
-    top: 0;
+  .client-nav--scrolled {
+    transform: translateY(-64px);
   }
 
   .client-nav__link {
@@ -112,7 +114,7 @@
     height: 64px;
   }
 
-  .client-nav--header-hidden {
-    top: 0;
+  .client-nav--scrolled {
+    transform: translateY(-80px);
   }
 }

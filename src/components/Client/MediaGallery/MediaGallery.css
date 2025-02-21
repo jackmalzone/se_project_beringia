@@ -1,18 +1,19 @@
 .media-gallery {
   max-width: 100%;
   padding: 2rem 0;
-  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  background: #052533;
   position: relative;
 }
 
 .media-gallery__title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2d3436;
+  color: #fff;
   margin-bottom: 2rem;
   position: relative;
   display: block;
   text-align: center;
+  font-family: "Domitian", serif;
 }
 
 .media-gallery__title::after {
@@ -23,7 +24,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background: linear-gradient(to right, #0984e3, #00cec9);
+  background: linear-gradient(to right, #00a2b0, #008791);
   border-radius: 2px;
 }
 
@@ -80,14 +81,16 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .media-gallery__item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 162, 176, 0.3);
 }
 
 .media-gallery__item::after {
@@ -119,7 +122,7 @@
 .media-gallery__video-thumbnail {
   width: 100%;
   height: 100%;
-  background: #2d3436;
+  background: rgba(5, 37, 51, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,14 +130,21 @@
 
 .media-gallery__play-icon {
   font-size: 3rem;
-  color: white;
-  opacity: 0.8;
+  color: #00a2b0;
+  opacity: 0.9;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.media-gallery__item:hover .media-gallery__play-icon {
+  transform: scale(1.1);
+  color: #00c2d1;
 }
 
 .media-gallery__modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(5, 37, 51, 0.95);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,58 +163,76 @@
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .media-gallery__modal-media {
   max-width: 100%;
   max-height: 90vh;
   object-fit: contain;
+  border-radius: 12px;
 }
 
 .media-gallery__modal-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: white;
-  width: 40px;
-  height: 40px;
+  background: rgba(0, 162, 176, 0.15);
+  border: 1px solid rgba(0, 162, 176, 0.3);
+  color: #fff;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  z-index: 2;
 }
 
 .media-gallery__modal-nav:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 162, 176, 0.3);
+  transform: translateY(-50%) scale(1.1);
+  border-color: rgba(0, 162, 176, 0.5);
 }
 
 .media-gallery__modal-nav--prev {
-  left: -60px;
+  left: 20px;
 }
 
 .media-gallery__modal-nav--next {
-  right: -60px;
+  right: 20px;
 }
 
 .media-gallery__modal-close {
   position: absolute;
-  top: -40px;
-  right: -40px;
-  background: none;
-  border: none;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 162, 176, 0.15);
+  border: 1px solid rgba(0, 162, 176, 0.3);
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 8px;
-  transition: transform 0.3s ease;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .media-gallery__modal-close:hover {
   transform: scale(1.1);
+  background: rgba(0, 162, 176, 0.3);
+  border-color: rgba(0, 162, 176, 0.5);
 }
 
 @media (max-width: 768px) {
@@ -223,16 +251,8 @@
   }
 
   .media-gallery__modal-nav {
-    width: 36px;
-    height: 36px;
-  }
-
-  .media-gallery__modal-nav--prev {
-    left: -45px;
-  }
-
-  .media-gallery__modal-nav--next {
-    right: -45px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -247,6 +267,11 @@
   }
 
   .media-gallery__modal-nav--next {
+    right: 10px;
+  }
+
+  .media-gallery__modal-close {
+    top: 10px;
     right: 10px;
   }
 }

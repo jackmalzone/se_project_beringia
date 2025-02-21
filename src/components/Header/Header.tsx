@@ -231,7 +231,7 @@ const Header: FC<HeaderProps> = () => {
           </Link>
         </div>
 
-        <div className="header__footer">
+        <div className="header__end">
           <Link to={ROUTES.CONTACT} className="header__contact-button" onClick={handleNavClick}>
             Get in Touch
           </Link>

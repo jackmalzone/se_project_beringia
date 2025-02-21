@@ -1,19 +1,44 @@
-.client-page {
+.client {
   position: relative;
   min-height: 100vh;
   margin: 0;
-  padding: 0;
-  /* Optimize repaints */
-  will-change: transform;
+  display: grid;
+  grid-template-rows: auto 1fr;
   /* Improve text rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: 144px; /* Header (80px) + Nav (64px) */
+  background: #052533; /* Match the nav background color */
 }
 
-.client-page__section {
+/* This will act as a spacer that matches the nav's height */
+.client__nav-container {
+  height: 144px; /* Header + Nav height */
+  grid-row: 1;
+  background: rgba(5, 37, 51, 0.98); /* Match the nav background */
   position: relative;
-  /* Remove padding-top and margin-top since we're handling it in the parent */
+}
+
+.client__nav-container--loading::before {
+  content: "";
+  position: absolute;
+  top: 80px; /* Header height */
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(5, 37, 51, 0.98);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.client__content {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.client__section {
+  position: relative;
   /* Optimize rendering */
   contain: content;
   /* Prevent layout shifts */
@@ -24,16 +49,28 @@
   isolation: isolate;
   /* Improve performance */
   z-index: 1;
+  /* Reduce gaps between sections */
+  margin: 0;
 }
 
 @media (max-width: 1024px) {
-  .client-page {
-    padding-top: 128px; /* Header (72px) + Nav (56px) */
+  .client__nav-container {
+    height: 128px; /* Header + Nav height for tablet */
+  }
+
+  .client__nav-container--loading::before {
+    height: 56px;
+    top: 72px;
   }
 }
 
 @media (max-width: 768px) {
-  .client-page {
-    padding-top: 112px; /* Header (64px) + Nav (48px) */
+  .client__nav-container {
+    height: 112px; /* Header + Nav height for mobile */
+  }
+
+  .client__nav-container--loading::before {
+    height: 48px;
+    top: 64px;
   }
 }

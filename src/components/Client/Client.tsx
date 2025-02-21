@@ -21,6 +21,7 @@ const Client = () => {
   const { clientSlug } = useParams()
   const location = useLocation()
   const [clientData, setClientData] = useState<ClientData | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
   
   const overviewRef = useRef<HTMLDivElement>(null)
   const featuresRef = useRef<HTMLDivElement>(null)
@@ -38,16 +39,19 @@ const Client = () => {
   }), [clientSlug])
 
   useEffect(() => {
+    setIsLoading(true)
     if (clientSlug) {
       const data = Object.values(clients).find(client => client.slug === clientSlug)
       setClientData(data || null)
+      // Add a small delay to prevent flash of loading state
+      setTimeout(() => setIsLoading(false), 300)
     }
   }, [clientSlug])
 
   // Use the scroll to section hook with optimized settings
   useScrollToSection(sectionRefs, {
     headerOffset: 80,
-    navOffset: 60,
+    navOffset: 64,
     behavior: 'smooth',
     onScrollComplete: () => {
       // Optional: Add scroll completion logic here
@@ -56,47 +60,58 @@ const Client = () => {
 
   if (!clientData) return null
 
+  const navContainerClasses = [
+    'client__nav-container',
+    isLoading ? 'client__nav-container--loading' : ''
+  ].filter(Boolean).join(' ')
+
   return (
-    <div className="client-page">
+    <div className="client">
       <SEOHead {...clientData.seo} />
-      <ErrorBoundary>
-        <ClientNav 
-          clientSlug={clientData.slug} 
-        />
-      </ErrorBoundary>
-      
-      <div ref={overviewRef} className="client-page__section">
+      <div className={navContainerClasses}>
         <ErrorBoundary>
-          <Overview {...clientData.overview} />
-        </ErrorBoundary>
-      </div>
-      <div ref={featuresRef} className="client-page__section">
-        <ErrorBoundary>
-          <SellingPoints {...clientData.sellingPoints} />
-          <UseCases {...clientData.useCases} />
-        </ErrorBoundary>
-      </div>
-      <div ref={interactiveRef} className="client-page__section">
-        {clientData.id === 'advanced-navigation' && (
-          <ErrorBoundary>
-            <Interactive 
-              modelId={SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}
-              title="Hydrus"
-              description="Get hands-on with Hydrus. Explore every detail of this revolutionary autonomous underwater vehicle. Rotate, zoom, and discover its innovative features through interactive annotations."
+          {!isLoading && (
+            <ClientNav 
+              clientSlug={clientData.slug} 
             />
+          )}
+        </ErrorBoundary>
+      </div>
+      
+      <div className="client__content">
+        <div ref={overviewRef} className="client__section">
+          <ErrorBoundary>
+            <Overview {...clientData.overview} />
           </ErrorBoundary>
-        )}
-      </div>
-      <div ref={valueRef} className="client-page__section">
-        <ErrorBoundary>
-          <ValueProposition {...clientData.valueProposition} />
-        </ErrorBoundary>
-      </div>
-      <div ref={mediaRef} className="client-page__section">
-        <ErrorBoundary>
-          <MediaLinks links={clientData.mediaLinks} />
-          <MediaGallery items={clientData.gallery} />
-        </ErrorBoundary>
+        </div>
+        <div ref={featuresRef} className="client__section">
+          <ErrorBoundary>
+            <SellingPoints {...clientData.sellingPoints} />
+            <UseCases {...clientData.useCases} />
+          </ErrorBoundary>
+        </div>
+        <div ref={interactiveRef} className="client__section">
+          {clientData.id === 'advanced-navigation' && (
+            <ErrorBoundary>
+              <Interactive 
+                modelId={SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}
+                title="Hydrus"
+                description="Get hands-on with Hydrus. Explore every detail of this revolutionary autonomous underwater vehicle. Rotate, zoom, and discover its innovative features through interactive annotations."
+              />
+            </ErrorBoundary>
+          )}
+        </div>
+        <div ref={valueRef} className="client__section">
+          <ErrorBoundary>
+            <ValueProposition {...clientData.valueProposition} />
+          </ErrorBoundary>
+        </div>
+        <div ref={mediaRef} className="client__section">
+          <ErrorBoundary>
+            <MediaLinks links={clientData.mediaLinks} />
+            <MediaGallery items={clientData.gallery} />
+          </ErrorBoundary>
+        </div>
       </div>
     </div>
   )
