@@ -34,7 +34,6 @@
   z-index: -1;
 }
 
-/* Style the header */
 .contributions__heading {
   text-align: center;
   font-size: 2.5rem;
@@ -46,7 +45,7 @@
 
 .contributions__items {
   position: relative;
-  max-width: 1000px;
+  max-width: clamp(300px, 90vw, 1000px);
   margin: 4rem auto;
   padding: 0 2rem;
 }
@@ -229,9 +228,8 @@
 @media (max-width: 480px) {
   .contributions__items {
     width: 100%;
-    max-width: 400px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
