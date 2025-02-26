@@ -52,9 +52,12 @@
 }
 
 .header__logo-image {
-  height: 48px;
+  height: 60px;
   width: auto;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.3s ease;
+  display: block;
 }
 
 .header__logo:hover .header__logo-image {
@@ -275,6 +278,8 @@
 
   .header__logo-image {
     height: 42px;
+    width: auto;
+    object-fit: contain;
   }
 
   .header__nav {
@@ -310,6 +315,8 @@
 
   .header__logo-image {
     height: 36px;
+    width: auto;
+    object-fit: contain;
     margin: 0;
   }
 

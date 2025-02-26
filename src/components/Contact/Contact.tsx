@@ -4,28 +4,16 @@ import './Contact.css'
 const ContactInfo = () => (
   <div className="contact__info">
     <h2 className="contact__title">Contact Us</h2>
-    <div className="contact__details">
-      <p className="contact__detail">
-        <strong>Email:</strong> 
-        <a href="mailto:info@beringia-marine.com" className="contact__link">
-          info@beringia-marine.com
-        </a>
-      </p>
-      <p className="contact__detail">
-        <strong>Phone:</strong> 
-        <a href="tel:+18057040462" className="contact__link">
-          +1 805 316 1417
-        </a>
-      </p>
-      <a 
-        href="https://linkedin.com/company/beringia-marine" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="contact__link contact__link-linkedin"
-      >
-        Connect on LinkedIn
-      </a>
-    </div>
+    <p className="contact__intro">
+      Whether you have a project in mind, need expert insights, or just want to learn more about what we do, we'd love to hear from you. Fill out the form below, and we'll get back to you as soon as possible.
+    </p>
+    <p className="contact__intro">
+      If you prefer, you can also reach us directly via{' '}
+      <a href="mailto:info@beringia-marine.com" className="contact__link">info@beringia-marine.com</a>
+      {' '}or{' '}
+      <a href="tel:+18057040462" className="contact__link">+1 805 316 1417</a>.
+      Let's build something great together.
+    </p>
   </div>
 )
 
