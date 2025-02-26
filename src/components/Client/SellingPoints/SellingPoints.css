@@ -109,6 +109,30 @@
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  .selling-points__item {
+    cursor: pointer;
+  }
+
+  .selling-points__list {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .selling-points__list--expanded {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 1rem;
+  }
+
+  .selling-points__item--expanded {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 162, 176, 0.3);
+  }
+}
+
 .selling-points__list-item {
   font-family: "Inter", sans-serif;
   position: relative;
