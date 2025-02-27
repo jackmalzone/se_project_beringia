@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  height: 80px;
+  height: clamp(64px, 9vh, 100px);
   background: linear-gradient(90deg, #052533 0%, #003b4a 100%);
   color: #fff;
   backdrop-filter: blur(10px);
@@ -27,7 +27,6 @@
 }
 
 .header--scrolled {
-  height: 64px;
   background: rgba(5, 37, 51, 0.95);
 }
 
@@ -38,45 +37,42 @@
 .header__left {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding-left: 24px;
+  gap: clamp(16px, 2vw, 24px);
+  padding-left: clamp(16px, 2vw, 24px);
 }
 
 .header__logo {
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
+  height: clamp(40px, 7vh, 80px);
+  width: auto;
 }
 
 .header__logo:hover {
-  opacity: 0.8;
-}
-
-.header__logo-image {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-  object-position: center;
-  transition: transform 0.3s ease;
-  display: block;
-}
-
-.header__logo:hover .header__logo-image {
+  opacity: 0.9;
   transform: scale(1.05);
 }
 
+.header__logo-image {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
 .header__title {
-  font-size: 20px;
-  font-family: "Inter", sans-serif;
-  line-height: 1.2;
-  color: white;
+  font-family: "Domitian", serif;
+  font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+  font-weight: 600;
+  color: #fff;
   margin: 0;
+  white-space: nowrap;
 }
 
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 48px;
-  padding-right: 24px;
+  gap: clamp(1rem, 2vw, 2rem);
+  padding: 0 clamp(1rem, 2vw, 2rem);
 }
 
 .header__nav--expanded {
@@ -84,15 +80,14 @@
 }
 
 .header__nav-link {
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  font-size: 16px;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: 8px;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 9px;
   transition: all 0.2s ease;
-  position: relative;
 }
 
 .header__nav-link:hover {
@@ -147,8 +142,8 @@
   border-radius: 8px;
   transition: all 0.2s ease;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 1.1vw, 1rem);
 }
 
 .header__solutions-link:hover {
@@ -194,20 +189,16 @@
 }
 
 .header__contact-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 20px;
-  background: #00a2b0;
-  color: #fff;
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
+  background: linear-gradient(135deg, #00a2b0, #008791);
+  color: white;
   text-decoration: none;
+  font-family: "Inter", sans-serif;
+  padding: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 1.5vw, 1.5rem);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: clamp(0.875rem, 1.1vw, 1.125rem);
   transition: all 0.2s ease;
-  text-align: center;
-  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .header__contact-button:hover {
@@ -265,7 +256,7 @@
 
 @media (max-width: 1024px) {
   .header {
-    height: 72px;
+    height: clamp(56px, 7vh, 72px);
   }
 
   .header__left {
@@ -273,7 +264,7 @@
   }
 
   .header__title {
-    font-size: 18px;
+    font-size: clamp(1.125rem, 1.3vw, 1.5rem);
   }
 
   .header__logo-image {
@@ -290,8 +281,8 @@
     gap: 0.75rem;
   }
 
-  .header__contact-button {
-    padding: 8px 16px;
+  .header__nav-link {
+    font-size: clamp(0.875rem, 1.1vw, 1.125rem);
   }
 }
 
@@ -299,22 +290,23 @@
   .header {
     padding: 0;
     background: linear-gradient(90deg, #052533 0%, #003b4a 100%);
-    height: 64px;
+    height: clamp(48px, 6vh, 64px);
     position: fixed;
     max-width: 100%;
   }
 
   .header__left {
     padding-left: 16px;
+    gap: 12px;
   }
 
   .header__title {
-    font-size: 18px;
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
     color: #fff;
   }
 
   .header__logo-image {
-    height: 36px;
+    height: clamp(32px, 4vh, 40px);
     width: auto;
     object-fit: contain;
     margin: 0;
@@ -382,7 +374,7 @@
     width: 100%;
     padding: 16px 24px;
     color: #fff;
-    font-size: 16px;
+    font-size: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background: transparent;
     transition: all 0.2s ease;
@@ -436,7 +428,9 @@
     justify-content: center;
     align-items: center;
     color: rgba(255, 255, 255, 0.9);
-    font-size: 15px;
+    font-size: 0.875rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s ease;
@@ -458,7 +452,7 @@
   .header__contact-button {
     width: 100%;
     padding: 14px 24px;
-    font-size: 15px;
+    font-size: 0.875rem;
     font-weight: 500;
     margin: 0;
     text-align: center;
