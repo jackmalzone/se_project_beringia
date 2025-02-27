@@ -10,7 +10,7 @@
 
 .about__hero {
   background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
-  padding: 6rem 2rem 4rem;
+  padding: clamp(4rem, 10vh, 6rem) clamp(1rem, 5vw, 2rem) clamp(2rem, 5vh, 4rem);
   position: relative;
   overflow: hidden;
 }
@@ -41,7 +41,7 @@
 }
 
 .about__hero-content {
-  max-width: 1200px;
+  max-width: clamp(300px, 90vw, 1200px);
   margin: 0 auto;
   text-align: center;
   position: relative;
@@ -51,37 +51,67 @@
 .about__hero-title {
   font-family: "Domitian", serif;
   color: #214751;
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: clamp(2rem, 5vh, 3rem);
+  line-height: 1.2;
 }
 
 .about__hero-image-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.5rem, 2vh, 1rem);
   margin: 0 auto;
-  max-width: 400px;
+  max-width: clamp(300px, 50vw, 400px);
+  perspective: 1000px;
+  position: relative;
 }
 
 .about__hero-image-container {
-  width: 300px;
-  height: 225px;
+  width: clamp(250px, 40vw, 300px);
+  height: clamp(187.5px, 30vw, 225px);
   margin: 0 auto;
-  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.about__hero-image-container.flipped {
+  transform: rotateY(180deg);
+}
+
+.about__hero-image-front,
+.about__hero-image-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
   border-radius: 8px;
   border: 1px solid rgba(0, 162, 176, 0.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: #f0f4f8;
   padding: 12px;
+}
+
+.about__hero-image-front {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.about__hero-image-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
 .about__hero-image {
-  max-width: 300px;
-  max-height: 225px;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -91,18 +121,33 @@
 .about__hero-image-caption {
   font-family: "Courier New", monospace;
   color: #214751;
-  font-size: 0.875rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
   line-height: 1.4;
   text-align: center;
-  max-width: 300px;
   opacity: 0.8;
   font-style: italic;
 }
 
+.about__flip-hint {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #214751;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.about__hero-image-wrapper:hover .about__flip-hint {
+  opacity: 0.6;
+}
+
 .about__container {
-  max-width: 1200px;
+  max-width: clamp(300px, 90vw, 1200px);
   margin: 0 auto;
-  padding: 2rem;
+  padding: clamp(1.5rem, 5vw, 2rem);
   position: relative;
   z-index: 1;
 }
@@ -110,8 +155,8 @@
 .about__title {
   font-family: "Domitian", serif;
   color: #214751;
-  font-size: 2.5rem;
-  margin-bottom: 2.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: clamp(2rem, 5vh, 2.5rem);
   text-align: center;
   position: relative;
 }
@@ -128,11 +173,11 @@
 }
 
 .about__text {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   line-height: 1.6;
   color: #1b444e;
-  margin-bottom: 1.5rem;
-  max-width: 800px;
+  margin-bottom: clamp(1rem, 3vh, 1.5rem);
+  max-width: clamp(300px, 80vw, 800px);
   margin-left: auto;
   margin-right: auto;
 }
@@ -144,16 +189,16 @@
 .about__subtitle {
   font-family: "Domitian", serif;
   color: #214751;
-  font-size: 1.75rem;
-  margin: 2rem 0 1rem;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  margin: clamp(1.5rem, 4vh, 2rem) 0 clamp(0.75rem, 2vh, 1rem);
   text-align: center;
 }
 
 .about__social {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: clamp(1rem, 3vw, 2rem);
+  margin-top: clamp(2rem, 5vh, 3rem);
 }
 
 .about__social-link {
@@ -165,4 +210,13 @@
 
 .about__social-link:hover {
   color: #214751;
+}
+
+/* Remove the old ::after pseudo-element styles */
+.about__hero-image-container::after {
+  content: none;
+}
+
+.about__hero-image-container:hover::after {
+  opacity: 0;
 }

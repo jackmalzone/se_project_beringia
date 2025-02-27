@@ -1,8 +1,15 @@
 import penguinImage from '../../assets/beringia/penguin.jpeg';
 import './About.css';
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
+import { useState } from 'react';
 
 export const AboutContent = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
     <div className="about__content">
       <div className="about__hero">
@@ -10,19 +17,31 @@ export const AboutContent = () => {
         <div className="about__hero-content">
           <h1 className="about__hero-title">About Beringia Marine</h1>
           <div className="about__hero-image-wrapper">
-            <div className="about__hero-image-container">
-              <img src={penguinImage} alt="Chris Malzone with Emperor Penguin in Antarctica" className="about__hero-image" />
+            <div 
+              className={`about__hero-image-container ${isFlipped ? 'flipped' : ''}`}
+              onClick={handleFlip}
+            >
+              <div className="about__hero-image-front">
+                <img 
+                  src={penguinImage} 
+                  alt="Chris Malzone with Emperor Penguin in Antarctica" 
+                  className="about__hero-image" 
+                />
+              </div>
+              <div className="about__hero-image-back">
+                <p className="about__hero-image-caption">
+                  Chris Malzone, 1994. Emperor Penguin encounter captured on Konica Autoreflex A 
+                  with Polarizing Lens and Fuji Velvia film. Antarctica.
+                </p>
+              </div>
             </div>
-            <p className="about__hero-image-caption">
-              Chris Malzone, 1994. Emperor Penguin encounter captured on Konica Autoreflex A 
-              with Polarizing Lens and Fuji Velvia film. Antarctica.
-            </p>
+            <span className="about__flip-hint">Click to flip</span>
           </div>
         </div>
       </div>
       
       <div className="about__container">
-        <h2 className="about__title">About Beringia Marine</h2>
+        <h2 className="about__title">Bridging Solutions</h2>
         <p className="about__text">
           Beringia Marine was founded after three decades of experience in marine technology, spanning marine research, ocean engineering, field operations, business development, and executive-level leadership. Throughout this journey, we identified significant gaps in the market, particularly in the early stages of design and solution viability.
         </p>
