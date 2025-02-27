@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  height: clamp(64px, 9vh, 100px);
+  height: clamp(64px, 10vh, 100px);
   background: linear-gradient(90deg, #052533 0%, #003b4a 100%);
   color: #fff;
   backdrop-filter: blur(10px);
@@ -44,7 +44,7 @@
 .header__logo {
   cursor: pointer;
   transition: all 0.2s ease;
-  height: clamp(40px, 7vh, 80px);
+  height: clamp(40px, 5vh, 70px);
   width: auto;
 }
 
@@ -267,10 +267,8 @@
     font-size: clamp(1.125rem, 1.3vw, 1.5rem);
   }
 
-  .header__logo-image {
-    height: 42px;
-    width: auto;
-    object-fit: contain;
+  .header__logo {
+    height: clamp(32px, 5vh, 60px);
   }
 
   .header__nav {
@@ -290,7 +288,6 @@
   .header {
     padding: 0;
     background: linear-gradient(90deg, #052533 0%, #003b4a 100%);
-    height: clamp(48px, 6vh, 64px);
     position: fixed;
     max-width: 100%;
   }
@@ -303,13 +300,6 @@
   .header__title {
     font-size: clamp(1rem, 1.2vw, 1.25rem);
     color: #fff;
-  }
-
-  .header__logo-image {
-    height: clamp(32px, 4vh, 40px);
-    width: auto;
-    object-fit: contain;
-    margin: 0;
   }
 
   .header__mobile-menu-button {
