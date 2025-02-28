@@ -25,6 +25,25 @@ const Header: FC<HeaderProps> = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const solutionsRef = useRef<HTMLDivElement>(null)
   const closeTimeoutRef = useRef<number>()
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  // Track window width for responsive behavior
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+      if (window.innerWidth > 1024) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  // Determine if we should show mobile menu based on window width
+  const shouldShowMobileMenu = windowWidth <= 1024
 
   // Update header visibility based on scroll
   useEffect(() => {
@@ -95,7 +114,7 @@ const Header: FC<HeaderProps> = () => {
   }
 
   const handleSolutionsMouseEnter = () => {
-    if (!isMobile) {
+    if (!shouldShowMobileMenu) {
       if (closeTimeoutRef.current) {
         window.clearTimeout(closeTimeoutRef.current)
       }
@@ -104,13 +123,10 @@ const Header: FC<HeaderProps> = () => {
   }
 
   const handleSolutionsMouseLeave = () => {
-    if (!isMobile) {
-      if (closeTimeoutRef.current) {
-        window.clearTimeout(closeTimeoutRef.current)
-      }
+    if (!shouldShowMobileMenu) {
       closeTimeoutRef.current = window.setTimeout(() => {
         setShowSolutions(false)
-      }, 300) // 300ms delay before closing
+      }, 300)
     }
   }
 
@@ -130,7 +146,7 @@ const Header: FC<HeaderProps> = () => {
     'header',
     isLoading ? 'header--loading' : '',
     !isHeaderVisible ? 'header--hidden' : '',
-    isScrolled ? 'header--scrolled' : ''
+    isScrolled ? 'header--scrolled' : '',
   ].filter(Boolean).join(' ')
 
   if (isLoading) {
@@ -142,7 +158,9 @@ const Header: FC<HeaderProps> = () => {
   }
 
   return (
-    <header className={headerClasses} role="banner">
+    <header 
+      className={`header ${isScrolled ? 'header--scrolled' : ''} ${!isHeaderVisible ? 'header--hidden' : ''}`}
+    >
       <div className="header__left">
         <Link to={ROUTES.HOME} className="header__logo" aria-label="Home" onClick={handleNavClick}>
           <img 
@@ -156,87 +174,146 @@ const Header: FC<HeaderProps> = () => {
         </h1>
       </div>
 
-      {isMobile && (
+      {shouldShowMobileMenu ? (
         <button 
-          className="header__mobile-menu-button"
+          className="header__mobile-menu-button" 
           onClick={toggleMobileMenu}
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? '✕' : '☰'}
         </button>
-      )}
+      ) : (
+        <>
+          <nav className="header__nav">
+            <div className="header__nav-content">
+              <Link 
+                to={ROUTES.HOME} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                Home
+              </Link>
+              
+              <div 
+                ref={solutionsRef}
+                className={`header__nav-dropdown ${showSolutions ? 'header__nav-dropdown--expanded' : ''}`}
+                onClick={handleSolutionsClick}
+                onMouseEnter={handleSolutionsMouseEnter}
+                onMouseLeave={handleSolutionsMouseLeave}
+              >
+                <div className="header__nav-link header__nav-link--solutions">Solutions</div>
+                <div className="header__solutions-menu">
+                  {Object.values(clients).map(client => (
+                    <Link
+                      key={client.slug}
+                      to={ROUTES.CLIENT(client.slug)}
+                      className="header__solutions-link"
+                      onClick={handleNavClick}
+                    >
+                      {client.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
-      <div 
-        className={`header__nav-overlay ${isMobileMenuOpen ? 'header__nav-overlay--visible' : ''}`}
-        onClick={toggleMobileMenu}
-      />
+              <Link 
+                to={ROUTES.ABOUT} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                About
+              </Link>
 
-      <nav 
-        className={`header__nav ${isMobileMenuOpen ? 'header__nav--expanded' : ''}`} 
-        role="navigation"
-      >
-        <div className="header__nav-content">
-          <Link 
-            to={ROUTES.HOME} 
-            className="header__nav-link"
-            onClick={handleNavClick}
-          >
-            Home
-          </Link>
-          
-          <div 
-            ref={solutionsRef}
-            className={`header__nav-dropdown ${showSolutions ? 'header__nav-dropdown--expanded' : ''}`}
-            onClick={handleSolutionsClick}
-            onMouseEnter={handleSolutionsMouseEnter}
-            onMouseLeave={handleSolutionsMouseLeave}
-          >
-            <div className="header__nav-link header__nav-link--solutions">Solutions</div>
-            <div className="header__solutions-menu">
-              {Object.values(clients).map(client => (
-                <Link
-                  key={client.slug}
-                  to={ROUTES.CLIENT(client.slug)}
-                  className="header__solutions-link"
-                  onClick={handleNavClick}
-                >
-                  {client.name}
-                </Link>
-              ))}
+              <Link 
+                to={ROUTES.CONTACT} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                Contact
+              </Link>
+
+              <Link 
+                to={ROUTES.TERMS} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                Terms
+              </Link>
             </div>
+          </nav>
+          <div className="header__end">
+            <Link to={ROUTES.CONTACT} className="header__contact-button" onClick={handleNavClick}>
+              Get in Touch
+            </Link>
           </div>
+        </>
+      )}
+      
+      {shouldShowMobileMenu && (
+        <>
+          <div 
+            className={`header__nav-overlay ${isMobileMenuOpen ? 'header__nav-overlay--visible' : ''}`} 
+            onClick={toggleMobileMenu}
+          />
+          <nav className={`header__nav ${isMobileMenuOpen ? 'header__nav--expanded' : ''}`}>
+            <div className="header__nav-content">
+              <Link 
+                to={ROUTES.HOME} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                Home
+              </Link>
+              
+              <div 
+                ref={solutionsRef}
+                className={`header__nav-dropdown ${showSolutions ? 'header__nav-dropdown--expanded' : ''}`}
+                onClick={handleSolutionsClick}
+                onMouseEnter={handleSolutionsMouseEnter}
+                onMouseLeave={handleSolutionsMouseLeave}
+              >
+                <div className="header__nav-link header__nav-link--solutions">Solutions</div>
+                <div className="header__solutions-menu">
+                  {Object.values(clients).map(client => (
+                    <Link
+                      key={client.slug}
+                      to={ROUTES.CLIENT(client.slug)}
+                      className="header__solutions-link"
+                      onClick={handleNavClick}
+                    >
+                      {client.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
-          <Link 
-            to={ROUTES.ABOUT} 
-            className="header__nav-link"
-            onClick={handleNavClick}
-          >
-            About
-          </Link>
+              <Link 
+                to={ROUTES.ABOUT} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                About
+              </Link>
 
-          <Link 
-            to={ROUTES.CONTACT} 
-            className="header__nav-link"
-            onClick={handleNavClick}
-          >
-            Contact
-          </Link>
+              <Link 
+                to={ROUTES.CONTACT} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                Contact
+              </Link>
 
-          <Link 
-            to={ROUTES.TERMS} 
-            className="header__nav-link"
-            onClick={handleNavClick}
-          >
-            Terms
-          </Link>
-        </div>
-
-        <div className="header__end">
-          <Link to={ROUTES.CONTACT} className="header__contact-button" onClick={handleNavClick}>
-            Get in Touch
-          </Link>
-        </div>
-      </nav>
+              <Link 
+                to={ROUTES.TERMS} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                Terms
+              </Link>
+            </div>
+          </nav>
+        </>
+      )}
     </header>
   )
 }

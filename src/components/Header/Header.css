@@ -37,7 +37,7 @@
 .header__left {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 2vw, 24px);
+  gap: clamp(24px, 3vw, 36px);
   padding-left: clamp(16px, 2vw, 24px);
 }
 
@@ -66,6 +66,7 @@
   color: #fff;
   margin: 0;
   white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .header__nav {
@@ -260,43 +261,26 @@
   }
 
   .header__left {
-    padding-left: 20px;
+    padding-left: 1.5rem;
+    gap: clamp(28px, 3.5vw, 40px);
   }
 
   .header__title {
-    font-size: clamp(1.125rem, 1.3vw, 1.5rem);
+    font-size: clamp(2rem, 2.5vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
   }
 
   .header__logo {
-    height: clamp(32px, 5vh, 60px);
-  }
-
-  .header__nav {
-    gap: 24px;
+    height: clamp(40px, 6vh, 60px);
   }
 
   .header__nav-content {
-    gap: 0.75rem;
+    display: none;
   }
 
-  .header__nav-link {
-    font-size: clamp(0.875rem, 1.1vw, 1.125rem);
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    height: clamp(80px, 10vh, 100px);
-  }
-
-  .header__left {
-    padding-left: 16px;
-    gap: 12px;
-  }
-
-  .header__title {
-    font-size: clamp(1rem, 1.2vw, 1.25rem);
-    color: #fff;
+  .header__end {
+    display: none;
   }
 
   .header__mobile-menu-button {
@@ -305,7 +289,7 @@
     justify-content: center;
     width: 48px;
     height: 64px;
-    margin: 0;
+    margin-right: 1rem;
     padding: 0;
     color: #fff;
     font-size: 24px;
@@ -347,49 +331,69 @@
     transition: transform 0.3s ease, visibility 0s linear;
   }
 
-  .header__nav-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-  }
-
   .header__nav-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    padding: 16px 24px;
-    color: #fff;
-    font-size: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: transparent;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    text-align: center;
-  }
-
-  .header__nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #00a2b0;
-  }
-
-  .header__nav-dropdown {
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .header__nav-link--solutions {
-    position: relative;
-    width: 100%;
+    margin: 0 auto;
     padding: 16px 48px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+    background: transparent;
+  }
+
+  .header__nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+
+  .header__nav-dropdown {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+    background: transparent;
+  }
+
+  .header__nav-dropdown-button {
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 48px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: transparent;
+    border: none;
+  }
+
+  .header__nav-dropdown-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
   }
 
   .header__solutions-menu {
@@ -452,6 +456,22 @@
 
   .header__contact-button:hover {
     background: #007a85;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: clamp(80px, 10vh, 100px);
+  }
+
+  .header__left {
+    padding-left: 1rem;
+    gap: clamp(24px, 3vw, 32px);
+  }
+
+  .header__title {
+    font-size: clamp(2rem, 2.5vw, 2.25rem);
+    letter-spacing: 0.03em;
   }
 }
 

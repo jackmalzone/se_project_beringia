@@ -66,12 +66,15 @@ const Client = () => {
 
   return (
     <div className="client">
-      <SEOHead {...clientData.seo} />
+      <SEOHead {...clientData.seo}>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </SEOHead>
       <div className={navContainerClasses}>
         <ErrorBoundary>
           {!isLoading && (
             <ClientNav 
               clientSlug={clientData.slug} 
+              sectionRefs={sectionRefs}
             />
           )}
         </ErrorBoundary>

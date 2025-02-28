@@ -2,7 +2,9 @@
   padding: 4rem 2rem;
   background: radial-gradient(circle at top right, #004d61 0%, #052533 100%);
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .value-proposition::before {
@@ -42,8 +44,10 @@
 
 .value-proposition__container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
+  box-sizing: border-box;
 }
 
 .value-proposition__title {
@@ -167,9 +171,57 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .value-proposition {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 3.5rem 1.5rem;
+  }
+
+  .value-proposition__container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  .value-proposition__highlights {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .value-proposition__highlight {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .value-proposition__title {
+    font-size: 2.25rem;
+  }
+
+  .value-proposition__description {
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .value-proposition {
-    padding: 3rem 1.5rem;
+    padding: 3rem 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .value-proposition__container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .value-proposition__title {

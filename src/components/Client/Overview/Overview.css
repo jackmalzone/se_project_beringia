@@ -1,13 +1,18 @@
 .overview {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding-bottom: 0;
 }
 
 .overview__header {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   min-height: 500px;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   position: relative;
   display: flex;
   align-items: center;
@@ -15,6 +20,47 @@
   padding: 6rem 2rem;
   margin: 0;
   box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .overview__header {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 1024px) {
+  .overview {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .overview__header {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 5rem 1.5rem;
+  }
+
+  .overview__wrapper {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .overview__content {
+    width: 100%;
+    max-width: 90%;
+    box-sizing: border-box;
+  }
+
+  .overview__title {
+    font-size: 2.5rem;
+  }
+
+  .overview__description {
+    font-size: 1.2rem;
+  }
 }
 
 .overview__header::before {
@@ -33,7 +79,9 @@
 
 .overview__content {
   max-width: 800px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
   position: relative;
   z-index: 1;
   text-align: center;
@@ -58,5 +106,34 @@
 
 .overview__wrapper {
   width: 100%;
-  overflow-x: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .overview {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .overview__header {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 4rem 1rem;
+  }
+
+  .overview__wrapper {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .overview__content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
 }

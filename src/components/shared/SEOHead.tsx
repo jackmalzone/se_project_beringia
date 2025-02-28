@@ -1,12 +1,14 @@
 import { Helmet } from 'react-helmet-async'
+import { ReactNode } from 'react'
 
 interface SEOHeadProps {
   title: string
   description: string
   image?: string
+  children?: ReactNode
 }
 
-export const SEOHead = ({ title, description, image }: SEOHeadProps) => {
+export const SEOHead = ({ title, description, image, children }: SEOHeadProps) => {
   return (
     <Helmet>
       <title>{title}</title>
@@ -22,6 +24,8 @@ export const SEOHead = ({ title, description, image }: SEOHeadProps) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {image && <meta name="twitter:image" content={image} />}
+      
+      {children}
     </Helmet>
   )
 }

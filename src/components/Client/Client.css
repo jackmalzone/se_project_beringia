@@ -7,6 +7,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #052533;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .client__nav-container {
@@ -14,6 +17,9 @@
   grid-row: 1;
   background: rgba(5, 37, 51, 0.98);
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .client__nav-container--loading::before {
@@ -33,36 +39,80 @@
   grid-row: 2;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .client__section {
   position: relative;
-  /* Optimize rendering */
-  contain: content;
-  /* Prevent layout shifts */
   min-height: 100px;
-  /* Reduce repaints */
-  will-change: transform;
-  /* Isolate rendering */
-  isolation: isolate;
   /* Improve performance */
   z-index: 1;
   /* Reduce gaps between sections */
   margin: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .client__section {
+    /* Optimize rendering for desktop only */
+    contain: content;
+    /* Reduce repaints */
+    will-change: transform;
+    /* Isolate rendering */
+    isolation: isolate;
+  }
 }
 
 @media (max-width: 1024px) {
+  .client {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .client__nav-container {
     height: calc(clamp(80px, 10vh, 100px) * 2);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .client__nav-container--loading::before {
     top: clamp(80px, 10vh, 100px);
     height: clamp(80px, 10vh, 100px);
   }
+
+  .client__content {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .client__section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+  }
 }
 
 @media (max-width: 768px) {
+  .client {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .client__nav-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .client__nav-container {
     height: calc(clamp(80px, 10vh, 100px) * 2);
   }
