@@ -10,7 +10,7 @@
 }
 
 .client__nav-container {
-  height: 144px;
+  height: calc(clamp(80px, 10vh, 100px) * 2);
   grid-row: 1;
   background: rgba(5, 37, 51, 0.98);
   position: relative;
@@ -19,10 +19,10 @@
 .client__nav-container--loading::before {
   content: "";
   position: absolute;
-  top: 80px;
+  top: clamp(80px, 10vh, 100px);
   left: 0;
   right: 0;
-  height: 64px;
+  height: clamp(80px, 10vh, 100px);
   background: rgba(5, 37, 51, 0.98);
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -53,22 +53,22 @@
 
 @media (max-width: 1024px) {
   .client__nav-container {
-    height: 128px;
+    height: calc(clamp(80px, 10vh, 100px) * 2);
   }
 
   .client__nav-container--loading::before {
-    height: 56px;
-    top: 72px;
+    top: clamp(80px, 10vh, 100px);
+    height: clamp(80px, 10vh, 100px);
   }
 }
 
 @media (max-width: 768px) {
   .client__nav-container {
-    height: 112px;
+    height: calc(clamp(80px, 10vh, 100px) * 2);
   }
 
   .client__nav-container--loading::before {
-    height: 48px;
-    top: 64px;
+    top: clamp(80px, 10vh, 100px);
+    height: clamp(80px, 10vh, 100px);
   }
 }

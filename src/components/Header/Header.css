@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  height: clamp(64px, 10vh, 100px);
+  height: clamp(80px, 10vh, 100px);
   background: linear-gradient(90deg, #052533 0%, #003b4a 100%);
   color: #fff;
   backdrop-filter: blur(10px);
@@ -256,7 +256,7 @@
 
 @media (max-width: 1024px) {
   .header {
-    height: clamp(56px, 7vh, 72px);
+    height: clamp(80px, 10vh, 100px);
   }
 
   .header__left {
@@ -286,10 +286,7 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 0;
-    background: linear-gradient(90deg, #052533 0%, #003b4a 100%);
-    position: fixed;
-    max-width: 100%;
+    height: clamp(80px, 10vh, 100px);
   }
 
   .header__left {
