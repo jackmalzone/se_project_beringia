@@ -15,8 +15,8 @@ interface SectionRefs {
 }
 
 export const useScrollToSection = (
-  refs: SectionRefs,
-  config: ScrollConfig = {}
+  refs: { [key: string]: React.RefObject<HTMLElement> },
+  options: ScrollConfig = {}
 ) => {
   const location = useLocation()
   const { isMobile, isTablet } = useViewport()
@@ -32,39 +32,21 @@ export const useScrollToSection = (
     navOffset = navHeight, // Always include nav offset
     behavior = 'smooth',
     onScrollComplete
-  } = config
+  } = options
 
   useEffect(() => {
-    // Skip initial mount
-    if (isInitialMount.current) {
-      isInitialMount.current = false
-      return
+    const path = location.pathname
+    const section = refs[path]?.current
+
+    if (section) {
+      const top = section.offsetTop - headerOffset - navOffset
+      window.scrollTo({
+        top,
+        behavior
+      })
+      onScrollComplete?.()
     }
-
-    // Only scroll when location changes and target exists
-    const targetRef = refs[location.pathname]
-    if (!targetRef?.current) return
-
-    const totalOffset = headerOffset + navOffset
-    const elementPosition = targetRef.current.getBoundingClientRect().top
-    const offsetPosition = elementPosition + window.pageYOffset - totalOffset
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior
-    })
-
-    if (onScrollComplete) {
-      const checkScrollComplete = () => {
-        if (Math.abs(window.pageYOffset - offsetPosition) < 2) {
-          onScrollComplete()
-        } else {
-          requestAnimationFrame(checkScrollComplete)
-        }
-      }
-      requestAnimationFrame(checkScrollComplete)
-    }
-  }, [location.key]) // Only trigger on navigation actions
+  }, [location.pathname, refs, behavior, headerOffset, navOffset, onScrollComplete])
 
   return null
 } 

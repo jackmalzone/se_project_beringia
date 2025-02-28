@@ -1,6 +1,6 @@
 interface SketchfabClientOptions {
   modelId: string;
-  success?: (api: any) => void;
+  success?: (api: SketchfabAPI) => void;
   error?: (error: Error) => void;
   autostart?: boolean;
   annotations_visible?: boolean;
@@ -13,8 +13,37 @@ interface SketchfabClientOptions {
   ui_theme?: 'dark' | 'light';
 }
 
+interface SketchfabAPI {
+  start: () => void;
+  stop: () => void;
+  addEventListener: (event: string, callback: (response: unknown) => void) => void;
+  removeEventListener: (event: string, callback: (response: unknown) => void) => void;
+  getCameraLookAt: (callback: (err: Error | null, camera: CameraPosition) => void) => void;
+  setCameraLookAt: (position: number[], target: number[], duration?: number) => void;
+  getAnnotationList: (callback: (err: Error | null, annotations: AnnotationData[]) => void) => void;
+  showAnnotations: () => void;
+  hideAnnotations: () => void;
+  setBackground: (color: [number, number, number]) => void;
+  setMaterialColor: (materialId: number, color: [number, number, number]) => void;
+  highlightMaterial: (materialId: number, enabled: boolean) => void;
+  setFov: (fov: number) => void;
+  getFov: (callback: (err: Error | null, fov: number) => void) => void;
+}
+
+interface CameraPosition {
+  position: [number, number, number];
+  target: [number, number, number];
+}
+
+interface AnnotationData {
+  id: string;
+  title: string;
+  content: string;
+  position: [number, number, number];
+}
+
 export class SketchfabClient {
-  private client: any;
+  private client: SketchfabAPI | null = null;
   private iframe: HTMLIFrameElement;
 
   // Add static utility for model IDs
@@ -64,7 +93,7 @@ export class SketchfabClient {
     const client = new window.Sketchfab(this.iframe);
     
     client.init(options.modelId, {
-      success: (api: any) => {
+      success: (api: SketchfabAPI) => {
         this.client = api;
         api.start();
         api.addEventListener('viewerready', () => {
@@ -172,11 +201,11 @@ export class SketchfabClient {
   }
 
   // Event Listeners
-  public addEventListener(event: string, callback: (response: any) => void) {
-    if (this.client) this.client.addEventListener(event, callback);
+  public addEventListener(event: string, callback: (response: unknown) => void) {
+    this.client?.addEventListener(event, callback);
   }
 
-  public removeEventListener(event: string, callback: (response: any) => void) {
-    if (this.client) this.client.removeEventListener(event, callback);
+  public removeEventListener(event: string, callback: (response: unknown) => void) {
+    this.client?.removeEventListener(event, callback);
   }
 } 

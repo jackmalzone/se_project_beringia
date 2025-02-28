@@ -1,6 +1,5 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { ModalProvider } from '../../contexts/ModalContext'
-import { ThemeProvider } from '../../contexts/ThemeContext'
 import { LoadingProvider } from '../../contexts/LoadingContext'
 import { NavigationProvider } from '../../contexts/NavigationContext'
 import { ViewportProvider } from '../../contexts/ViewportContext'
@@ -65,64 +64,62 @@ function App() {
   return (
     <HelmetProvider>
       <ConfigContext.Provider value={config}>
-        <ThemeProvider>
-          <LoadingProvider>
-            <ViewportProvider>
-              <Router>
-                <NavigationProvider>
-                  <ScrollProvider threshold={50}>
-                    <ModalProvider>
-                      <ErrorBoundary onError={handleError}>
-                        <div className="app">
-                          <ErrorBoundary
-                            fallback={<HeaderErrorFallback />}
-                            onError={handleError}
-                          >
-                            <Header />
-                          </ErrorBoundary>
+        <LoadingProvider>
+          <ViewportProvider>
+            <Router>
+              <NavigationProvider>
+                <ScrollProvider threshold={50}>
+                  <ModalProvider>
+                    <ErrorBoundary onError={handleError}>
+                      <div className="app">
+                        <ErrorBoundary
+                          fallback={<HeaderErrorFallback />}
+                          onError={handleError}
+                        >
+                          <Header />
+                        </ErrorBoundary>
 
-                          <ErrorBoundary>
-                            <Routes>
-                              <Route path="/terms" element={
-                                <ErrorBoundary>
-                                  <Terms />
-                                </ErrorBoundary>
-                              } />
-                              <Route path="/about" element={
-                                <ErrorBoundary>
-                                  <About />
-                                </ErrorBoundary>
-                              } />
-                              <Route path={`${ROUTES.CLIENTS}/:clientSlug/*`} element={
-                                <ErrorBoundary>
-                                  <Client />
-                                </ErrorBoundary>
-                              } />
-                              <Route path="*" element={
-                                <ErrorBoundary>
-                                  <Main />
-                                </ErrorBoundary>
-                              } />
-                            </Routes>
-                          </ErrorBoundary>
+                        <ErrorBoundary>
+                          <Routes>
+                            <Route path="/terms" element={
+                              <ErrorBoundary>
+                                <Terms />
+                              </ErrorBoundary>
+                            } />
+                            <Route path="/about" element={
+                              <ErrorBoundary>
+                                <About />
+                              </ErrorBoundary>
+                            } />
+                            <Route path={`${ROUTES.CLIENTS}/:clientSlug/*`} element={
+                              <ErrorBoundary>
+                                <Client />
+                              </ErrorBoundary>
+                            } />
+                            <Route path="*" element={
+                              <ErrorBoundary>
+                                <Main />
+                              </ErrorBoundary>
+                            } />
+                          </Routes>
+                        </ErrorBoundary>
 
-                          <ErrorBoundary
-                            fallback={<FooterErrorFallback />}
-                            onError={handleError}
-                          >
-                            <Footer />
-                          </ErrorBoundary>
+                        <ErrorBoundary
+                          fallback={<FooterErrorFallback />}
+                          onError={handleError}
+                        >
+                          <Footer />
+                        </ErrorBoundary>
 
-                          <Modal />
-                        </div>
-                      </ErrorBoundary>
-                    </ModalProvider>
-                  </ScrollProvider>
-                </NavigationProvider>
-              </Router>
-            </ViewportProvider>
-          </LoadingProvider>
-        </ThemeProvider>
+                        <Modal />
+                      </div>
+                    </ErrorBoundary>
+                  </ModalProvider>
+                </ScrollProvider>
+              </NavigationProvider>
+            </Router>
+          </ViewportProvider>
+        </LoadingProvider>
       </ConfigContext.Provider>
     </HelmetProvider>
   )

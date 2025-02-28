@@ -21,8 +21,8 @@ const VideoThumbnail = () => (
 );
 
 export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const gridRef = useRef<HTMLDivElement>(null);
 
   const updateScrollProgress = useCallback(() => {
@@ -53,30 +53,35 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   }, [updateScrollProgress]);
 
   const handleItemClick = (index: number) => {
-    setSelectedIndex(index);
-    setIsModalVisible(true);
+    setCurrentIndex(index);
+    setIsModalOpen(true);
   };
 
   const handleClose = () => {
-    setIsModalVisible(false);
-    setTimeout(() => setSelectedIndex(null), 300); // Wait for animation to complete
+    setIsModalOpen(false);
   };
 
   const handlePrevious = () => {
-    setSelectedIndex((prev: number | null) => {
-      if (prev === null) return null;
-      return prev === 0 ? items.length - 1 : prev - 1;
+    setCurrentIndex((prevIndex) => {
+      if (prevIndex === 0) {
+        return items.length - 1;
+      }
+      return prevIndex - 1;
     });
   };
 
   const handleNext = () => {
-    setSelectedIndex((prev: number | null) => {
-      if (prev === null) return null;
-      return prev === items.length - 1 ? 0 : prev + 1;
+    setCurrentIndex((prevIndex) => {
+      if (prevIndex === items.length - 1) {
+        return 0;
+      }
+      return prevIndex + 1;
     });
   };
 
-  const handleKeyDown = useCallback((event: KeyboardEvent) => {
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    if (!isModalOpen) return;
+
     switch (event.key) {
       case 'ArrowLeft':
         handlePrevious();
@@ -87,23 +92,25 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
       case 'Escape':
         handleClose();
         break;
+      default:
+        break;
     }
-  }, []);
+  }, [isModalOpen, handleNext, handlePrevious, handleClose]);
 
   useEffect(() => {
-    if (isModalVisible) {
-      document.addEventListener('keydown', handleKeyDown);
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleKeyPress);
       document.body.style.overflow = 'hidden';
     } else {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', handleKeyPress);
       document.body.style.overflow = '';
     }
 
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', handleKeyPress);
       document.body.style.overflow = '';
     };
-  }, [isModalVisible, handleKeyDown]);
+  }, [isModalOpen, handleKeyPress]);
 
   return (
     <section className="media-gallery">
@@ -131,21 +138,21 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
         </div>
       </div>
 
-      {selectedIndex !== null && (
+      {currentIndex !== null && (
         <div 
-          className={`media-gallery__modal ${isModalVisible ? 'media-gallery__modal--visible' : ''}`}
+          className={`media-gallery__modal ${isModalOpen ? 'media-gallery__modal--visible' : ''}`}
           onClick={handleClose}
         >
           <div className="media-gallery__content" onClick={e => e.stopPropagation()}>
-            {items[selectedIndex].type === 'image' ? (
+            {items[currentIndex].type === 'image' ? (
               <img
-                src={items[selectedIndex].url}
-                alt={items[selectedIndex].alt}
+                src={items[currentIndex].url}
+                alt={items[currentIndex].alt}
                 className="media-gallery__media"
               />
-            ) : items[selectedIndex].type === 'video' ? (
+            ) : items[currentIndex].type === 'video' ? (
               <video
-                src={items[selectedIndex].url}
+                src={items[currentIndex].url}
                 controls
                 autoPlay
                 className="media-gallery__media"

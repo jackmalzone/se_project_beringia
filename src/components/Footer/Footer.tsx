@@ -2,19 +2,16 @@ import { Link } from 'react-router-dom'
 import { ROUTES } from '../../utils/constants'
 import { clients } from '../../data'
 import { SeascapeDivider } from '../SeascapeDivider/SeascapeDivider'
-import { useTheme } from '../../contexts/ThemeContext'
 import { useViewport } from '../../contexts/ViewportContext'
 import { useScroll } from '../../hooks/useScroll'
 import './Footer.css'
 
 const Footer = () => {
-  const { theme, toggleTheme } = useTheme()
   const { isMobile } = useViewport()
   const { isScrolled } = useScroll(300)
 
   const footerClasses = [
     'footer',
-    theme === 'dark' ? 'footer--dark' : '',
     isScrolled ? 'footer--visible' : ''
   ].filter(Boolean).join(' ')
 
@@ -86,13 +83,6 @@ const Footer = () => {
           </p>
         </div>
         <div className="footer__actions">
-          <button 
-            className="footer__theme-toggle" 
-            onClick={toggleTheme}
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          >
-            {theme === 'light' ? '🌙' : '☀️'}
-          </button>
           {!isMobile && (
             <button 
               className="footer__scroll-top" 
@@ -104,7 +94,7 @@ const Footer = () => {
           )}
         </div>
       </div>
-      <SeascapeDivider height={100} opacity={theme === 'dark' ? 0.1 : 0.15} />
+      <SeascapeDivider height={100} opacity={0.15} />
     </footer>
   )
 }

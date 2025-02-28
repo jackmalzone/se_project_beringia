@@ -34,36 +34,34 @@ interface LoadingProps {
 }
 
 export const Loading = ({ onLoadingComplete }: LoadingProps) => {
-  const [isFading, setIsFading] = useState(false)
-  const [currentPhrase, setCurrentPhrase] = useState(loadingPhrases[0])
+  const [progress, setProgress] = useState(0)
+  const [isComplete, setIsComplete] = useState(false)
 
   useEffect(() => {
-    // Cycle through random phrases
-    const phraseInterval = setInterval(() => {
-      setCurrentPhrase(prevPhrase => getRandomPhrase(prevPhrase))
-    }, 1500)
+    const timer = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(timer)
+          setIsComplete(true)
+          onLoadingComplete?.()
+          return 100
+        }
+        return Math.min(prev + 1, 100)
+      })
+    }, 30)
 
-    // Start fade out slightly before the parent component removes the loading screen
-    const fadeTimer = setTimeout(() => {
-      setIsFading(true)
-      onLoadingComplete?.()
-    }, 2500)
-
-    return () => {
-      clearInterval(phraseInterval)
-      clearTimeout(fadeTimer)
-    }
-  }, [])
+    return () => clearInterval(timer)
+  }, [onLoadingComplete])
 
   return (
-    <div className={`loading-container ${isFading ? 'loading-container-fade-out' : ''}`}>
+    <div className={`loading-container ${isComplete ? 'loading-container-fade-out' : ''}`}>
       <div className="logo-container">
         <img src={beringiaLogo} alt="Beringia Logo" className="logo" />
         <div className="pulse-ring"></div>
       </div>
       <div className="phrases">
-        <span className="phrase" key={currentPhrase}>
-          {currentPhrase}
+        <span className="phrase" key={loadingPhrases[progress]}>
+          {loadingPhrases[progress]}
         </span>
       </div>
     </div>
