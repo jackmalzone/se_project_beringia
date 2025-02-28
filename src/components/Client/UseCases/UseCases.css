@@ -55,6 +55,7 @@
   color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
   line-height: 1.6;
+  font-family: "Inter", sans-serif;
 }
 
 .use-cases__grid {
@@ -97,12 +98,16 @@
   font-size: 1.1rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
 }
 
 .use-cases__card-points {
   list-style: none;
   padding: 0;
   margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
 }
 
 .use-cases__card-point {
