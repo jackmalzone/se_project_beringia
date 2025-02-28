@@ -333,3 +333,38 @@
     right: 10px;
   }
 }
+
+/* Add specific styles for smaller mobile devices like iPhone 14 Pro Max */
+@media (max-width: 430px) {
+  .media-gallery {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 1.5rem 0;
+  }
+
+  .media-gallery__container {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+  }
+
+  .media-gallery__grid {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 0.5rem 0;
+    gap: 0.75rem;
+  }
+
+  .media-gallery__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .media-gallery__item {
+    flex: 0 0 180px;
+    height: 140px;
+  }
+}

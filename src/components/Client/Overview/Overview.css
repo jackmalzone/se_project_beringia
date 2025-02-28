@@ -137,3 +137,40 @@
     box-sizing: border-box;
   }
 }
+
+/* Add specific styles for smaller mobile devices like iPhone 14 Pro Max */
+@media (max-width: 430px) {
+  .overview {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .overview__header {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 3rem 0.75rem;
+  }
+
+  .overview__wrapper {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .overview__content {
+    width: 100%;
+    max-width: 100vw;
+    padding: 0 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .overview__title {
+    font-size: 2rem;
+  }
+
+  .overview__description {
+    font-size: 1rem;
+  }
+}

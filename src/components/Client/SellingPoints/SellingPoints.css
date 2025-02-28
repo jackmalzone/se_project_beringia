@@ -185,6 +185,48 @@
   }
 }
 
+/* Add specific styles for smaller mobile devices like iPhone 14 Pro Max */
+@media (max-width: 430px) {
+  .selling-points {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .selling-points__container {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .selling-points__grid {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+  }
+
+  .selling-points__item {
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 1.25rem 0.75rem;
+  }
+
+  .selling-points__title {
+    font-size: 1.75rem;
+  }
+
+  .selling-points__item-title {
+    font-size: 1.25rem;
+  }
+
+  .selling-points__text {
+    font-size: 0.95rem;
+  }
+}
+
 .selling-points__list-item {
   font-family: "Inter", sans-serif;
   position: relative;
