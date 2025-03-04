@@ -250,7 +250,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Authors
 
-- **Jack Malzone** - _Initial work_
+- **Jack Malzone** - _Initial work_ - [LinkedIn](https://www.linkedin.com/in/jack-malzone/)
 
 ## Acknowledgments
 
