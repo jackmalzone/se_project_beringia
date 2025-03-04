@@ -1,19 +1,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
-  base: '/se_project_beringia/',
   plugins: [react()],
-  server: {
-    open: true
-  },
   build: {
-    assetsDir: 'assets',
+    sourcemap: true,
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['react-icons', 'react-helmet', 'react-helmet-async']
+        }
       }
     }
+  },
+  server: {
+    port: 3000,
+    strictPort: true
   }
 })
