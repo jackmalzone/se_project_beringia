@@ -146,9 +146,14 @@ export class SketchfabClient {
     if (this.client) this.client.hideAnnotations();
   }
 
-  public getAnnotations(): Promise<any[]> {
-    return new Promise((resolve) => {
-      if (this.client) this.client.getAnnotationList(resolve);
+  public getAnnotations(): Promise<AnnotationData[]> {
+    return new Promise((resolve, reject) => {
+      if (this.client) {
+        this.client.getAnnotationList((err: Error | null, annotations: AnnotationData[]) => {
+          if (err) reject(err);
+          else resolve(annotations);
+        });
+      }
     });
   }
 

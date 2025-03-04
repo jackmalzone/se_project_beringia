@@ -5,7 +5,7 @@ const ContactInfo = () => (
   <div className="contact__info">
     <h2 className="contact__title">Contact Us</h2>
     <p className="contact__intro">
-      Whether you have a project in mind, need expert insights, or just want to learn more about what we do, we'd love to hear from you. Fill out the form below, and we'll get back to you as soon as possible.
+      Whether you have a project in mind, need expert insights, or just want to learn more about what we do, we'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.
     </p>
     <p className="contact__intro">
       If you prefer, you can also reach us directly via{' '}
