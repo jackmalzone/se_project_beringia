@@ -56,20 +56,16 @@ const ModalContactComponent = () => {
   return (
     <div className="modal-contact">
       <h2 className="modal-contact__title">Contact Us</h2>
-      <div className="modal-contact__details">
-        <p className="modal-contact__detail">
-          <strong>Email:</strong> 
-          <a href="mailto:info@beringia-marine.com" className="modal-contact__link">
-            info@beringia-marine.com
-          </a>
-        </p>
-        <p className="modal-contact__detail">
-          <strong>Phone:</strong> 
-          <a href="tel:+18057040462" className="modal-contact__link">
-            +1 805 704 0462
-          </a>
-        </p>
-      </div>
+      <p className="modal-contact__intro">
+        Whether you have a project in mind, need expert insights, or just want to learn more about what we do, we'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.
+      </p>
+      <p className="modal-contact__intro">
+        If you prefer, you can also reach us directly via{' '}
+        <a href="mailto:info@beringia-marine.com" className="modal-contact__link">info@beringia-marine.com</a>
+        {' '}or{' '}
+        <a href="tel:+18053161417" className="modal-contact__link">+1 805 316 1417</a>.
+        Let's build something great together.
+      </p>
       <form className="modal-contact__form" onSubmit={(e) => handleSubmit(onSubmit, e)}>
         <input
           type="text"

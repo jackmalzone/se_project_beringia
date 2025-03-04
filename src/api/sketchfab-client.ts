@@ -79,7 +79,6 @@ interface AnnotationData {
 export class SketchfabClient {
   private client: SketchfabAPI | null = null;
   private iframe: HTMLIFrameElement;
-  private options: SketchfabOptions;
 
   // Add static utility for model IDs
   public static readonly MODEL_IDS = {
@@ -117,7 +116,6 @@ export class SketchfabClient {
 
   constructor(iframe: HTMLIFrameElement, options: SketchfabOptions) {
     this.iframe = iframe;
-    this.options = options;
     this.initClient(options);
   }
 
