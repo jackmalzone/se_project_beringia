@@ -1,10 +1,9 @@
 import { createContext } from 'react'
 
-interface ScrollContextType {
+export interface ScrollContextType {
   scrollY: number
   scrollDirection: 'up' | 'down'
   isScrolled: boolean
-  isFooterVisible: boolean
 }
 
 export const ScrollContext = createContext<ScrollContextType | undefined>(undefined)

@@ -4,7 +4,7 @@ import { FaCubes } from 'react-icons/fa'
 import { ROUTES } from '../../../utils/constants'
 import { clients } from '../../../data'
 import { SKETCHFAB_MODEL_IDS } from '../../../utils/sketchfab'
-import { useScrollContext } from '../../../contexts/ScrollContext'
+import { useScrollContext } from '../../../hooks/useScrollContext'
 import { useActiveSection } from '../../../hooks/useActiveSection'
 import './ClientNav.css'
 

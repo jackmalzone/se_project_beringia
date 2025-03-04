@@ -1,3 +1,8 @@
+import { SketchfabAPI } from '../api/sketchfab-client'
+
 interface Window {
-  Sketchfab: any;
+  Sketchfab: {
+    (iframe: HTMLIFrameElement, options: unknown): SketchfabAPI;
+    version: string;
+  };
 } 

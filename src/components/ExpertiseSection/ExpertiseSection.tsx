@@ -1,4 +1,4 @@
-import { useModal } from '../../contexts/ModalContext'
+import { useModal } from '../../hooks/useModal'
 import './ExpertiseSection.css'
 import '../ModalContact/ModalContact.css'
 import ModalContact from '../ModalContact/ModalContact'

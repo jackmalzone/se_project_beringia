@@ -1,0 +1,66 @@
+.error-handler {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 400px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.error-handler__content {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  border-left: 4px solid #dc3545;
+}
+
+.error-handler__title {
+  margin: 0 0 8px;
+  color: #dc3545;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.error-handler__message {
+  margin: 0 0 12px;
+  color: #343a40;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.error-handler__button {
+  background: transparent;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.error-handler__button:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .error-handler {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}

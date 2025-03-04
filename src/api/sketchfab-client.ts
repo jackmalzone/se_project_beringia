@@ -1,4 +1,4 @@
-interface SketchfabClientOptions {
+interface SketchfabOptions {
   modelId: string;
   success?: (api: SketchfabAPI) => void;
   error?: (error: Error) => void;
@@ -11,9 +11,32 @@ interface SketchfabClientOptions {
   transparent?: boolean;
   preload?: boolean;
   ui_theme?: 'dark' | 'light';
+  [key: string]: unknown;
 }
 
-interface SketchfabAPI {
+// Sketchfab constructor options
+interface SketchfabInitOptions {
+  success: (api: SketchfabAPI) => void;
+  error?: (error: Error) => void;
+  autostart?: boolean;
+  ui_theme?: 'dark' | 'light';
+  preload?: number;
+}
+
+// Sketchfab constructor type
+interface SketchfabConstructor {
+  new (iframe: HTMLIFrameElement): {
+    init: (modelId: string, options: SketchfabInitOptions) => void;
+  };
+}
+
+declare global {
+  interface Window {
+    Sketchfab: SketchfabConstructor;
+  }
+}
+
+export interface SketchfabAPI {
   start: () => void;
   stop: () => void;
   addEventListener: (event: string, callback: (response: unknown) => void) => void;
@@ -28,6 +51,17 @@ interface SketchfabAPI {
   highlightMaterial: (materialId: number, enabled: boolean) => void;
   setFov: (fov: number) => void;
   getFov: (callback: (err: Error | null, fov: number) => void) => void;
+  setCameraPosition: (position: [number, number, number]) => void;
+  setCameraTarget: (target: [number, number, number]) => void;
+  getCameraPosition: (callback: (position: [number, number, number]) => void) => void;
+  recenterCamera: () => void;
+  setAutoRotate: (enabled: boolean) => void;
+  setRotationSpeed: (speed: number) => void;
+  getMaterialList: (callback: (materials: unknown[]) => void) => void;
+  highlight: (instanceId: number, callback: (err: Error, result: unknown) => void) => void;
+  setEnvironment: (id: number) => void;
+  showUI: () => void;
+  hideUI: () => void;
 }
 
 interface CameraPosition {
@@ -45,6 +79,7 @@ interface AnnotationData {
 export class SketchfabClient {
   private client: SketchfabAPI | null = null;
   private iframe: HTMLIFrameElement;
+  private options: SketchfabOptions;
 
   // Add static utility for model IDs
   public static readonly MODEL_IDS = {
@@ -53,8 +88,8 @@ export class SketchfabClient {
   } as const;
 
   // Add static utility for generating embed URLs
-  public static getEmbedUrl(modelId: string, options: Partial<SketchfabClientOptions> = {}): string {
-    const defaultOptions: Partial<SketchfabClientOptions> = {
+  public static getEmbedUrl(modelId: string, options: Partial<SketchfabOptions> = {}): string {
+    const defaultOptions: Partial<SketchfabOptions> = {
       autostart: true,
       annotations_visible: true,
       autospin: true,
@@ -80,12 +115,13 @@ export class SketchfabClient {
     return `https://sketchfab.com/models/${modelId}/embed?${params.toString()}`;
   }
 
-  constructor(iframe: HTMLIFrameElement, options: SketchfabClientOptions) {
+  constructor(iframe: HTMLIFrameElement, options: SketchfabOptions) {
     this.iframe = iframe;
+    this.options = options;
     this.initClient(options);
   }
 
-  private initClient(options: SketchfabClientOptions) {
+  private initClient(options: SketchfabOptions) {
     if (!window.Sketchfab) {
       throw new Error('Sketchfab API not loaded');
     }
@@ -117,7 +153,8 @@ export class SketchfabClient {
 
   public getCameraPosition(): Promise<[number, number, number]> {
     return new Promise((resolve) => {
-      if (this.client) this.client.getCameraPosition(resolve);
+      if (!this.client) return;
+      this.client.getCameraPosition(resolve);
     });
   }
 
@@ -159,21 +196,19 @@ export class SketchfabClient {
 
   // Material & Object Controls
   public setMaterialColor(materialId: number, color: [number, number, number]) {
-    if (this.client) {
-      this.client.getMaterialList((materials: any[]) => {
-        if (materials[materialId]) {
-          this.client.setMaterialColor(materialId, color);
-        }
-      });
-    }
+    if (!this.client) return;
+    this.client.getMaterialList((materials) => {
+      if (materials[materialId]) {
+        this.client?.setMaterialColor(materialId, color);
+      }
+    });
   }
 
   public highlightPart(instanceId: number) {
-    if (this.client) {
-      this.client.highlight(instanceId, (err: Error, result: any) => {
-        if (!err) console.log('Part highlighted:', result);
-      });
-    }
+    if (!this.client) return;
+    this.client.highlight(instanceId, (err, result) => {
+      if (!err) console.log('Part highlighted:', result);
+    });
   }
 
   // Environment Controls
@@ -200,8 +235,12 @@ export class SketchfabClient {
   }
 
   public getFov(): Promise<number> {
-    return new Promise((resolve) => {
-      if (this.client) this.client.getFov(resolve);
+    return new Promise((resolve, reject) => {
+      if (!this.client) return;
+      this.client.getFov((err, fov) => {
+        if (err) reject(err);
+        else resolve(fov);
+      });
     });
   }
 

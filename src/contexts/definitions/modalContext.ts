@@ -1,12 +1,12 @@
 import { createContext, ReactNode } from 'react'
 
-interface ModalProps {
+export interface ModalProps {
   title?: string;
   size?: 'small' | 'medium' | 'large';
   onClose?: () => void;
 }
 
-interface ModalContextType {
+export interface ModalContextType {
   isOpen: boolean
   modalContent: ReactNode | null
   modalProps: ModalProps | null

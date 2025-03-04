@@ -1,14 +1,13 @@
 import { createContext } from 'react'
 
-interface ViewportContextType {
-  width: number
-  height: number
+export interface ViewportContextType {
   isMobile: boolean
   isTablet: boolean
   isDesktop: boolean
+  isDarkMode: boolean
+  isPortrait: boolean
+  isLandscape: boolean
+  isRetina: boolean
 }
 
-export const ViewportContext = createContext<ViewportContextType | undefined>(undefined)
-
-export const MOBILE_BREAKPOINT = 768
-export const TABLET_BREAKPOINT = 1024 
+export const ViewportContext = createContext<ViewportContextType | undefined>(undefined) 

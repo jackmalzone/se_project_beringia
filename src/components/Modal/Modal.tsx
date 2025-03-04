@@ -1,4 +1,4 @@
-import { useModal } from '../../contexts/ModalContext'
+import { useModal } from '../../hooks/useModal'
 import './Modal.css'
 
 interface ModalProps {

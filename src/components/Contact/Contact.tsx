@@ -1,5 +1,13 @@
 import { useForm } from '../../hooks/useForm'
+import { withErrorHandler } from '../shared/error-handler/error-handler'
 import './Contact.css'
+
+interface ContactFormData extends Record<string, string> {
+  name: string
+  email: string
+  subject: string
+  message: string
+}
 
 const ContactInfo = () => (
   <div className="contact__info">
@@ -17,14 +25,14 @@ const ContactInfo = () => (
   </div>
 )
 
-const ContactForm = () => {
+const ContactFormComponent = () => {
   const {
     formData,
     errors,
     isSubmitting,
     handleChange,
     handleSubmit
-  } = useForm(
+  } = useForm<ContactFormData>(
     {
       name: '',
       email: '',
@@ -51,8 +59,15 @@ const ContactForm = () => {
     }
   )
 
-  const onSubmit = async (data: typeof formData) => {
+  const onSubmit = async (data: ContactFormData) => {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
     console.log('Form submitted:', data)
+    
+    // Here you would typically make an API call to submit the form
+    // const response = await api.submitContactForm(data)
+    
+    // Any errors will automatically propagate to the error boundary
   }
 
   return (
@@ -110,6 +125,9 @@ const ContactForm = () => {
     </form>
   )
 }
+
+// Wrap the form with error handling
+const ContactForm = withErrorHandler(ContactFormComponent)
 
 const Contact = () => {
   return (

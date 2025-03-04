@@ -1,8 +1,16 @@
-import { useModal } from '../../contexts/ModalContext'
+import { useModal } from '../../hooks/useModal'
 import { useForm } from '../../hooks/useForm'
+import { withErrorHandler } from '../shared/error-handler/error-handler'
 import './ModalContact.css'
 
-const ModalContact = () => {
+interface ModalContactFormData extends Record<string, string> {
+  name: string
+  email: string
+  subject: string
+  message: string
+}
+
+const ModalContactComponent = () => {
   const { closeModal } = useModal()
   const {
     formData,
@@ -10,7 +18,7 @@ const ModalContact = () => {
     handleChange,
     handleSubmit,
     isSubmitting
-  } = useForm(
+  } = useForm<ModalContactFormData>(
     {
       name: '',
       email: '',
@@ -37,9 +45,12 @@ const ModalContact = () => {
     }
   )
 
-  const onSubmit = async (data: typeof formData) => {
+  const onSubmit = async (data: ModalContactFormData) => {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
     console.log('Form submitted:', data)
     closeModal()
+    // Any errors will automatically propagate to the error boundary
   }
 
   return (
@@ -106,5 +117,8 @@ const ModalContact = () => {
     </div>
   )
 }
+
+// Wrap the component with error handling
+const ModalContact = withErrorHandler(ModalContactComponent)
 
 export default ModalContact

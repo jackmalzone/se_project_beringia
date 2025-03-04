@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { ROUTES } from '../../utils/constants'
 import { clients } from '../../data'
 import { SeascapeDivider } from '../SeascapeDivider/SeascapeDivider'
-import { useViewport } from '../../contexts/ViewportContext'
+import { useViewport } from '../../hooks/useViewport'
 import { useScroll } from '../../hooks/useScroll'
 import './Footer.css'
 

@@ -1,85 +1,88 @@
 import { useState, FormEvent } from 'react'
 
-type ValidationRule = {
+type ValidationRules = {
   required?: boolean
-  pattern?: RegExp
   minLength?: number
   maxLength?: number
-  custom?: (value: string) => boolean
+  pattern?: RegExp
 }
 
-type ValidationRules<T> = {
-  [K in keyof T]?: ValidationRule
+type ValidationConfig<T> = {
+  [K in keyof T]?: ValidationRules
 }
 
-interface ValidationErrors {
-  [key: string]: string
+interface UseFormReturn<T> {
+  formData: T
+  errors: Partial<Record<keyof T, string>>
+  isSubmitting: boolean
+  handleChange: (field: keyof T, value: string) => void
+  handleSubmit: (
+    onSubmit: (data: T) => Promise<void> | void,
+    e?: FormEvent
+  ) => void
+  resetForm: () => void
 }
 
-export const useForm = <T extends { [key: string]: string }>(
+export const useForm = <T extends Record<string, string>>(
   initialState: T,
-  validationRules?: ValidationRules<T>
-) => {
+  validationConfig: ValidationConfig<T>
+): UseFormReturn<T> => {
   const [formData, setFormData] = useState<T>(initialState)
-  const [errors, setErrors] = useState<ValidationErrors>({})
+  const [errors, setErrors] = useState<Partial<Record<keyof T, string>>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const validateField = (name: keyof T, value: string): string => {
-    if (!validationRules?.[name]) return ''
+  const validateField = (name: keyof T, value: string): string | null => {
+    const rules = validationConfig[name]
+    if (!rules) return null
 
-    const rules = validationRules[name]
-    
-    if (rules?.required && !value) {
+    if (rules.required && !value) {
       return 'This field is required'
     }
-    
-    if (rules?.pattern && !rules.pattern.test(value)) {
+
+    if (rules.minLength && value.length < rules.minLength) {
+      return `Must be at least ${rules.minLength} characters`
+    }
+
+    if (rules.maxLength && value.length > rules.maxLength) {
+      return `Must be no more than ${rules.maxLength} characters`
+    }
+
+    if (rules.pattern && !rules.pattern.test(value)) {
       return 'Invalid format'
     }
-    
-    if (rules?.minLength && value.length < rules.minLength) {
-      return `Minimum length is ${rules.minLength} characters`
-    }
-    
-    if (rules?.maxLength && value.length > rules.maxLength) {
-      return `Maximum length is ${rules.maxLength} characters`
-    }
-    
-    if (rules?.custom && !rules.custom(value)) {
-      return 'Invalid value'
-    }
 
-    return ''
-  }
-
-  const handleChange = (name: keyof T, value: string) => {
-    setFormData(prev => ({ ...prev, [name]: value }))
-    
-    if (validationRules) {
-      const error = validateField(name, value)
-      setErrors(prev => ({
-        ...prev,
-        [name]: error
-      }))
-    }
+    return null
   }
 
   const validateForm = (): boolean => {
-    if (!validationRules) return true
-
-    const newErrors: ValidationErrors = {}
+    const newErrors: Partial<Record<keyof T, string>> = {}
     let isValid = true
 
-    Object.keys(formData).forEach(key => {
-      const error = validateField(key as keyof T, formData[key])
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key as keyof T, formData[key as keyof T])
       if (error) {
-        newErrors[key] = error
+        newErrors[key as keyof T] = error
         isValid = false
       }
     })
 
     setErrors(newErrors)
     return isValid
+  }
+
+  const handleChange = (field: keyof T, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+    
+    // Clear error when field is modified
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }))
+    }
+
+    // Validate field on change if there's a validation config
+    if (validationConfig[field]) {
+      const error = validateField(field, value)
+      setErrors(prev => ({ ...prev, [field]: error || undefined }))
+    }
   }
 
   const handleSubmit = async (
@@ -100,6 +103,7 @@ export const useForm = <T extends { [key: string]: string }>(
       setFormData(initialState) // Reset form after successful submission
     } catch (error) {
       console.error('Form submission error:', error)
+      throw error // Re-throw to be caught by error boundary
     } finally {
       setIsSubmitting(false)
     }

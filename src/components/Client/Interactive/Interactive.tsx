@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, MutableRefObject } from 'react'
 import { FaPlay, FaPause, FaEye, FaEyeSlash, FaUndo, FaMouse, FaSearchPlus, FaHandPointer } from 'react-icons/fa'
 import { Sketchfab } from '../../Sketchfab/Sketchfab'
+import { SketchfabClient, type SketchfabAPI } from '../../../api/sketchfab-client'
 import './Interactive.css'
 
 interface InteractiveProps {
@@ -12,10 +13,10 @@ interface InteractiveProps {
 export const Interactive = ({ modelId, title, description }: InteractiveProps) => {
   const [isRotating, setIsRotating] = useState(true);
   const [showAnnotations, setShowAnnotations] = useState(true);
-  const clientRef = useRef<any>(null);
+  const clientRef = useRef<SketchfabClient | null>(null) as MutableRefObject<SketchfabClient | null>;
   
-  const handleApiLoad = (api: any) => {
-    clientRef.current = api;
+  const handleApiLoad = (api: SketchfabAPI) => {
+    clientRef.current = api as unknown as SketchfabClient;
     console.log('Sketchfab API loaded');
   };
 

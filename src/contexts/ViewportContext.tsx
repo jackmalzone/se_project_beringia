@@ -1,17 +1,6 @@
-import { createContext, useContext, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-
-interface ViewportContextType {
-  isMobile: boolean
-  isTablet: boolean
-  isDesktop: boolean
-  isDarkMode: boolean
-  isPortrait: boolean
-  isLandscape: boolean
-  isRetina: boolean
-}
-
-const ViewportContext = createContext<ViewportContextType | undefined>(undefined)
+import { ViewportContext } from './definitions/viewportContext'
 
 export const ViewportProvider = ({ children }: { children: ReactNode }) => {
   const matches = useMediaQuery()
@@ -31,12 +20,4 @@ export const ViewportProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </ViewportContext.Provider>
   )
-}
-
-export const useViewport = () => {
-  const context = useContext(ViewportContext)
-  if (context === undefined) {
-    throw new Error('useViewport must be used within a ViewportProvider')
-  }
-  return context
 } 

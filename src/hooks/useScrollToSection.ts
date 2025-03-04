@@ -1,7 +1,6 @@
-import { useEffect, RefObject, useRef } from 'react'
+import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useViewport } from '../contexts/ViewportContext'
-
+import { useViewport } from './useViewport'
 
 interface ScrollConfig {
   headerOffset?: number
@@ -10,17 +9,12 @@ interface ScrollConfig {
   onScrollComplete?: () => void
 }
 
-interface SectionRefs {
-  [key: string]: RefObject<HTMLElement>
-}
-
 export const useScrollToSection = (
   refs: { [key: string]: React.RefObject<HTMLElement> },
   options: ScrollConfig = {}
 ) => {
   const location = useLocation()
   const { isMobile, isTablet } = useViewport()
-  const isInitialMount = useRef(true)
   
   // Get the correct nav height based on viewport
   const navHeight = isMobile ? 48 : isTablet ? 56 : 64

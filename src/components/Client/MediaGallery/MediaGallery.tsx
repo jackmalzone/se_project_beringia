@@ -57,27 +57,27 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
     setIsModalOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setIsModalOpen(false);
-  };
+  }, []);
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     setCurrentIndex((prevIndex) => {
       if (prevIndex === 0) {
         return items.length - 1;
       }
       return prevIndex - 1;
     });
-  };
+  }, [items.length]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) => {
       if (prevIndex === items.length - 1) {
         return 0;
       }
       return prevIndex + 1;
     });
-  };
+  }, [items.length]);
 
   const handleKeyPress = useCallback((event: KeyboardEvent) => {
     if (!isModalOpen) return;

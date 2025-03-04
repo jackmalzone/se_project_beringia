@@ -1,13 +1,5 @@
-import { createContext, useContext, useState } from 'react'
-
-interface LoadingContextType {
-  isLoading: boolean
-  setLoading: (loading: boolean) => void
-  loadingMessage: string | null
-  setLoadingMessage: (message: string | null) => void
-}
-
-const LoadingContext = createContext<LoadingContextType | undefined>(undefined)
+import { useState } from 'react'
+import { LoadingContext } from './definitions/loadingContext'
 
 export const LoadingProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false)
@@ -30,12 +22,4 @@ export const LoadingProvider = ({ children }: { children: React.ReactNode }) => 
       {children}
     </LoadingContext.Provider>
   )
-}
-
-export const useLoading = () => {
-  const context = useContext(LoadingContext)
-  if (context === undefined) {
-    throw new Error('useLoading must be used within a LoadingProvider')
-  }
-  return context
 } 

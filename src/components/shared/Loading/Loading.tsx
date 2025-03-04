@@ -34,23 +34,23 @@ interface LoadingProps {
 }
 
 export const Loading = ({ onLoadingComplete }: LoadingProps) => {
-  const [progress, setProgress] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
+  const [currentPhrase, setCurrentPhrase] = useState(loadingPhrases[0])
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(timer)
-          setIsComplete(true)
-          onLoadingComplete?.()
-          return 100
-        }
-        return Math.min(prev + 1, 100)
-      })
-    }, 30)
+    const completeTimer = setTimeout(() => {
+      setIsComplete(true)
+      onLoadingComplete?.()
+    }, 3000)
 
-    return () => clearInterval(timer)
+    const phraseTimer = setInterval(() => {
+      setCurrentPhrase(prev => getRandomPhrase(prev))
+    }, 1500)
+
+    return () => {
+      clearTimeout(completeTimer)
+      clearInterval(phraseTimer)
+    }
   }, [onLoadingComplete])
 
   return (
@@ -60,8 +60,8 @@ export const Loading = ({ onLoadingComplete }: LoadingProps) => {
         <div className="pulse-ring"></div>
       </div>
       <div className="phrases">
-        <span className="phrase" key={loadingPhrases[progress]}>
-          {loadingPhrases[progress]}
+        <span className="phrase" key={currentPhrase}>
+          {currentPhrase}
         </span>
       </div>
     </div>

@@ -1,21 +1,23 @@
-import { useState, useEffect, useRef } from 'react'
-import { SketchfabClient } from '../../api/sketchfab-client'
+import { useRef, useState, useCallback, useEffect } from 'react'
+import { SketchfabClient, SketchfabAPI } from '../../api/sketchfab-client'
 import { useSketchfabApi } from '../../hooks/useSketchfabApi'
+import { withErrorHandler } from '../shared/error-handler/error-handler'
 import './Sketchfab.css'
 
 interface SketchfabProps {
-  modelId: string;
-  title: string;
-  autoRotate?: boolean;
-  annotations?: boolean;
-  ui_controls?: boolean;
-  ui_inspector?: boolean;
-  transparent?: boolean;
-  ui_theme?: 'dark' | 'light';
-  onLoad?: (api: any) => void;
+  modelId: string
+  title: string
+  autoRotate?: boolean
+  annotations?: boolean
+  ui_controls?: boolean
+  ui_inspector?: boolean
+  transparent?: boolean
+  ui_theme?: 'dark' | 'light'
+  onLoad?: (api: SketchfabAPI) => void
+  onError?: (error: Error) => void
 }
 
-export const Sketchfab = ({ 
+const SketchfabComponent = ({ 
   modelId, 
   title,
   autoRotate = true,
@@ -24,36 +26,44 @@ export const Sketchfab = ({
   ui_inspector = false,
   transparent = true,
   ui_theme = 'dark',
-  onLoad
+  onLoad,
+  onError
 }: SketchfabProps) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const clientRef = useRef<SketchfabClient | null>(null);
-  const { isLoaded: isApiLoaded, error: apiError } = useSketchfabApi();
+  const [isLoading, setIsLoading] = useState(true)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const clientRef = useRef<SketchfabClient | null>(null)
+  const { isLoaded: isApiLoaded, error: apiError } = useSketchfabApi()
+  const previousModelIdRef = useRef(modelId)
+
+  const handleApiSuccess = useCallback((api: SketchfabAPI) => {
+    setIsLoading(false)
+    if (onLoad) onLoad(api)
+  }, [onLoad])
+
+  const handleApiError = useCallback((error: Error) => {
+    setIsLoading(false)
+    if (onError) onError(error)
+  }, [onError])
 
   useEffect(() => {
-    if (!isApiLoaded || !iframeRef.current) return;
+    if (!isApiLoaded || !iframeRef.current) return
     if (apiError) {
-      setError('Failed to load Sketchfab API');
-      setIsLoading(false);
-      return;
+      handleApiError(new Error('Failed to load Sketchfab API'))
+      return
     }
+
+    // Only reinitialize if the model ID has changed
+    if (previousModelIdRef.current === modelId && clientRef.current) {
+      return
+    }
+    previousModelIdRef.current = modelId
 
     try {
       // Initialize client
       clientRef.current = new SketchfabClient(iframeRef.current, {
-        modelId: '11c4619cc5e44045b1df5fd4abdcb586', // Use the actual model ID
-        success: (api) => {
-          setIsLoading(false);
-          setError(null);
-          if (onLoad) onLoad(api);
-        },
-        error: (error) => {
-          console.error('Sketchfab API error:', error);
-          setError(error.message || 'Failed to load 3D model');
-          setIsLoading(false);
-        },
+        modelId,
+        success: handleApiSuccess,
+        error: handleApiError,
         autostart: true,
         annotations_visible: annotations,
         autospin: autoRotate,
@@ -61,16 +71,27 @@ export const Sketchfab = ({
         ui_inspector,
         transparent,
         ui_theme
-      });
+      })
     } catch (err) {
-      setError((err as Error).message || 'An unexpected error occurred');
-      setIsLoading(false);
+      handleApiError(err instanceof Error ? err : new Error('Failed to initialize Sketchfab client'))
     }
 
     return () => {
-      clientRef.current = null;
-    };
-  }, [isApiLoaded, apiError, modelId, annotations, autoRotate, ui_controls, ui_inspector, transparent, ui_theme]);
+      clientRef.current = null
+    }
+  }, [
+    isApiLoaded,
+    apiError,
+    modelId,
+    annotations,
+    autoRotate,
+    ui_controls,
+    ui_inspector,
+    transparent,
+    ui_theme,
+    handleApiSuccess,
+    handleApiError
+  ])
 
   return (
     <div className="sketchfab">
@@ -85,20 +106,14 @@ export const Sketchfab = ({
         title={title}
         className="sketchfab__iframe"
         frameBorder="0"
-        allowFullScreen={true}
-        allow="autoplay; fullscreen; xr-spatial-tracking"
+        allow="autoplay; fullscreen; xr-spatial-tracking; accelerometer; gyroscope"
         data-xr-spatial-tracking="true"
         data-web-share="true"
-        src={`https://sketchfab.com/models/11c4619cc5e44045b1df5fd4abdcb586/embed?preload=1&ui_theme=${ui_theme}`}
+        src={SketchfabClient.getEmbedUrl(modelId, { ui_theme })}
       />
-      {error && (
-        <div className="sketchfab__error">
-          <p className="sketchfab__error-text">{error}</p>
-          <p className="sketchfab__error-details">
-            Please check if the model ID is correct and try again.
-          </p>
-        </div>
-      )}
     </div>
-  );
-}; 
+  )
+}
+
+// Wrap the component with error handling
+export const Sketchfab = withErrorHandler(SketchfabComponent) 
