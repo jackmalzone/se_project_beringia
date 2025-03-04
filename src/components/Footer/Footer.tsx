@@ -78,7 +78,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Beringia Marine Technologies. All rights reserved.
           </p>
           <p className="footer__attribution">
-            Art by <a href="https://www.rebeccarutstein.com" target="_blank" rel="noopener noreferrer" className="footer__link">Rebecca Rudstein</a> · 
+            Art by <a href="https://www.rebeccarutstein.com" target="_blank" rel="noopener noreferrer" className="footer__link">Rebecca Rutstein</a> · 
             Website by <a href="https://linkedin.com/in/jackmalzone" target="_blank" rel="noopener noreferrer" className="footer__link">Jack Malzone</a>
           </p>
         </div>

@@ -1,4 +1,4 @@
-import React, { ComponentType } from 'react'
+import type { ComponentType } from 'react'
 import { useApiErrorHandler } from '../../../hooks/useApiErrorHandler'
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 import './error-handler.css'

@@ -342,7 +342,7 @@
 }
 
 /* Add specific styles for smaller mobile devices like iPhone 14 Pro Max */
-@media (max-width: 430px) {
+@media (max-width: 444px) {
   .interactive {
     width: 100%;
     max-width: 100vw;
