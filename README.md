@@ -2,7 +2,7 @@
 
 ## About
 
-Beringia Marine is a modern web application showcasing marine technology and underwater exploration services. The platform features interactive 3D models of marine equipment, comprehensive service information, and a seamless contact system for potential clients.
+Beringia Marine is a modern web application showcasing marine technology and underwater exploration services. The platform features an interactive 3D model of a shipwreck (captured by hydrus), comprehensive service information, and a seamless contact system for potential clients.
 
 ## Features
 
@@ -230,5 +230,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Sketchfab for 3D model integration
 - React team for the framework
-- All contributors who have helped with the project
+- My dad for the opportunity to have creative control over the project
 - Open source community for inspiration and tools
