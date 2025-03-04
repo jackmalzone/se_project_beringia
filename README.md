@@ -114,7 +114,7 @@ Visit the live website: [Beringia Marine](https://jackmalzone.github.io/se_proje
 src/
 ├── api/                    # API clients and interfaces
 │   └── sketchfab-client.ts
-├── assets/                 # Static assets (images, fonts, etc.)
+├── assets/                 # Static assets (images, videos, etc.)
 ├── components/            # React components
 │   ├── About/             # About section components
 │   ├── App/               # Root app component
@@ -152,7 +152,7 @@ src/
 │   └── useViewport.ts
 ├── types/               # TypeScript type definitions
 ├── utils/              # Utility functions
-└── vendor/             # Third-party code
+└── vendor/             # Third-party code/fonts
 ```
 
 ## Component Architecture
