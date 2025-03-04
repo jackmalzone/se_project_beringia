@@ -112,21 +112,47 @@ Visit the live website: [Beringia Marine](https://jackmalzone.github.io/se_proje
 
 ```
 src/
-├── api/              # API clients and interfaces
+├── api/                    # API clients and interfaces
 │   └── sketchfab-client.ts
-├── components/       # React components
-│   ├── Contact/
-│   ├── Modal/
-│   ├── Sketchfab/
-│   └── shared/
-├── contexts/        # React contexts
-│   └── ModalContext/
-├── hooks/          # Custom React hooks
+├── assets/                 # Static assets (images, fonts, etc.)
+├── components/            # React components
+│   ├── About/             # About section components
+│   ├── App/               # Root app component
+│   ├── Client/            # Client page components
+│   ├── Contact/           # Contact form components
+│   ├── Contributions/     # Contributions section
+│   ├── ExpertiseSection/  # Expertise showcase
+│   ├── Footer/           # Footer component
+│   ├── Header/           # Navigation header
+│   ├── HeroBanner/       # Hero section components
+│   ├── Home/             # Home page components
+│   ├── Main/             # Main layout wrapper
+│   ├── Modal/            # Modal system components
+│   ├── ModalContact/     # Contact form modal
+│   ├── SeascapeDivider/  # Decorative divider
+│   ├── shared/           # Shared/reusable components
+│   ├── Sketchfab/        # 3D viewer components
+│   └── Terms/            # Terms and conditions
+├── contexts/             # React contexts
+│   └── ModalContext/     # Modal management context
+├── data/                 # Static data and constants
+├── hooks/               # Custom React hooks
+│   ├── useActiveSection.ts
 │   ├── useApiErrorHandler.ts
 │   ├── useForm.ts
-│   └── useModal.ts
-├── styles/         # Global styles
-└── utils/          # Utility functions
+│   ├── useLoading.ts
+│   ├── useMediaQuery.ts
+│   ├── useModal.ts
+│   ├── useNavigation.ts
+│   ├── useScroll.tsx
+│   ├── useScrollContext.ts
+│   ├── useScrollToSection.ts
+│   ├── useSketchfabApi.ts
+│   ├── useTransition.ts
+│   └── useViewport.ts
+├── types/               # TypeScript type definitions
+├── utils/              # Utility functions
+└── vendor/             # Third-party code
 ```
 
 ## Component Architecture
