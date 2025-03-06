@@ -4,7 +4,7 @@ import { ClientData } from '../../data/types.ts'
 import { clients } from '../../data'
 import { ROUTES } from '../../utils/constants.ts'
 import { SKETCHFAB_MODEL_IDS } from '../../utils/sketchfab'
-import { SEOHead } from '../shared/SEOHead.tsx'
+import { SEOHead } from '../shared/SEOHead'
 import { Overview } from './Overview/Overview.tsx'
 import { SellingPoints } from './SellingPoints/SellingPoints.tsx'
 import { ValueProposition } from './ValueProposition/ValueProposition.tsx'
@@ -65,57 +65,61 @@ const Client = () => {
   ].filter(Boolean).join(' ')
 
   return (
-    <div className="client">
-      <SEOHead {...clientData.seo}>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </SEOHead>
-      <div className={navContainerClasses}>
-        <ErrorBoundary>
-          {!isLoading && (
-            <ClientNav 
-              clientSlug={clientData.slug} 
-              sectionRefs={sectionRefs}
-            />
-          )}
-        </ErrorBoundary>
-      </div>
-      
-      <div className="client__content">
-        <div ref={overviewRef} className="client__section">
+    <>
+      <SEOHead
+        title={`${clientData?.name || 'Client'} Case Study | Beringia Marine`}
+        description={`Explore our marine technology solutions and innovations for ${clientData?.name || 'our client'}. View detailed 3D models and technical specifications of our underwater systems.`}
+        image={`${window.location.origin}${import.meta.env.BASE_URL}docs/assets/${clientData.slug}/desktop-overview.png`}
+      />
+      <div className="client">
+        <div className={navContainerClasses}>
           <ErrorBoundary>
-            <Overview {...clientData.overview} />
-          </ErrorBoundary>
-        </div>
-        <div ref={featuresRef} className="client__section">
-          <ErrorBoundary>
-            <SellingPoints {...clientData.sellingPoints} />
-            <UseCases {...clientData.useCases} />
-          </ErrorBoundary>
-        </div>
-        <div ref={interactiveRef} className="client__section">
-          {clientData.id === 'advanced-navigation' && (
-            <ErrorBoundary>
-              <Interactive 
-                modelId={SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}
-                title="Hydrus"
-                description="Get hands-on with Hydrus. Explore every detail of this revolutionary autonomous underwater vehicle. Rotate, zoom, and discover its innovative features through interactive annotations."
+            {!isLoading && (
+              <ClientNav 
+                clientSlug={clientData.slug} 
+                sectionRefs={sectionRefs}
               />
+            )}
+          </ErrorBoundary>
+        </div>
+        
+        <div className="client__content">
+          <div ref={overviewRef} className="client__section">
+            <ErrorBoundary>
+              <Overview {...clientData.overview} />
             </ErrorBoundary>
-          )}
-        </div>
-        <div ref={valueRef} className="client__section">
-          <ErrorBoundary>
-            <ValueProposition {...clientData.valueProposition} />
-          </ErrorBoundary>
-        </div>
-        <div ref={mediaRef} className="client__section">
-          <ErrorBoundary>
-            <MediaLinks links={clientData.mediaLinks} />
-            <MediaGallery items={clientData.gallery} />
-          </ErrorBoundary>
+          </div>
+          <div ref={featuresRef} className="client__section">
+            <ErrorBoundary>
+              <SellingPoints {...clientData.sellingPoints} />
+              <UseCases {...clientData.useCases} />
+            </ErrorBoundary>
+          </div>
+          <div ref={interactiveRef} className="client__section">
+            {clientData.id === 'advanced-navigation' && (
+              <ErrorBoundary>
+                <Interactive 
+                  modelId={SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}
+                  title="Hydrus"
+                  description="Explore this detailed 3D model of a shipwreck captured by Hydrus. This scan demonstrates Hydrus's advanced underwater mapping capabilities, allowing you to rotate and zoom to examine the wreck from every angle."
+                />
+              </ErrorBoundary>
+            )}
+          </div>
+          <div ref={valueRef} className="client__section">
+            <ErrorBoundary>
+              <ValueProposition {...clientData.valueProposition} />
+            </ErrorBoundary>
+          </div>
+          <div ref={mediaRef} className="client__section">
+            <ErrorBoundary>
+              <MediaLinks links={clientData.mediaLinks} />
+              <MediaGallery items={clientData.gallery} />
+            </ErrorBoundary>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

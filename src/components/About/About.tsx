@@ -2,6 +2,7 @@ import penguinImage from '../../assets/beringia/penguin.jpeg';
 import './About.css';
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 import { useState } from 'react';
+import { SEOHead } from '../shared/SEOHead'
 
 export const AboutContent = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -76,11 +77,18 @@ export const AboutContent = () => {
 // Standalone page version
 const About = () => {
   return (
-    <div className="about">
-      <ErrorBoundary>
-        <AboutContent />
-      </ErrorBoundary>
-    </div>
+    <>
+      <SEOHead
+        title="About Us | Beringia Marine"
+        description="Learn about Beringia Marine's expertise in marine technology consulting, our mission, and our commitment to advancing underwater exploration and research."
+        image={`${window.location.origin}${import.meta.env.BASE_URL}docs/assets/desktop-about.png`}
+      />
+      <div className="about">
+        <ErrorBoundary>
+          <AboutContent />
+        </ErrorBoundary>
+      </div>
+    </>
   );
 };
 

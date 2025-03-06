@@ -3,6 +3,7 @@ import Home from '../Home/Home'
 import Contact from '../Contact/Contact'
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 import { useScrollToSection } from '../../hooks/useScrollToSection'
+import { SEOHead } from '../shared/SEOHead'
 
 const Main = () => {
   const homeRef = useRef<HTMLDivElement>(null)
@@ -18,18 +19,25 @@ const Main = () => {
   })
 
   return (
-    <main className="main">
-      <ErrorBoundary>
-        <section ref={homeRef} id="home">
-          <Home />
-        </section>
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <section ref={contactRef} id="contact">
-          <Contact />
-        </section>
-      </ErrorBoundary>
-    </main>
+    <>
+      <SEOHead
+        title="Beringia Marine | Marine Technology Consulting"
+        description="Expert marine technology consulting services specializing in underwater robotics, sonar systems, and advanced marine solutions. Discover how we're revolutionizing underwater exploration."
+        image={`${window.location.origin}${import.meta.env.BASE_URL}docs/assets/desktop-home.png`}
+      />
+      <main className="main">
+        <ErrorBoundary>
+          <section ref={homeRef} id="home">
+            <Home />
+          </section>
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <section ref={contactRef} id="contact">
+            <Contact />
+          </section>
+        </ErrorBoundary>
+      </main>
+    </>
   )
 }
 

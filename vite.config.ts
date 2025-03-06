@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: './',
   build: {
     sourcemap: true,
     rollupOptions: {
@@ -15,8 +17,14 @@ export default defineConfig({
       }
     }
   },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  },
   server: {
     port: 3000,
-    strictPort: true
+    strictPort: true,
+    open: true
   }
 })
