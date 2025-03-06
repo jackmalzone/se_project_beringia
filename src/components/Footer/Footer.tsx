@@ -65,7 +65,7 @@ const Footer = () => {
           <div className="footer__title">Contact</div>
           <ul className="footer__list">
             <li className="footer__list-item">
-              <a href="mailto:info@beringia.com" className="footer__link">info@beringia.com</a>
+              <a href="mailto:info@beringia.com" className="footer__link">info@beringia-marine.com</a>
             </li>
             <li className="footer__list-item footer__contact-item">San Luis Obispo, CA</li>
           </ul>

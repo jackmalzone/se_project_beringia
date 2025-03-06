@@ -1,6 +1,6 @@
 .modal-contact {
   width: 100%;
-  max-width: 450px;
+  max-width: 850px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
     rgba(33, 71, 81, 0.85),
     rgba(5, 37, 51, 0.85)
   );
-  padding: 2.5rem 2rem;
+  padding: 3rem;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -175,8 +175,18 @@
   background: #666;
 }
 
+/* Tablet and smaller */
+@media (max-width: 1023px) {
+  .modal-contact {
+    max-width: 550px;
+    padding: 2.75rem 2.5rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 480px) {
   .modal-contact {
+    max-width: none;
     width: 100%;
     margin: 0;
     padding: 2rem 1.5rem;
