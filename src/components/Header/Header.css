@@ -169,6 +169,7 @@
   display: flex;
   align-items: center;
   padding: 12px 20px;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
