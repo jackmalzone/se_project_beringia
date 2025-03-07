@@ -62,13 +62,9 @@ const ContactFormComponent = () => {
   )
 
   const onSubmit = async (data: ContactFormData) => {
-    try {
-      await submitContactForm(data)
-      resetForm() // Clear form after successful submission
-      // You might want to show a success message here
-    } catch (error) {
-      throw error // This will be caught by the error boundary
-    }
+    await submitContactForm(data)
+    resetForm() // Clear form after successful submission
+    // You might want to show a success message here
   }
 
   return (

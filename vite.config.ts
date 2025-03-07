@@ -5,7 +5,7 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: process.env.VERCEL ? '/' : '/se_project_beringia/',
   build: {
     sourcemap: true,
     rollupOptions: {
@@ -23,8 +23,8 @@ export default defineConfig({
     }
   },
   server: {
-    port: 3000,
-    strictPort: true,
+    port: 3001,
+    strictPort: false,
     open: true
   }
 })
