@@ -2,6 +2,7 @@ export interface ClientData {
     id: string;
     name: string;
     slug: string;
+    logo?: string;
     modelId?: string;
     seo: {
       title: string;

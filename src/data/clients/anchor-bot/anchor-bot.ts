@@ -1,6 +1,6 @@
-import { ClientData } from '../types'
-import headerImage from '../../assets/clients/anchor-bot/header.jpg'
-import anchorBotIcon from '../../assets/clients/anchor-bot/favicon.png'
+import { ClientData } from '../../types'
+import headerImage from '../../../assets/clients/anchor-bot/header.jpg'
+import anchorBotIcon from '../../../assets/clients/anchor-bot/favicon.png'
 
 export const anchorBot: ClientData = {
   id: 'anchor-bot',

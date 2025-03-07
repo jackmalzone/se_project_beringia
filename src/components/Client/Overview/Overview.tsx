@@ -4,9 +4,10 @@ interface OverviewProps {
   title: string;
   description: string;
   headerImage: string;
+  logo?: string;
 }
 
-export const Overview = ({ title, description, headerImage }: OverviewProps) => {
+export const Overview = ({ title, description, headerImage, logo }: OverviewProps) => {
   return (
     <div className="overview__wrapper">
       <section className="overview">
@@ -15,7 +16,11 @@ export const Overview = ({ title, description, headerImage }: OverviewProps) => 
           style={{ backgroundImage: `url(${headerImage})` }}
         >
           <div className="overview__content">
-            <h1 className="overview__title">{title}</h1>
+            {logo && (
+              <div className="overview__logo">
+                <img src={logo} alt={`${title} logo`} className="overview__logo-image" />
+              </div>
+            )}
             <p className="overview__description">{description}</p>
           </div>
         </div>
