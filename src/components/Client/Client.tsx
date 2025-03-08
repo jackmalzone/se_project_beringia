@@ -67,7 +67,7 @@ const Client = () => {
   return (
     <>
       <SEOHead
-        title={`${clientData?.name || 'Client'} Case Study | Beringia Marine`}
+        title={`${clientData?.name || 'Client'} | Beringia Marine`}
         description={`Explore our marine technology solutions and innovations for ${clientData?.name || 'our client'}. View detailed 3D models and technical specifications of our underwater systems.`}
         image={`${window.location.origin}${import.meta.env.BASE_URL}docs/assets/${clientData.slug}/desktop-overview.png`}
       />
