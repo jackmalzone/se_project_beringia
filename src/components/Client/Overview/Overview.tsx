@@ -16,10 +16,12 @@ export const Overview = ({ title, description, headerImage, logo }: OverviewProp
           style={{ backgroundImage: `url(${headerImage})` }}
         >
           <div className="overview__content">
-            {logo && (
+            {logo ? (
               <div className="overview__logo">
                 <img src={logo} alt={`${title} logo`} className="overview__logo-image" />
               </div>
+            ) : (
+              <h1 className="overview__title">{title}</h1>
             )}
             <p className="overview__description">{description}</p>
           </div>

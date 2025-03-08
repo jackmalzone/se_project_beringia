@@ -1,6 +1,7 @@
 import { ClientData } from '../../types'
 import { SKETCHFAB_MODEL_IDS } from '../../../utils/sketchfab'
 import headerImage from '../../../assets/clients/advanced-navigation/header.jpg'
+import logoTitle from '../../../assets/clients/advanced-navigation/logo-title.webp'
 import hydrusIcon from '../../../assets/clients/advanced-navigation/hydrus-icon.webp'
 import subsonusIcon from '../../../assets/clients/advanced-navigation/subsonus-icon.webp'
 import subsonusTagIcon from '../../../assets/clients/advanced-navigation/subsonus-tag-icon.webp'
@@ -29,6 +30,7 @@ export const advancedNavigation: ClientData = {
   id: 'advanced-navigation',
   name: 'Advanced Navigation',
   slug: 'advanced-navigation',
+  logo: logoTitle,
   modelId: SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK,
   seo: {
     title: 'Advanced Navigation | Marine Technology Solutions',

@@ -1,11 +1,13 @@
 import { ClientData } from '../../types'
 import headerImage from '../../../assets/clients/anchor-bot/header.jpg'
+import logoTitle from '../../../assets/clients/anchor-bot/logo-title.png'
 import anchorBotIcon from '../../../assets/clients/anchor-bot/favicon.png'
 
 export const anchorBot: ClientData = {
   id: 'anchor-bot',
   name: 'Anchorbot Marine',
   slug: 'anchor-bot',
+  logo: logoTitle,
   seo: {
     title: 'Anchorbot Marine | Underwater Anchor Installation ROV',
     description: 'Revolutionary underwater ROV system for precision helical anchor installation in marine infrastructure. Ideal for aquaculture, floating solar, marinas, and ocean energy projects. 100m depth capability with GPS guidance.',
