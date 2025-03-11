@@ -56,8 +56,8 @@ const contributionsData: ContributionsItem[] = [
   },
   {
     period: "2003-1998",
-    title: "SONAR Water Column data suitability trials | Design and test viability of multibeam sonar as an AUV payload | Became a father",
-    description: "Utilizing Gen 1 architecture, suitability of water column data collection.  Project led to what is now standard with future generations of multibeam SONAR | Collaboration with the Monterey Bay Aquarium Research Institute to design and test the viability of high resolution multibeam sonars as a payload to obtain centimeter level accuracy of the deep sea. | The greatest son in the history of mankind was born"
+    title: "SONAR Water Column data suitability trials | Design and test viability of multibeam sonar as an AUV payload",
+    description: "Utilizing Gen 1 architecture, suitability of water column data collection.  Project led to what is now standard with future generations of multibeam SONAR | Collaboration with the Monterey Bay Aquarium Research Institute to design and test the viability of high resolution multibeam sonars as a payload to obtain centimeter level accuracy of the deep sea."
   }
 ]
 
