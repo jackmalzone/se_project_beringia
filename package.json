@@ -3,15 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jackmalzone.github.io/se_project_beringia",
+  "homepage": "https://beringia-marine.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "vercel-build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "vite build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

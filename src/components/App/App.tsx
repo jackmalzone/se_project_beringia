@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ModalProvider } from '../../contexts/ModalContext'
 import { LoadingProvider } from '../../contexts/LoadingContext'
 import { NavigationProvider } from '../../contexts/NavigationContext'
