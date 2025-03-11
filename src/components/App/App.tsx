@@ -17,6 +17,7 @@ import { ROUTES } from '../../utils/constants'
 import { HelmetProvider } from 'react-helmet-async'
 import { useEffect, useState, ErrorInfo } from 'react'
 import { Loading } from '../shared/Loading/Loading'
+import emailjs from '@emailjs/browser'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -28,6 +29,9 @@ function App() {
   }
 
   useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init(process.env.VITE_EMAILJS_PUBLIC_KEY || '')
+
     // Simulate initial app loading
     const timer = setTimeout(() => {
       setIsLoading(false)
