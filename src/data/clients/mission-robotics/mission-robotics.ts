@@ -17,7 +17,7 @@ export const missionRobotics: ClientData = {
   },
   overview: {
     title: 'Mission Robotics',
-    description: 'Founded in 2020 by veteran ROV engineers, Mission Robotics develops cutting-edge hardware and software products that accelerate innovation in marine robotics. Their platform enables faster development and deployment of ROVs, AUVs, and USVs with modern, open, and extensible architecture.',
+    description: 'Founded in 2020 by veteran ROV engineers, Mission Robotics integrates cutting-edge software and hardware to redefine your vehicle\'s performance, making it the ultimate solution for demanding missions',
     headerImage: headerImage
   },
   sellingPoints: {
@@ -26,30 +26,32 @@ export const missionRobotics: ClientData = {
       {
         id: 'vehicle-os',
         title: 'Vehicle OS & Control Software',
-        description: 'Advanced ROS2-based control system with real-time vehicle control, data logging, and remote operation capabilities.',
+        description: 'Modular software framework that allows end users to capitalize on advanced computing, interfacing and customizations',
         features: [
-          'Built on ROS 2 and DDS for real-time communication',
-          'Supports multiple control modes including depth/attitude hold',
-          'Integrated data logging with time-synchronized recording',
-          'GPU-accelerated HD video processing',
-          'Remote operation over WAN/internet',
-          'Multi-vehicle, multi-operator support',
-          'Extensible API for custom integrations'
+          'Built for 24/7 uptime utilizing RTI DDS & diagnostics monitoring',
+          'Pilot assisted / station keeping controls: Hold depth, altitude, attitude, position, heading',
+          'Semi-autonomous operation & mission planning',
+          'Physics-based thruster control allocator',
+          'Teleoperations',
+          'Time-synchronized vehicle & payload data with eventing',
+          'On-site mission replay',
+          'MP4/ CSV Export',
+          'Fleet Management'
         ],
         icon: logoTitle
       },
       {
         id: 'hardware',
         title: 'Advanced Hardware Platform',
-        description: 'Integrated electronics module combining powerful computing with robust control systems.',
+        description: 'Consolidated single board NVIDIA Jetson Nano based computing platform allowing for the combination of powerful computing with robust control systems.',
         features: [
-          'NVIDIA Jetson Nano computing platform',
-          'Next-generation flight management unit',
-          'Consolidated single-board design',
-          'Electronic power switching system',
-          'Health monitoring sensors',
+          'Vehicle stabilization at any attitude: Quaternion-based pointing controls eliminate gimbal-lock issues',
+          'Physics-based thruster control allocator',
+          'ESKF 6-DOF (position & attitude) data fusion & state estimation',
+          'USBL/ GNSS Drift Correction',
+          'Health monitoring sensing system',
           'Multiple I/O and network interfaces',
-          'Expandable with accessory boards'
+          'Expandable'
         ],
         icon: logoTitle
       }
@@ -86,7 +88,7 @@ export const missionRobotics: ClientData = {
         title: 'Marine Research',
         description: 'Advanced platform for underwater research and development.',
         keyPoints: [
-          'ROS2 development environment',
+          'DDS middleware with ROS2 bridge development environment',
           'Data collection and analysis',
           'Simulation capabilities',
           'Open API for custom algorithms'
@@ -98,13 +100,13 @@ export const missionRobotics: ClientData = {
     title: 'Why Choose Mission Robotics',
     description: 'Mission Robotics provides a modern, open platform that accelerates marine robotics development and deployment.',
     highlights: [
-      'Modern ROS2-based architecture',
+      'Modern DDS middleware with ROS2 bridge',
       'Powerful computing capabilities',
       'Advanced control features',
       'Open standards and APIs',
-      'Extensive sensor support',
-      'Remote operation ready',
-      'Professional technical support',
+      'Rapidly expandable sensor integration',
+      'Teleoperation ready',
+      'Maximized Uptime',
       'Proven field performance'
     ]
   },

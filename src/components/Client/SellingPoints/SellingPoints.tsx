@@ -7,6 +7,7 @@ interface SellingPoint {
   title: string;
   description: string;
   features: string[];
+  link?: string;
 }
 
 interface SellingPointsProps {
@@ -17,8 +18,16 @@ interface SellingPointsProps {
 export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) => {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
-  const handleItemClick = (id: string) => {
-    setExpandedItem(expandedItem === id ? null : id);
+  const handleTitleClick = (id: string, link?: string) => {
+    if (link) {
+      window.open(link, '_blank');
+    }
+  };
+
+  const handleCardClick = (id: string, link?: string, isTitle: boolean = false) => {
+    if (!isTitle) {
+      setExpandedItem(expandedItem === id ? null : id);
+    }
   };
 
   return (
@@ -30,15 +39,25 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
             <div 
               key={point.id} 
               className={`selling-points__item ${expandedItem === point.id ? 'selling-points__item--expanded' : ''}`}
-              onClick={() => handleItemClick(point.id)}
+              onClick={() => handleCardClick(point.id, point.link)}
             >
-              <img
-                src={point.icon}
-                alt=""
-                className="selling-points__icon"
-                aria-hidden="true"
-              />
-              <h3 className="selling-points__item-title">{point.title}</h3>
+              <div className="selling-points__header">
+                <img
+                  src={point.icon}
+                  alt=""
+                  className="selling-points__icon"
+                  aria-hidden="true"
+                />
+                <h3 
+                  className={`selling-points__item-title ${point.link ? 'selling-points__item-title--clickable' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleTitleClick(point.id, point.link);
+                  }}
+                >
+                  {point.title}
+                </h3>
+              </div>
               <p className="selling-points__text">{point.description}</p>
               <ul className={`selling-points__list ${expandedItem === point.id ? 'selling-points__list--expanded' : ''}`}>
                 {point.features.map((feature, index) => (

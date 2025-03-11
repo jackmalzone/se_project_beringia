@@ -30,6 +30,15 @@
   margin-right: auto;
 }
 
+.overview__logo-link {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.overview__logo-link:hover {
+  transform: scale(1.05);
+}
+
 .overview__logo-image {
   width: 100%;
   height: auto;

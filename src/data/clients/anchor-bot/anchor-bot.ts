@@ -27,12 +27,13 @@ export const anchorBot: ClientData = {
         description: 'A revolutionary ROV system for precision underwater anchor installation, designed to transform marine infrastructure deployment.',
         features: [
           'Operates in depths up to 100m in challenging conditions',
-          'No divers required - safer operations',
+          'Reduction of Diver Support',
           'Precise GPS-guided placement',
           'Compatible with most sediment types',
           'Pre-attached anchor lines without proof-loading',
-          'Real-time torque/position data monitoring',
+          'Real-time torque values reported',
           'All-weather capable operations',
+          'Rapid mobilization',
           'Compact deployment footprint'
         ],
         icon: anchorBotIcon
@@ -82,11 +83,11 @@ export const anchorBot: ClientData = {
       'Cost-effective alternative to traditional anchoring',
       'Reduced environmental impact',
       'Smaller vessel requirements',
-      'Precise installation data logging',
+      'Real-time torque values reported',
       'GPS-integrated positioning system',
       'Compatible with multiple sediment types',
-      'Comprehensive technical support',
-      'Proven field performance'
+      'Priority Technical Support',
+      'Rapid mobilization'
     ]
   },
   mediaLinks: {

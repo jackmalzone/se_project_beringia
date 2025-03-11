@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() => {
     // Initialize EmailJS
-    emailjs.init(process.env.VITE_EMAILJS_PUBLIC_KEY || '')
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '')
 
     // Simulate initial app loading
     const timer = setTimeout(() => {

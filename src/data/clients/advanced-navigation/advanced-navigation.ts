@@ -57,7 +57,8 @@ export const advancedNavigation: ClientData = {
           'Hand deployable from small boats',
           'Obstacle detection and collision avoidance'
         ],
-        icon: hydrusIcon
+        icon: hydrusIcon,
+        link: 'https://www.advancednavigation.com/robotics/micro-auv/hydrus/'
       },
       {
         id: 'subsonus',
@@ -73,7 +74,8 @@ export const advancedNavigation: ClientData = {
           'Fully integrated miniature enclosure',
           'Built-in acoustic modem functionality'
         ],
-        icon: subsonusIcon
+        icon: subsonusIcon,
+        link: 'https://www.advancednavigation.com/acoustic-navigation/usbl/subsonus/'
       },
       {
         id: 'subsonus-tag',
@@ -86,7 +88,8 @@ export const advancedNavigation: ClientData = {
           'Hermetically sealed design requiring no servicing',
           'Wireless Qi charging and Bluetooth configuration'
         ],
-        icon: subsonusTagIcon
+        icon: subsonusTagIcon,
+        link: 'https://www.advancednavigation.com/acoustic-navigation/transponders/subsonus-tag/'
       }
     ]
   },
@@ -252,8 +255,8 @@ export const advancedNavigation: ClientData = {
     cases: [
       {
         id: 'subsea',
-        title: 'Subsea Navigation',
-        description: 'High-precision navigation solutions for ROVs, AUVs, and subsea vehicles.',
+        title: 'Subsea Positioning',
+        description: 'High-precision positioning solutions for ROVs, AUVs, and subsea vehicles.',
         keyPoints: [
           'Ultra-short baseline (USBL) positioning',
           'Inertial navigation systems (INS)',
@@ -263,21 +266,22 @@ export const advancedNavigation: ClientData = {
       {
         id: 'survey',
         title: 'Hydrographic Survey',
-        description: 'Professional-grade solutions for marine survey and mapping operations.',
+        description: 'Unprecedented performance for each class of marine survey and mapping regardless of application.',
         keyPoints: [
-          'Multibeam integration',
-          'High-accuracy positioning',
-          'Motion compensation'
+          'Singlebeam, multibeam, Sub-bottom profiling, magnetometer',
+          'Time synchronization including 1PPS, PTP',
+          '1000 Hz sampling',
+          'IHO Special Order'
         ]
       },
       {
         id: 'vessel',
-        title: 'Vessel Navigation',
-        description: 'Advanced navigation and positioning systems for marine vessels of all sizes.',
+        title: 'Vessel & Rig Monitoring',
+        description: 'Advanced navigation, positioning and monitoring for offshore vessels, rigs, FPSO\'s and more.',
         keyPoints: [
           'Dynamic positioning reference',
-          'Heading and attitude solutions',
-          'GPS-denied navigation capability'
+          'Dynamic attitude including heading, surge, sway, heave, pitch and roll',
+          'Precision Navigation regardless of GNSS availability'
         ]
       }
     ]

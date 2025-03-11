@@ -22,6 +22,7 @@ export interface ClientData {
         description: string;
         icon?: string;
         features: string[];
+        link?: string;
       }>;
     };
     useCases: {

@@ -19,8 +19,7 @@ export async function submitContactForm(data: ContactFormData): Promise<void> {
         message: data.message,
         to_name: 'Beringia Marine Team', // This will be used in the email template
       },
-      // You'll need to add your public key here
-      process.env.VITE_EMAILJS_PUBLIC_KEY
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
   } catch (error) {
     console.error('Failed to send email:', error)

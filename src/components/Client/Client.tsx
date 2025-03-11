@@ -86,7 +86,11 @@ const Client = () => {
         <div className="client__content">
           <div ref={overviewRef} className="client__section">
             <ErrorBoundary>
-              <Overview {...clientData.overview} logo={clientData.logo} />
+              <Overview 
+                {...clientData.overview} 
+                logo={clientData.logo} 
+                website={clientData.mediaLinks.website}
+              />
             </ErrorBoundary>
           </div>
           <div ref={featuresRef} className="client__section">
