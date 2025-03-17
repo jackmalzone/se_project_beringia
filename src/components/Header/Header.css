@@ -44,7 +44,7 @@
 .header__logo {
   cursor: pointer;
   transition: all 0.2s ease;
-  height: clamp(40px, 5vh, 70px);
+  height: clamp(50px, 6vh, 80px);
   width: auto;
 }
 
@@ -282,7 +282,7 @@
   }
 
   .header__logo {
-    height: clamp(40px, 6vh, 60px);
+    height: clamp(45px, 6vh, 70px);
   }
 
   .header__nav-content {
@@ -519,7 +519,7 @@
   }
 
   .header__logo {
-    height: clamp(36px, 5vh, 48px);
+    height: clamp(40px, 5vh, 55px);
   }
 }
 

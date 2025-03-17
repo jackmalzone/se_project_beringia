@@ -26,7 +26,7 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
 
   const handleCardClick = (id: string, link?: string, isTitle: boolean = false) => {
     if (!isTitle) {
-      setExpandedItem(expandedItem === id ? null : id);
+    setExpandedItem(expandedItem === id ? null : id);
     }
   };
 
@@ -42,12 +42,12 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
               onClick={() => handleCardClick(point.id, point.link)}
             >
               <div className="selling-points__header">
-                <img
-                  src={point.icon}
-                  alt=""
-                  className="selling-points__icon"
-                  aria-hidden="true"
-                />
+              <img
+                src={point.icon}
+                alt=""
+                className="selling-points__icon"
+                aria-hidden="true"
+              />
                 <h3 
                   className={`selling-points__item-title ${point.link ? 'selling-points__item-title--clickable' : ''}`}
                   onClick={(e) => {

@@ -6,7 +6,7 @@ import { useViewport } from '../../hooks/useViewport'
 import { useScrollContext } from '../../hooks/useScrollContext'
 import { useNavigation } from '../../hooks/useNavigation'
 import { ROUTES } from '../../utils/constants'
-import logo from '../../assets/beringia/logo-bridge-white.webp'
+import logo from '../../assets/beringia/logo-white-transparent.png'
 import './Header.css'
 import { clients } from '../../data/index.ts'
 
