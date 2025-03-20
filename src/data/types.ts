@@ -23,6 +23,10 @@ export interface ClientData {
         icon?: string;
         features: string[];
         link?: string;
+        documentation?: {
+          specs: string;
+          manual?: string;
+        };
       }>;
     };
     useCases: {

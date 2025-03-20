@@ -293,3 +293,32 @@
   left: 0;
   color: #00a2b0;
 }
+
+.selling-points__item-docs {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.selling-points__doc-link {
+  color: #00a2b0;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.selling-points__doc-link:hover {
+  color: #00c2d1;
+  text-decoration: underline;
+}
+
+.selling-points__doc-separator {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 300;
+}

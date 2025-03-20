@@ -58,7 +58,11 @@ export const advancedNavigation: ClientData = {
           'Obstacle detection and collision avoidance'
         ],
         icon: hydrusIcon,
-        link: 'https://www.advancednavigation.com/robotics/micro-auv/hydrus/'
+        link: 'https://www.advancednavigation.com/robotics/micro-auv/hydrus/',
+        documentation: {
+          specs: 'https://www.advancednavigation.com/robotics/micro-auv/hydrus/datasheet/',
+          manual: 'https://docs.advancednavigation.com/hydrus/Printed_Title.htm'
+        }
       },
       {
         id: 'subsonus',
@@ -75,7 +79,11 @@ export const advancedNavigation: ClientData = {
           'Built-in acoustic modem functionality'
         ],
         icon: subsonusIcon,
-        link: 'https://www.advancednavigation.com/acoustic-navigation/usbl/subsonus/'
+        link: 'https://www.advancednavigation.com/acoustic-navigation/usbl/subsonus/',
+        documentation: {
+          specs: 'https://www.advancednavigation.com/acoustic-navigation/usbl/subsonus/datasheet/',
+          manual: 'https://docs.advancednavigation.com/subsonus/Introduction.htm'
+        }
       },
       {
         id: 'subsonus-tag',
@@ -89,7 +97,10 @@ export const advancedNavigation: ClientData = {
           'Wireless Qi charging and Bluetooth configuration'
         ],
         icon: subsonusTagIcon,
-        link: 'https://www.advancednavigation.com/acoustic-navigation/transponders/subsonus-tag/'
+        link: 'https://www.advancednavigation.com/acoustic-navigation/transponders/subsonus-tag/',
+        documentation: {
+          specs: 'https://www.advancednavigation.com/acoustic-navigation/transponders/subsonus-tag/datasheet/'
+        }
       }
     ]
   },

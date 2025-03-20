@@ -8,6 +8,10 @@ interface SellingPoint {
   description: string;
   features: string[];
   link?: string;
+  documentation?: {
+    specs: string;
+    manual?: string;
+  };
 }
 
 interface SellingPointsProps {
@@ -66,6 +70,31 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
                   </li>
                 ))}
               </ul>
+              {point.documentation && (
+                <div className="selling-points__item-docs">
+                  <a 
+                    href={point.documentation.specs}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="selling-points__doc-link"
+                  >
+                    Specs
+                  </a>
+                  {point.documentation.manual && (
+                    <>
+                      <span className="selling-points__doc-separator">|</span>
+                      <a 
+                        href={point.documentation.manual}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="selling-points__doc-link"
+                      >
+                        Manual
+                      </a>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           ))}
         </div>
