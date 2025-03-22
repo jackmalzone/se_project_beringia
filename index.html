@@ -5,8 +5,20 @@
     <link
       rel="icon"
       type="image/png"
-      href="/src/assets/beringia/logo-transparent.png"
+      href="/assets/logo-transparent.png"
       id="favicon"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/logo-transparent.png"
+      type="image/png"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/logo-white-transparent.png"
+      type="image/png"
     />
     <meta name="permissions-policy" content="accelerometer=*, gyroscope=*" />
     <meta
@@ -18,17 +30,21 @@
       // Function to update favicon based on color scheme
       function updateFavicon() {
         const favicon = document.getElementById("favicon");
-        if (
+        const isDark =
           window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches
-        ) {
-          favicon.href = "/src/assets/beringia/logo-white-transparent.png";
-        } else {
-          favicon.href = "/src/assets/beringia/logo-transparent.png";
-        }
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const basePath = "/assets";
+
+        // Update favicon href
+        favicon.href = isDark
+          ? `${basePath}/logo-white-transparent.png`
+          : `${basePath}/logo-transparent.png`;
       }
 
-      // Update favicon initially
+      // Ensure the function runs as early as possible
+      document.addEventListener("DOMContentLoaded", updateFavicon);
+
+      // Run immediately as well
       updateFavicon();
 
       // Listen for system color scheme changes
