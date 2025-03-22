@@ -4,6 +4,8 @@ import logoTitle from '../../../assets/clients/mission-robotics/logo-title.webp'
 import electronicsImage from '../../../assets/clients/mission-robotics/electronics.jpg'
 import lakeTahoeImage from '../../../assets/clients/mission-robotics/lake-tahoe.jpg'
 import blackRovImage from '../../../assets/clients/mission-robotics/black-rov.jpg'
+import { BsCode } from 'react-icons/bs'
+import { BsGear } from 'react-icons/bs'
 
 export const missionRobotics: ClientData = {
   id: 'mission-robotics',
@@ -40,7 +42,7 @@ export const missionRobotics: ClientData = {
           'Waypoint navigation',
           'Open interfaces'
         ],
-        icon: logoTitle
+        icon: BsCode
       },
       {
         id: 'hardware',
@@ -56,7 +58,7 @@ export const missionRobotics: ClientData = {
           'Power conditioning for stable power to sensors',
           'Fine-grain power management'
         ],
-        icon: logoTitle
+        icon: BsGear
       }
     ]
   },

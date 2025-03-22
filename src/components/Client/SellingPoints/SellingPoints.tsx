@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { IconType } from 'react-icons';
 import './SellingPoints.css'
 
 interface SellingPoint {
   id: string;
-  icon?: string;
+  icon?: string | IconType;
   title: string;
   description: string;
   features: string[];
@@ -30,8 +31,26 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
 
   const handleCardClick = (id: string, link?: string, isTitle: boolean = false) => {
     if (!isTitle) {
-    setExpandedItem(expandedItem === id ? null : id);
+      setExpandedItem(expandedItem === id ? null : id);
     }
+  };
+
+  const renderIcon = (icon?: string | IconType) => {
+    if (!icon) return null;
+    
+    if (typeof icon === 'string') {
+      return (
+        <img
+          src={icon}
+          alt=""
+          className="selling-points__icon"
+          aria-hidden="true"
+        />
+      );
+    }
+    
+    const IconComponent = icon;
+    return <IconComponent className="selling-points__icon" aria-hidden="true" />;
   };
 
   return (
@@ -46,12 +65,7 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
               onClick={() => handleCardClick(point.id, point.link)}
             >
               <div className="selling-points__header">
-              <img
-                src={point.icon}
-                alt=""
-                className="selling-points__icon"
-                aria-hidden="true"
-              />
+                {renderIcon(point.icon)}
                 <h3 
                   className={`selling-points__item-title ${point.link ? 'selling-points__item-title--clickable' : ''}`}
                   onClick={(e) => {
@@ -100,5 +114,5 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

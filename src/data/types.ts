@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons';
+
 export interface ClientData {
     id: string;
     name: string;
@@ -20,7 +22,7 @@ export interface ClientData {
         id: string;
         title: string;
         description: string;
-        icon?: string;
+        icon?: string | IconType;
         features: string[];
         link?: string;
         documentation?: {

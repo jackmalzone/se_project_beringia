@@ -86,12 +86,22 @@
 .selling-points__icon {
   width: 48px;
   height: 48px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   flex-shrink: 0;
+  color: #00a2b0;
+  background: linear-gradient(135deg, #00a2b0 0%, #008791 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
 }
 
 .selling-points__item:hover .selling-points__icon {
   transform: scale(1.1);
+  color: #00c2d1;
+  background: linear-gradient(135deg, #00c2d1 0%, #00a2b0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .selling-points__item-title {
