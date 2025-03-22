@@ -12,7 +12,7 @@ interface ModalContactFormData extends Record<string, string> {
 }
 
 const ModalContactComponent = () => {
-  const { closeModal } = useModal()
+  const { close: closeModal } = useModal()
   const {
     formData,
     errors,

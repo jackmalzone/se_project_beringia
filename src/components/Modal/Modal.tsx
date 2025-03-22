@@ -8,7 +8,7 @@ interface ModalProps {
 }
 
 const Modal = () => {
-  const { isOpen, closeModal, modalContent, modalProps } = useModal()
+  const { isOpen, close: closeModal, modalContent, modalProps } = useModal()
 
   if (!isOpen) return null
 

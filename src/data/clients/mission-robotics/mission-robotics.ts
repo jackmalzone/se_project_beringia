@@ -4,6 +4,7 @@ import logoTitle from '../../../assets/clients/mission-robotics/logo-title.webp'
 import electronicsImage from '../../../assets/clients/mission-robotics/electronics.jpg'
 import lakeTahoeImage from '../../../assets/clients/mission-robotics/lake-tahoe.jpg'
 import blackRovImage from '../../../assets/clients/mission-robotics/black-rov.jpg'
+import specsDoc from '../../../assets/clients/mission-robotics/specs.pdf'
 import { BsCode } from 'react-icons/bs'
 import { BsGear } from 'react-icons/bs'
 
@@ -42,7 +43,10 @@ export const missionRobotics: ClientData = {
           'Waypoint navigation',
           'Open interfaces'
         ],
-        icon: BsCode
+        icon: BsCode,
+        documentation: {
+          specs: specsDoc
+        }
       },
       {
         id: 'hardware',

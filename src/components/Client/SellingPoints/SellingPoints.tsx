@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { IconType } from 'react-icons';
+import { PdfModal } from '../../PdfModal/PdfModal';
+import { useModal } from '../../../hooks/useModal';
 import './SellingPoints.css'
 
 interface SellingPoint {
@@ -20,8 +22,14 @@ interface SellingPointsProps {
   points: SellingPoint[];
 }
 
+const isExternalUrl = (url: string): boolean => {
+  return url.startsWith('http://') || url.startsWith('https://');
+};
+
 export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) => {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const [currentPdf, setCurrentPdf] = useState({ url: '', title: '' });
+  const { isOpen: isPdfModalOpen, open: openPdfModal, close: closePdfModal } = useModal();
 
   const handleTitleClick = (id: string, link?: string) => {
     if (link) {
@@ -32,6 +40,20 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
   const handleCardClick = (id: string, link?: string, isTitle: boolean = false) => {
     if (!isTitle) {
       setExpandedItem(expandedItem === id ? null : id);
+    }
+  };
+
+  const handlePdfClick = (url: string, title: string) => {
+    setCurrentPdf({ url, title });
+    openPdfModal();
+  };
+
+  const handleSpecsClick = (e: React.MouseEvent, specs: string, title: string) => {
+    e.stopPropagation();
+    if (isExternalUrl(specs)) {
+      window.open(specs, '_blank');
+    } else {
+      handlePdfClick(specs, title);
     }
   };
 
@@ -86,14 +108,12 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
               </ul>
               {point.documentation && (
                 <div className="selling-points__item-docs">
-                  <a 
-                    href={point.documentation.specs}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button 
                     className="selling-points__doc-link"
+                    onClick={(e) => handleSpecsClick(e, point.documentation!.specs, point.title)}
                   >
                     Specs
-                  </a>
+                  </button>
                   {point.documentation.manual && (
                     <>
                       <span className="selling-points__doc-separator">|</span>
@@ -113,6 +133,12 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
           ))}
         </div>
       </div>
+      <PdfModal
+        isOpen={isPdfModalOpen}
+        onClose={closePdfModal}
+        pdfUrl={currentPdf.url}
+        title={currentPdf.title}
+      />
     </section>
   );
 };
