@@ -15,7 +15,8 @@ export default defineConfig({
           'ui-vendor': ['react-icons', 'react-helmet', 'react-helmet-async']
         }
       }
-    }
+    },
+    assetsInlineLimit: 0
   },
   resolve: {
     alias: {
