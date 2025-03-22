@@ -17,7 +17,7 @@ export const missionRobotics: ClientData = {
   },
   overview: {
     title: 'Mission Robotics',
-    description: 'Founded in 2020 by veteran ROV engineers, Mission Robotics integrates cutting-edge software and hardware to redefine your vehicle\'s performance, making it the ultimate solution for demanding missions',
+    description: 'Built by ROV engineers who understand the challenges of small, fast-moving teams, Mission Robotics delivers plug-and-play vehicle control systems that eliminate the need for in-house software development—getting you operational faster with tools that scale as you grow.',
     headerImage: headerImage
   },
   sellingPoints: {
@@ -28,30 +28,33 @@ export const missionRobotics: ClientData = {
         title: 'Vehicle OS & Control Software',
         description: 'Modular software framework that allows end users to capitalize on advanced computing, interfacing and customizations',
         features: [
-          'Built for 24/7 uptime utilizing RTI DDS & diagnostics monitoring',
-          'Pilot assisted / station keeping controls: Hold depth, altitude, attitude, position, heading',
-          'Semi-autonomous operation & mission planning',
-          'Physics-based thruster control allocator',
-          'Teleoperations',
-          'Time-synchronized vehicle & payload data with eventing',
-          'On-site mission replay',
-          'MP4/ CSV Export',
-          'Fleet Management'
+          '24/7 Uptime via RTI DDS & diagnostics monitoring',
+          'Pilot-assist controls: heading, attitude, depth',
+          'Advanced controls: station keeping, altitude, velocity',
+          'Vehicle stabilization at any attitude, no gimbal-lock',
+          'Low-latency video streaming with camera control',
+          'Time-synchronized & evented vehicle & payload data',
+          'ESKF 6-DOF data fusion & state estimation',
+          'Native sensor support; DVL, Altimeter, AHRS, GPS, USBL',
+          'Map display with ROV and boat position and history trail',
+          'Waypoint navigation',
+          'Open interfaces'
         ],
         icon: logoTitle
       },
       {
         id: 'hardware',
-        title: 'Advanced Hardware Platform',
-        description: 'Consolidated single board NVIDIA Jetson Nano based computing platform allowing for the combination of powerful computing with robust control systems.',
+        title: 'Advanced Compute Platform',
+        description: 'Consolidated "brain" centralizes cutting edge compute with the NVIDIA Jetson Edge compute platform enables robust vehicle systems, flexible expansion, and future-proofing.',
         features: [
-          'Vehicle stabilization at any attitude: Quaternion-based pointing controls eliminate gimbal-lock issues',
-          'Physics-based thruster control allocator',
-          'ESKF 6-DOF (position & attitude) data fusion & state estimation',
-          'USBL/ GNSS Drift Correction',
-          'Health monitoring sensing system',
-          'Multiple I/O and network interfaces',
-          'Expandable'
+          'NVIDIA Jetson computer',
+          'Real-time microcontroller',
+          'Gigabit ethernet backbone and switch',
+          'Serial (TTL, isolated RS-485, isolated RS-232)',
+          'USB, I2C, CAN, GPIO, A/D, PWM',
+          'Supercapacitor circuit to ensure software integrity during brownouts',
+          'Power conditioning for stable power to sensors',
+          'Fine-grain power management'
         ],
         icon: logoTitle
       }
@@ -75,8 +78,9 @@ export const missionRobotics: ClientData = {
       {
         id: 'custom-vehicles',
         title: 'Custom Vehicle Development',
-        description: 'Scalable solutions for custom ROVs and AUVs up to 600kg.',
+        description: 'Scalable solutions for custom ROVs and AUVs.',
         keyPoints: [
+          'Deployed solutions to 250kg, 600kg+ vehicles',
           'Flexible hardware configurations',
           'Customizable software stack',
           'Integration support',
@@ -88,7 +92,7 @@ export const missionRobotics: ClientData = {
         title: 'Marine Research',
         description: 'Advanced platform for underwater research and development.',
         keyPoints: [
-          'DDS middleware with ROS2 bridge development environment',
+          'Standardized DDS middleware with ROS2 bridge development environment',
           'Data collection and analysis',
           'Simulation capabilities',
           'Open API for custom algorithms'
@@ -101,13 +105,15 @@ export const missionRobotics: ClientData = {
     description: 'Mission Robotics provides a modern, open platform that accelerates marine robotics development and deployment.',
     highlights: [
       'Modern DDS middleware with ROS2 bridge',
-      'Powerful computing capabilities',
-      'Advanced control features',
-      'Open standards and APIs',
-      'Rapidly expandable sensor integration',
-      'Teleoperation ready',
+      'Open interface standards and APIs',
       'Maximized Uptime',
-      'Proven field performance'
+      'Powerful computing capabilities',
+      'Rapidly expandable sensor integration',
+      'Proven field performance',
+      'Sensor data fusion',
+      'Advanced control features',
+      'Modern compute and software',
+      'Teleoperation ready'
     ]
   },
   mediaLinks: {

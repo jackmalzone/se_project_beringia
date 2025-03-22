@@ -6,6 +6,7 @@
       rel="icon"
       type="image/png"
       href="/src/assets/beringia/logo-transparent.png"
+      id="favicon"
     />
     <meta name="permissions-policy" content="accelerometer=*, gyroscope=*" />
     <meta
@@ -13,6 +14,30 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>Beringia | Marine</title>
+    <script>
+      // Function to update favicon based on color scheme
+      function updateFavicon() {
+        const favicon = document.getElementById("favicon");
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          favicon.href = "/src/assets/beringia/logo-white-transparent.png";
+        } else {
+          favicon.href = "/src/assets/beringia/logo-transparent.png";
+        }
+      }
+
+      // Update favicon initially
+      updateFavicon();
+
+      // Listen for system color scheme changes
+      if (window.matchMedia) {
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", updateFavicon);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
