@@ -139,6 +139,14 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
     };
   }, [isModalOpen, handleKeyPress]);
 
+  // Ensure video is paused when modal opens or when navigating
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }, [isModalOpen, currentIndex]);
+
   return (
     <section className="media-gallery">
       <h2 className="media-gallery__title">Gallery</h2>
@@ -182,8 +190,8 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
                 ref={videoRef}
                 src={items[currentIndex].url}
                 controls
-                autoPlay
                 className="media-gallery__media"
+                preload="none"
               />
             ) : null}
             
