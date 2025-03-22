@@ -2,6 +2,7 @@ import { ClientData } from '../../types'
 import headerImage from '../../../assets/clients/anchor-bot/header.jpg'
 import logoTitle from '../../../assets/clients/anchor-bot/logo-title.png'
 import anchorBotIcon from '../../../assets/clients/anchor-bot/favicon.png'
+import promoVideo from '../../../assets/clients/anchor-bot/promo.mov'
 
 export const anchorBot: ClientData = {
   id: 'anchor-bot',
@@ -97,6 +98,18 @@ export const anchorBot: ClientData = {
   },
   gallery: [
     {
+      id: 'anchor-bot-promo',
+      url: promoVideo,
+      alt: 'Anchorbot Marine Promotional Video',
+      type: 'video',
+      videoOptions: {
+        controls: true,
+        muted: false,
+        autoplay: false,
+        preload: 'none'
+      }
+    },
+    {
       id: 'anchor-bot-product',
       url: '/images/clients/anchor-bot/product.jpg',
       alt: 'Anchorbot ROV system',
@@ -112,7 +125,13 @@ export const anchorBot: ClientData = {
       id: 'anchor-bot-operation',
       url: '/images/clients/anchor-bot/operation.mp4',
       alt: 'Anchorbot installing helical anchor',
-      type: 'video'
+      type: 'video',
+      videoOptions: {
+        controls: true,
+        muted: false,
+        autoplay: false,
+        preload: 'none'
+      }
     }
   ]
 }

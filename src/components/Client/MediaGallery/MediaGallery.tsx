@@ -14,16 +14,39 @@ interface MediaGalleryProps {
   items: MediaItem[];
 }
 
-const VideoThumbnail = () => (
-  <div className="media-gallery__item--video">
-    <FaPlay className="media-gallery__item-icon" />
-  </div>
-);
+const VideoThumbnail: React.FC<{ url: string; alt: string }> = ({ url, alt }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Load the first frame of the video
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+    }
+  }, []);
+
+  return (
+    <div className="media-gallery__item--video">
+      <video
+        ref={videoRef}
+        src={url}
+        preload="metadata"
+        muted
+        playsInline
+        className="media-gallery__image"
+        title={alt}
+      />
+      <div className="media-gallery__item-overlay">
+        <FaPlay className="media-gallery__item-icon" />
+      </div>
+    </div>
+  );
+};
 
 export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const gridRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const updateScrollProgress = useCallback(() => {
     const grid = gridRef.current;
@@ -58,6 +81,10 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   };
 
   const handleClose = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
     setIsModalOpen(false);
   }, []);
 
@@ -131,7 +158,7 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
                   loading="lazy"
                 />
               ) : item.type === 'video' ? (
-                <VideoThumbnail />
+                <VideoThumbnail url={item.url} alt={item.alt} />
               ) : null}
             </div>
           ))}
@@ -152,6 +179,7 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
               />
             ) : items[currentIndex].type === 'video' ? (
               <video
+                ref={videoRef}
                 src={items[currentIndex].url}
                 controls
                 autoPlay

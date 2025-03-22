@@ -53,11 +53,20 @@ export interface ClientData {
       sketchfab?: string;
       email?: string;
     };
-    gallery: Array<{
-      id: string;
-      url: string;
-      alt: string;
-      type: 'image' | 'video' | 'sketchfab';
-      modelId?: string;
-    }>;
+    gallery: Array<GalleryItem>;
   }
+
+export interface GalleryItem {
+  id: string;
+  url: string;
+  alt: string;
+  type: 'image' | 'video' | 'sketchfab';
+  modelId?: string;
+  videoOptions?: {
+    autoplay?: boolean;
+    muted?: boolean;
+    controls?: boolean;
+    loop?: boolean;
+    preload?: 'none' | 'metadata' | 'auto';
+  };
+}
