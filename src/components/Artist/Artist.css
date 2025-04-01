@@ -1,0 +1,441 @@
+.artist {
+  padding: 6rem 2rem;
+  background-color: #214751;
+  position: relative;
+  overflow: hidden;
+}
+
+.artist::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 162, 176, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(0, 162, 176, 0.1) 0%,
+      transparent 50%
+    ),
+    linear-gradient(45deg, rgba(5, 37, 51, 0.5) 0%, rgba(33, 71, 81, 0.5) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.artist::after {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #214751);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.artist__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.artist__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.artist__title {
+  font-size: 1.5rem;
+  color: #00a2b0;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.artist__name {
+  font-size: 2.5rem;
+  color: white;
+  margin: 0;
+}
+
+.artist__bio {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: left;
+}
+
+.artist__bio-content {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.artist__bio-content:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.artist__bio-text {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+}
+
+.artist__bio-text p {
+  margin-bottom: 2rem;
+}
+
+.artist__bio-text p:last-child {
+  margin-bottom: 0;
+}
+
+.artist__bio-content--expanded .artist__bio-text {
+  -webkit-line-clamp: unset;
+}
+
+.artist__bio-content::after {
+  content: "Click to expand";
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2rem;
+  font-size: 0.9rem;
+  color: #00a2b0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.artist__bio-content:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.artist__bio-content--expanded::after {
+  content: "Click to collapse";
+}
+
+.artist__bio-link {
+  display: inline-block;
+  color: #00a2b0;
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.artist__bio-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #00a2b0;
+  transition: width 0.3s ease;
+}
+
+.artist__bio-link:hover {
+  color: #4dd1db;
+}
+
+.artist__bio-link:hover::after {
+  width: 100%;
+}
+
+.artist__gallery {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.artist__gallery::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.artist__gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  aspect-ratio: 16/9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 0 0 600px;
+  scroll-snap-align: start;
+}
+
+.artist__gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.artist__gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.artist__gallery-item:hover .artist__gallery-image {
+  transform: scale(1.05);
+}
+
+.artist__gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5, 37, 51, 0.98),
+    rgba(5, 37, 51, 0.8)
+  );
+  padding: 3rem;
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.artist__gallery-item:hover .artist__gallery-overlay {
+  transform: translateY(0);
+}
+
+.artist__gallery-title {
+  margin: 0 0 1.5rem;
+  font-size: 1.75rem;
+  color: #00a2b0;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.artist__gallery-description {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+.artist__gallery-description::after {
+  content: "Click to view full description";
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  font-size: 0.9rem;
+  color: #00a2b0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.artist__gallery-item:hover .artist__gallery-description::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.artist__gallery-item--active {
+  transform: scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.artist__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(5, 37, 51, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.artist__modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: scaleIn 0.3s ease;
+  gap: 2rem;
+}
+
+.artist__modal-close {
+  position: absolute;
+  top: -3rem;
+  right: -3rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+  z-index: 1001;
+}
+
+.artist__modal-close:hover {
+  transform: scale(1.1);
+}
+
+.artist__modal-image {
+  max-width: 80vw;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+}
+
+.artist__modal-info {
+  margin-top: 0;
+  text-align: center;
+  max-width: 800px;
+  color: white;
+  padding: 0 2rem;
+}
+
+.artist__modal-title {
+  font-size: 2rem;
+  color: #00a2b0;
+  margin-bottom: 1rem;
+}
+
+.artist__modal-description {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .artist {
+    padding: 4rem 1rem;
+  }
+
+  .artist__name {
+    font-size: 2rem;
+  }
+
+  .artist__bio-text {
+    font-size: 1rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .artist__gallery-item {
+    flex: 0 0 85vw;
+  }
+
+  .artist__gallery-overlay {
+    padding: 2rem;
+  }
+
+  .artist__gallery-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .artist__gallery-description {
+    font-size: 1.1rem;
+  }
+
+  .artist__modal {
+    padding: 1rem;
+  }
+
+  .artist__modal-close {
+    top: -2.5rem;
+    right: 0;
+    font-size: 2.5rem;
+  }
+
+  .artist__modal-title {
+    font-size: 1.5rem;
+  }
+
+  .artist__modal-description {
+    font-size: 1.1rem;
+  }
+
+  .artist__modal-image {
+    max-width: 90vw;
+    max-height: 60vh;
+  }
+
+  .artist__modal-info {
+    padding: 0 1rem;
+  }
+
+  .artist__bio-text {
+    font-size: 1rem;
+    -webkit-line-clamp: 3;
+  }
+
+  .artist__bio-content::after {
+    right: 1rem;
+  }
+}

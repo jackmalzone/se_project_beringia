@@ -1,15 +1,18 @@
 import { useRef } from 'react'
 import Home from '../Home/Home'
 import Contact from '../Contact/Contact'
+import Artist from '../Artist/Artist'
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 import { useScrollToSection } from '../../hooks/useScrollToSection'
 import { SEOHead } from '../shared/SEOHead'
 
 const Main = () => {
   const homeRef = useRef<HTMLDivElement>(null)
+  const artistRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
   const sectionRefs = {
     '/': homeRef,
+    '/artist': artistRef,
     '/contact': contactRef
   }
 
@@ -32,10 +35,16 @@ const Main = () => {
           </section>
         </ErrorBoundary>
         <ErrorBoundary>
+          <section ref={artistRef} id="artist">
+            <Artist />
+          </section>
+        </ErrorBoundary>
+        <ErrorBoundary>
           <section ref={contactRef} id="contact">
             <Contact />
           </section>
         </ErrorBoundary>
+       
       </main>
     </>
   )
