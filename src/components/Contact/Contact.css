@@ -247,6 +247,39 @@
   background: #666;
 }
 
+.contact__submit-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.contact__submit-message.success {
+  background-color: rgba(0, 162, 176, 0.1);
+  color: #00a2b0;
+  border: 1px solid rgba(0, 162, 176, 0.2);
+}
+
+.contact__submit-message.error {
+  background-color: rgba(255, 77, 77, 0.1);
+  color: #ff4d4d;
+  border: 1px solid rgba(255, 77, 77, 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
   .contact {
     padding: 4rem 0;

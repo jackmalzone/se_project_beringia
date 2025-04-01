@@ -2,6 +2,7 @@ import { useForm } from '../../hooks/useForm'
 import { withErrorHandler } from '../shared/error-handler/error-handler'
 import { submitContactForm } from '../../services/contact'
 import './Contact.css'
+import { useState } from 'react'
 
 interface ContactFormData extends Record<string, string> {
   name: string
@@ -27,6 +28,9 @@ const ContactInfo = () => (
 )
 
 const ContactFormComponent = () => {
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitMessage, setSubmitMessage] = useState('')
+
   const {
     formData,
     errors,
@@ -62,9 +66,18 @@ const ContactFormComponent = () => {
   )
 
   const onSubmit = async (data: ContactFormData) => {
-    await submitContactForm(data)
-    resetForm() // Clear form after successful submission
-    // You might want to show a success message here
+    try {
+      setSubmitStatus('idle')
+      setSubmitMessage('')
+      await submitContactForm(data)
+      setSubmitStatus('success')
+      setSubmitMessage('Thank you! Your message has been sent successfully.')
+      resetForm()
+    } catch (error) {
+      setSubmitStatus('error')
+      setSubmitMessage('Sorry, there was an error sending your message. Please try again.')
+      console.error('Form submission error:', error)
+    }
   }
 
   return (
@@ -111,6 +124,12 @@ const ContactFormComponent = () => {
         />
         {errors.message && <span className="contact__error">{errors.message}</span>}
       </div>
+
+      {submitStatus !== 'idle' && (
+        <div className={`contact__submit-message ${submitStatus}`}>
+          {submitMessage}
+        </div>
+      )}
 
       <button 
         type="submit" 
