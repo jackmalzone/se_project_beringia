@@ -5,6 +5,9 @@ import electronicsImage from '../../../assets/clients/mission-robotics/electroni
 import lakeTahoeImage from '../../../assets/clients/mission-robotics/lake-tahoe.jpg'
 import blackRovImage from '../../../assets/clients/mission-robotics/black-rov.jpg'
 import specsDoc from '../../../assets/clients/mission-robotics/specs.pdf'
+import userInterfaceImage from '../../../assets/clients/mission-robotics/interface-plane.png'
+import sunkenArtifactImage from '../../../assets/clients/mission-robotics/sunken-artifact1.png'
+import sunkenShipImage from '../../../assets/clients/mission-robotics/sunken-ship1.png'
 import { BsCode } from 'react-icons/bs'
 import { BsGear } from 'react-icons/bs'
 
@@ -144,6 +147,24 @@ export const missionRobotics: ClientData = {
       id: 'black-rov',
       url: blackRovImage,
       alt: 'Black ROV',
+      type: 'image'
+    },
+    {
+      id: 'user-interface',
+      url: userInterfaceImage,
+      alt: 'User Interface',
+      type: 'image'
+    },
+    {
+      id: 'sunken-artifact',
+      url: sunkenArtifactImage,
+      alt: 'Sunken Artifact',
+      type: 'image'
+    },
+    {
+      id: 'sunken-ship',
+      url: sunkenShipImage,
+      alt: 'Sunken Ship',
       type: 'image'
     }
   ]
