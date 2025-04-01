@@ -13,6 +13,7 @@ import { MediaGallery } from './MediaGallery/MediaGallery.tsx'
 import ClientNav from './ClientNav/ClientNav.tsx'
 import { UseCases } from './UseCases/UseCases'
 import { Interactive } from './Interactive/Interactive'
+import { Demo } from './Demo/Demo'
 import { useScrollToSection } from '../../hooks/useScrollToSection'
 import './Client.css'
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
@@ -27,6 +28,7 @@ const Client = () => {
   const valueRef = useRef<HTMLDivElement>(null)
   const mediaRef = useRef<HTMLDivElement>(null)
   const interactiveRef = useRef<HTMLDivElement>(null)
+  const demoRef = useRef<HTMLDivElement>(null)
 
   // Memoize section refs to prevent unnecessary re-renders
   const sectionRefs = useMemo(() => ({
@@ -35,6 +37,7 @@ const Client = () => {
     [`${ROUTES.CLIENT(clientSlug || '')}/value`]: valueRef,
     [`${ROUTES.CLIENT(clientSlug || '')}/media`]: mediaRef,
     [`${ROUTES.CLIENT(clientSlug || '')}/interactive`]: interactiveRef,
+    [`${ROUTES.CLIENT(clientSlug || '')}/demo`]: demoRef,
   }), [clientSlug])
 
   useEffect(() => {
@@ -99,22 +102,29 @@ const Client = () => {
               <UseCases {...clientData.useCases} />
             </ErrorBoundary>
           </div>
-          <div ref={interactiveRef} className="client__section">
-            {clientData.id === 'advanced-navigation' && (
+          {clientData.modelId === SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK && (
+            <div ref={interactiveRef} className="client__section">
               <ErrorBoundary>
                 <Interactive 
-                  modelId={SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK}
+                  modelId={clientData.modelId}
                   title="Hydrus"
                   description="Explore this detailed 3D model of a shipwreck captured by Hydrus. This scan demonstrates Hydrus's advanced underwater mapping capabilities, allowing you to rotate and zoom to examine the wreck from every angle."
                 />
               </ErrorBoundary>
-            )}
-          </div>
+            </div>
+          )}
           <div ref={valueRef} className="client__section">
             <ErrorBoundary>
               <ValueProposition {...clientData.valueProposition} />
             </ErrorBoundary>
           </div>
+          {clientData.demo && (
+            <div ref={demoRef} className="client__section">
+              <ErrorBoundary>
+                <Demo {...clientData.demo} />
+              </ErrorBoundary>
+            </div>
+          )}
           <div ref={mediaRef} className="client__section">
             <ErrorBoundary>
               <MediaLinks links={clientData.mediaLinks} />

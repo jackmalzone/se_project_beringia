@@ -54,6 +54,11 @@ export interface ClientData {
       email?: string;
     };
     gallery: Array<GalleryItem>;
+    demo?: {
+      title: string;
+      description: string;
+      videoUrl: string;
+    };
   }
 
 export interface GalleryItem {

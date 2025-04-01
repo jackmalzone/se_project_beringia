@@ -1,8 +1,18 @@
 import { ClientData } from '../../types'
-import headerImage from '../../../assets/clients/anchor-bot/header.jpg'
+import headerImage from '../../../assets/clients/anchor-bot/overview.jpg'
 import logoTitle from '../../../assets/clients/anchor-bot/logo-title.png'
 import anchorBotIcon from '../../../assets/clients/anchor-bot/favicon.png'
 import promoVideo from '../../../assets/clients/anchor-bot/promo.mov'
+import diagramImage from '../../../assets/clients/anchor-bot/diagrams.jpg'
+import postOperationImage from '../../../assets/clients/anchor-bot/post-op.jpg'
+import installationImage from '../../../assets/clients/anchor-bot/anchor-bot_install-graphic.jpg'
+import drillImage from '../../../assets/clients/anchor-bot/anchor-bot_drill.png'
+import renderImage from '../../../assets/clients/anchor-bot/render-ortho-top.jpeg'
+import deliveryImage from '../../../assets/clients/anchor-bot/anchor-bot_delivery.jpg'
+import deploymentImage from '../../../assets/clients/anchor-bot/anchor-bot_deployment.jpg'
+import launchImage from '../../../assets/clients/anchor-bot/anchor-bot_launch.jpg'
+import simpleGraphicImage from '../../../assets/clients/anchor-bot/anchor-bot_simple-graphic.png'
+
 
 export const anchorBot: ClientData = {
   id: 'anchor-bot',
@@ -96,42 +106,65 @@ export const anchorBot: ClientData = {
     email: 'info@anchorbotmarine.com',
     linkedin: 'https://linkedin.com/company/anchorbot-marine'
   },
+  demo: {
+    title: 'How Anchorbot Works',
+    description: 'Watch a step-by-step demonstration combining animation and live footage to showcase Anchorbot\'s underwater anchor installation process.',
+    videoUrl: promoVideo
+  },
   gallery: [
     {
-      id: 'anchor-bot-promo',
-      url: promoVideo,
-      alt: 'Anchorbot Marine Promotional Video',
-      type: 'video',
-      videoOptions: {
-        controls: true,
-        muted: false,
-        autoplay: false,
-        preload: 'none'
-      }
-    },
-    {
-      id: 'anchor-bot-product',
-      url: '/images/clients/anchor-bot/product.jpg',
-      alt: 'Anchorbot ROV system',
+      id: 'anchor-bot-delivery',
+      url: deliveryImage,
+      alt: 'Anchorbot Delivery',
       type: 'image'
     },
     {
       id: 'anchor-bot-deployment',
-      url: '/images/clients/anchor-bot/deployment.jpg',
-      alt: 'Anchorbot being deployed from vessel',
+      url: deploymentImage,
+      alt: 'Anchorbot Deployment',
       type: 'image'
     },
     {
-      id: 'anchor-bot-operation',
-      url: '/images/clients/anchor-bot/operation.mp4',
-      alt: 'Anchorbot installing helical anchor',
-      type: 'video',
-      videoOptions: {
-        controls: true,
-        muted: false,
-        autoplay: false,
-        preload: 'none'
-      }
+      id: 'anchor-bot-launch',
+      url: launchImage,
+      alt: 'Anchorbot Launch',
+      type: 'image'
+    },
+    {
+      id: 'anchor-bot-post-operation',
+      url: postOperationImage,
+      alt: 'Anchorbot Post Operation',
+      type: 'image'
+    },
+    {
+      id: 'anchor-bot-installation',
+      url: installationImage,
+      alt: 'Anchorbot Installation',
+      type: 'image'
+    },
+    {
+      id: 'anchor-bot-render',
+      url: renderImage,
+      alt: 'Anchorbot Render',
+      type: 'image'
+    },
+    {
+      id: 'anchor-bot-diagram',
+      url: diagramImage,
+      alt: 'Anchorbot Diagram',
+      type: 'image'
+    },
+    {
+      id: 'anchor-bot-drill',
+      url: drillImage,
+      alt: 'Anchorbot Drill',
+      type: 'image'
+    },
+    {
+      id: 'anchor-bot-simple-graphic',
+      url: simpleGraphicImage,
+      alt: 'Anchorbot Simple Graphic',
+      type: 'image'
     }
   ]
 }

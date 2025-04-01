@@ -127,15 +127,12 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
   useEffect(() => {
     if (isModalOpen) {
       document.addEventListener('keydown', handleKeyPress);
-      document.body.style.overflow = 'hidden';
     } else {
       document.removeEventListener('keydown', handleKeyPress);
-      document.body.style.overflow = '';
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
-      document.body.style.overflow = '';
     };
   }, [isModalOpen, handleKeyPress]);
 
@@ -178,7 +175,11 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
           className={`media-gallery__modal ${isModalOpen ? 'media-gallery__modal--visible' : ''}`}
           onClick={handleClose}
         >
-          <div className="media-gallery__content" onClick={e => e.stopPropagation()}>
+          <div 
+            className="media-gallery__content" 
+            onClick={e => e.stopPropagation()}
+            style={{ position: 'relative' }}
+          >
             {items[currentIndex].type === 'image' ? (
               <img
                 src={items[currentIndex].url}
@@ -202,24 +203,23 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ items }) => {
                   onClick={handlePrevious}
                   aria-label="Previous image"
                 >
-                  <FaChevronLeft size={20} />
+                  <FaChevronLeft />
                 </button>
                 <button
                   className="media-gallery__nav media-gallery__nav--next"
                   onClick={handleNext}
                   aria-label="Next image"
                 >
-                  <FaChevronRight size={20} />
+                  <FaChevronRight />
                 </button>
               </>
             )}
-            
             <button
               className="media-gallery__close"
               onClick={handleClose}
               aria-label="Close modal"
             >
-              <FaTimes size={20} />
+              <FaTimes />
             </button>
           </div>
         </div>

@@ -33,6 +33,7 @@ const ClientNav = ({ clientSlug, sectionRefs }: ClientNavProps) => {
   // Check if client has 3D model
   const currentClient = clients[clientSlug as keyof typeof clients]
   const has3DModel = currentClient?.modelId === SKETCHFAB_MODEL_IDS.HYDRUS_SHIPWRECK
+  const isAnchorBot = clientSlug === 'anchor-bot'
 
   // Define all possible nav items in the desired order
   const navItems = [
@@ -46,6 +47,12 @@ const ClientNav = ({ clientSlug, sectionRefs }: ClientNavProps) => {
       is3D: true
     }] : []),
     { path: `${ROUTES.CLIENT(clientSlug)}/value`, label: 'Value' },
+    
+    // Insert Demo before Media if it's AnchorBot
+    ...(isAnchorBot ? [{ 
+      path: `${ROUTES.CLIENT(clientSlug)}/demo`,
+      label: 'Demo'
+    }] : []),
     { path: `${ROUTES.CLIENT(clientSlug)}/media`, label: 'Media' },
   ]
 
