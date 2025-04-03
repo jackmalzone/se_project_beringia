@@ -1,4 +1,5 @@
-import { useModal } from '../../hooks/useModal'
+import { useContext } from 'react'
+import { ModalContext } from '../../contexts/definitions/modalContext'
 import './ExpertiseSection.css'
 import '../ModalContact/ModalContact.css'
 import ModalContact from '../ModalContact/ModalContact'
@@ -50,10 +51,16 @@ const expertiseData: ExpertiseCard[] = [
 ];
 
 const ExpertiseSection = () => {
-  const { openModal } = useModal()
+  const modalContext = useContext(ModalContext)
+
+  if (!modalContext) {
+    console.error('ModalContext is not available. Make sure ModalProvider is properly set up.')
+    return null
+  }
 
   const handleExpertiseClick = () => {
-    openModal(<ModalContact />, { size: 'small' })
+    console.log('Opening modal...')
+    modalContext.openModal(<ModalContact />, { size: 'small' })
   }
 
   return (

@@ -1,4 +1,5 @@
-import { useModal } from '../../hooks/useModal'
+import { useContext } from 'react'
+import { ModalContext } from '../../contexts/definitions/modalContext'
 import './Modal.css'
 
 interface ModalProps {
@@ -8,11 +9,12 @@ interface ModalProps {
 }
 
 const Modal = () => {
-  const { isOpen, close: closeModal, modalContent, modalProps } = useModal()
+  const modalContext = useContext(ModalContext)
 
-  if (!isOpen) return null
+  if (!modalContext || !modalContext.isOpen) return null
 
-  const { title, size = 'medium' } = modalProps as ModalProps
+  const { modalContent, modalProps, closeModal } = modalContext
+  const { title, size = 'medium' } = modalProps || {}
 
   return (
     <div className="modal">
