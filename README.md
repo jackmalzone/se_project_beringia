@@ -2,7 +2,7 @@
 
 ## About
 
-Beringia Marine is a modern web application showcasing marine technology and underwater exploration services. The platform features an interactive 3D model of a shipwreck (captured by hydrus), comprehensive service information, and a seamless contact system for potential clients.
+Beringia Marine is a modern web application showcasing marine technology and underwater exploration services. The platform features an interactive 3D model of a shipwreck (captured by hydrus), comprehensive service information, a featured artist section, and a seamless contact system for potential clients.
 
 ## Features
 
@@ -12,6 +12,8 @@ Beringia Marine is a modern web application showcasing marine technology and und
 - Glass-morphism UI elements for modern aesthetics
 - Contact form with real-time validation
 - Modal-based user interface for enhanced UX
+- PDF viewer for documentation and resources
+- Featured artist showcase section
 - Dark marine theme with dynamic gradients
 - Smooth animations and transitions
 
@@ -23,11 +25,15 @@ Beringia Marine is a modern web application showcasing marine technology and und
 ![Desktop About](docs/assets/desktop-about.png)
 ![Desktop 3D Model](docs/assets/desktop-model.png)
 ![Desktop Contact](docs/assets/desktop-contact.png)
+![Desktop Artist](docs/assets/desktop-artist.png)
+![Desktop PDF Viewer](docs/assets/desktop-pdf.png)
 
 ### Mobile View
 
 ![Mobile Screenshot](docs/assets/mobile-home.png)
 ![Mobile Navigation](docs/assets/mobile-nav.png)
+![Mobile Artist](docs/assets/mobile-artist.png)
+![Mobile PDF Viewer](docs/assets/mobile-pdf.png)
 
 ### 3D Model Interaction
 
@@ -57,6 +63,7 @@ Recommended screenshot dimensions:
 - React 18 with TypeScript
 - CSS3 with BEM methodology
 - Sketchfab API integration
+- PDF.js integration
 - Custom React Hooks
 - Error Boundary implementation
 - Context API for state management
@@ -71,7 +78,7 @@ Recommended screenshot dimensions:
 
 ## Live Demo
 
-Visit the live website: [Beringia Marine](https://jackmalzone.github.io/se_project_beringia/)
+Visit the live website: [Beringia Marine](https://beringia-marine.com)
 
 ## Getting Started
 
@@ -91,6 +98,9 @@ Visit the live website: [Beringia Marine](https://jackmalzone.github.io/se_proje
 
    ```env
    VITE_SKETCHFAB_API_KEY=your_api_key
+   VITE_EMAILJS_PUBLIC_KEY=your_emailjs_key
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
    ```
 
 4. Start the development server
@@ -118,6 +128,7 @@ src/
 ├── components/            # React components
 │   ├── About/             # About section components
 │   ├── App/               # Root app component
+│   ├── Artist/            # Featured artist components
 │   ├── Client/            # Client page components
 │   ├── Contact/           # Contact form components
 │   ├── Contributions/     # Contributions section
@@ -129,6 +140,7 @@ src/
 │   ├── Main/             # Main layout wrapper
 │   ├── Modal/            # Modal system components
 │   ├── ModalContact/     # Contact form modal
+│   ├── PdfModal/         # PDF viewer modal
 │   ├── SeascapeDivider/  # Decorative divider
 │   ├── shared/           # Shared/reusable components
 │   ├── Sketchfab/        # 3D viewer components
@@ -175,6 +187,8 @@ src/
 
 - Context-based modal management
 - Reusable modal components
+- PDF viewer modal for documentation
+- Contact form modal
 - Animated transitions
 - Responsive design
 
@@ -184,6 +198,13 @@ src/
 - Custom controls and UI
 - Loading states and error handling
 - Responsive iframe implementation
+
+### PDF Viewer Integration
+
+- PDF.js implementation
+- Custom controls and navigation
+- Responsive design
+- Loading states and error handling
 
 ## Future Improvements
 
@@ -235,6 +256,8 @@ src/
 - Type safety throughout the application
 - Input validation and sanitization
 - Error handling for all API calls
+- Secure PDF handling
+- Protected API endpoints
 
 ## Browser Support
 
