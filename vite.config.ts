@@ -30,5 +30,6 @@ export default defineConfig({
   },
   preview: {
     port: 3001
-  }
+  },
+  assetsInclude: ['**/*.PNG', '**/*.png']
 })

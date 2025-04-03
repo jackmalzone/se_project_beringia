@@ -113,11 +113,10 @@ export const missionRobotics: ClientData = {
     title: 'Why Choose Mission Robotics',
     description: 'Mission Robotics provides a modern, open platform that accelerates marine robotics development and deployment.',
     highlights: [
-      'Modern DDS middleware with ROS2 bridge',
       'Open interface standards and APIs',
       'Maximized Uptime',
       'Powerful computing capabilities',
-      'Rapidly expandable sensor integration',
+      'Rapidly adopt new sensors',
       'Proven field performance',
       'Sensor data fusion',
       'Advanced control features',
