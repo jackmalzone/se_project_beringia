@@ -27,7 +27,7 @@
 .modal__content {
   position: relative;
   width: 100%;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   display: block;
   background: transparent;
