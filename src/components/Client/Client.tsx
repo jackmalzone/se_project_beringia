@@ -23,6 +23,9 @@ const Client = () => {
   const [clientData, setClientData] = useState<ClientData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   
+  console.log('Client component rendered with slug:', clientSlug)
+  console.log('Available clients:', clients)
+  
   const overviewRef = useRef<HTMLDivElement>(null)
   const featuresRef = useRef<HTMLDivElement>(null)
   const valueRef = useRef<HTMLDivElement>(null)
@@ -41,9 +44,12 @@ const Client = () => {
   }), [clientSlug])
 
   useEffect(() => {
+    console.log('Data loading effect triggered')
     setIsLoading(true)
     if (clientSlug) {
-      const data = Object.values(clients).find(client => client.slug === clientSlug)
+      console.log('Looking for client with slug:', clientSlug)
+      const data = clients[clientSlug]
+      console.log('Found client data:', data)
       setClientData(data || null)
       // Add a small delay to prevent flash of loading state
       setTimeout(() => setIsLoading(false), 300)
@@ -60,7 +66,12 @@ const Client = () => {
     }
   })
 
-  if (!clientData) return null
+  if (!clientData) {
+    console.log('No client data found, returning null')
+    return null
+  }
+
+  console.log('Rendering client page with data:', clientData)
 
   const navContainerClasses = [
     'client__nav-container',

@@ -104,6 +104,43 @@ export const advancedNavigation: ClientData = {
       }
     ]
   },
+  useCases: {
+    title: 'Applications',
+    description: 'Advanced Navigation provides cutting-edge solutions across multiple marine sectors',
+    cases: [
+      {
+        id: 'subsea',
+        title: 'Subsea Positioning',
+        description: 'High-precision positioning solutions for ROVs, AUVs, and subsea vehicles.',
+        keyPoints: [
+          'Ultra-short baseline (USBL) positioning',
+          'Inertial navigation systems (INS)',
+          'Depth-rated solutions to 4000m'
+        ]
+      },
+      {
+        id: 'survey',
+        title: 'Hydrographic Survey',
+        description: 'Unprecedented performance for each class of marine survey and mapping regardless of application.',
+        keyPoints: [
+          'Singlebeam, multibeam, Sub-bottom profiling, magnetometer',
+          'Time synchronization including 1PPS, PTP',
+          '1000 Hz sampling',
+          'IHO Special Order'
+        ]
+      },
+      {
+        id: 'vessel',
+        title: 'Vessel & Rig Monitoring',
+        description: 'Advanced navigation, positioning and monitoring for offshore vessels, rigs, FPSO\'s and more.',
+        keyPoints: [
+          'Dynamic positioning reference',
+          'Dynamic attitude including heading, surge, sway, heave, pitch and roll',
+          'Precision Navigation regardless of GNSS availability'
+        ]
+      }
+    ]
+  },
   valueProposition: {
     title: 'Why Choose Advanced Navigation',
     description: 'Built on a culture of research and discovery, Advanced Navigation merges cutting-edge technologies into simple solutions, ensuring swift delivery of capabilities to customers.',
@@ -259,42 +296,5 @@ export const advancedNavigation: ClientData = {
       type: 'sketchfab',
       modelId: '[model-id]'
     }
-  ],
-  useCases: {
-    title: 'Applications',
-    description: 'Advanced Navigation provides cutting-edge solutions across multiple marine sectors',
-    cases: [
-      {
-        id: 'subsea',
-        title: 'Subsea Positioning',
-        description: 'High-precision positioning solutions for ROVs, AUVs, and subsea vehicles.',
-        keyPoints: [
-          'Ultra-short baseline (USBL) positioning',
-          'Inertial navigation systems (INS)',
-          'Depth-rated solutions to 4000m'
-        ]
-      },
-      {
-        id: 'survey',
-        title: 'Hydrographic Survey',
-        description: 'Unprecedented performance for each class of marine survey and mapping regardless of application.',
-        keyPoints: [
-          'Singlebeam, multibeam, Sub-bottom profiling, magnetometer',
-          'Time synchronization including 1PPS, PTP',
-          '1000 Hz sampling',
-          'IHO Special Order'
-        ]
-      },
-      {
-        id: 'vessel',
-        title: 'Vessel & Rig Monitoring',
-        description: 'Advanced navigation, positioning and monitoring for offshore vessels, rigs, FPSO\'s and more.',
-        keyPoints: [
-          'Dynamic positioning reference',
-          'Dynamic attitude including heading, surge, sway, heave, pitch and roll',
-          'Precision Navigation regardless of GNSS availability'
-        ]
-      }
-    ]
-  }
+  ]
 }
