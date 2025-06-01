@@ -2,282 +2,242 @@
 
 ## About
 
-Beringia Marine is a modern web application showcasing marine technology and underwater exploration services. The platform features an interactive 3D model of a shipwreck (captured by hydrus), comprehensive service information, a featured artist section, and a seamless contact system for potential clients.
+Beringia Marine is a web platform designed to highlight the frontiers of marine technology and underwater exploration. Built with modern web technologies and a focus on clarity, performance, and storytelling, it showcases interactive 3D models, detailed service offerings, featured artists, and a streamlined client contact system.
 
 ## Features
 
-- Interactive 3D model viewer with Sketchfab integration
-- Responsive design optimized for all devices
-- Type-safe implementation with comprehensive error handling
-- Glass-morphism UI elements for modern aesthetics
-- Contact form with real-time validation
-- Modal-based user interface for enhanced UX
-- PDF viewer for documentation and resources
-- Featured artist showcase section
-- Dark marine theme with dynamic gradients
-- Smooth animations and transitions
-
-## Demo & Screenshots
-
-### Desktop View
-
-![Desktop Screenshot](docs/assets/desktop-home.png)
-![Desktop About](docs/assets/desktop-about.png)
-![Desktop 3D Model](docs/assets/desktop-model.png)
-![Desktop Contact](docs/assets/desktop-contact.png)
-![Desktop Artist](docs/assets/desktop-artist.png)
-![Desktop PDF Viewer](docs/assets/desktop-pdf.png)
-
-### Mobile View
-
-![Mobile Screenshot](docs/assets/mobile-home.png)
-![Mobile Navigation](docs/assets/mobile-nav.png)
-![Mobile Artist](docs/assets/mobile-artist.png)
-![Mobile PDF Viewer](docs/assets/mobile-pdf.png)
-
-### 3D Model Interaction
-
-![3D Model Demo](docs/assets/3d-model-demo.gif)
-
-### Documentation Assets
-
-The screenshots and demo GIFs are stored in the `docs/assets` directory. To maintain the documentation:
-
-1. Use descriptive filenames (e.g., `desktop-home.png`, `mobile-nav.png`)
-2. Optimize images before committing:
-   - Screenshots: PNG format, max width 1920px
-   - GIFs: Compressed, max width 1200px
-3. Include both light and dark theme versions if applicable
-4. Update screenshots when major UI changes occur
-
-Recommended screenshot dimensions:
-
-- Desktop: 1920x1080 or 1440x900
-- Mobile: 390x844 (iPhone 14 size)
-- Tablet: 1024x768
-
-## Technologies & Tools
-
-### Frontend
-
-- React 18 with TypeScript
-- CSS3 with BEM methodology
-- Sketchfab API integration
-- PDF.js integration
-- Custom React Hooks
-- Error Boundary implementation
-- Context API for state management
-
-### Development Tools
-
-- ESLint & Prettier
-- Git & GitHub
-- Chrome DevTools
-- TypeScript compiler
-- Vite for development and building
+- 🌐 Responsive design optimized across devices
+- 🧭 Interactive 3D model viewer (Sketchfab API)
+- 🧊 Glassmorphism-inspired UI for immersive visuals
+- 📄 PDF.js viewer for onboard documentation
+- 💬 Contact modal with real-time validation
+- 🎨 Featured artist showcase
+- 🎥 Smooth transitions via Framer Motion
+- 🛠 Type-safe implementation with custom hooks & error boundaries
+- 🌒 Marine-inspired dark theme with dynamic gradients
 
 ## Live Demo
 
-Visit the live website: [Beringia Marine](https://beringia-marine.com)
+👉 [https://beringia-marine.com](https://beringia-marine.com)
+
+## Technologies Used
+
+### Frontend
+
+- React 18 + TypeScript
+- Vite (dev/build)
+- CSS Modules (BEM naming convention)
+- Framer Motion
+- Sketchfab API
+- PDF.js
+
+### Tooling
+
+- ESLint + Prettier
+- Git & GitHub
+- Chrome DevTools
+- Environment variable configuration
 
 ## Getting Started
 
-1. Clone this repository
+```bash
+git clone https://github.com/jackmalzone/se_project_beringia.git
+cd se_project_beringia
+npm install
+```
 
-   ```bash
-   git clone https://github.com/jackmalzone/se_project_beringia.git
-   ```
+Then create a `.env` file in the root:
 
-2. Install dependencies
+```env
+VITE_SKETCHFAB_API_KEY=your_api_key
+VITE_EMAILJS_PUBLIC_KEY=your_emailjs_key
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+```
 
-   ```bash
-   npm install
-   ```
+Start the dev server:
 
-3. Create a .env file in the root directory
-
-   ```env
-   VITE_SKETCHFAB_API_KEY=your_api_key
-   VITE_EMAILJS_PUBLIC_KEY=your_emailjs_key
-   VITE_EMAILJS_SERVICE_ID=your_service_id
-   VITE_EMAILJS_TEMPLATE_ID=your_template_id
-   ```
-
-4. Start the development server
-   ```bash
-   npm run dev
-   ```
-
-## Available Scripts
-
-- `npm run dev`: Start development server
-- `npm run build`: Build production version
-- `npm run preview`: Preview production build
-- `npm run deploy`: Deploy to GitHub Pages
-- `npm run lint`: Run ESLint
-- `npm run lint:fix`: Fix ESLint issues
-- `npm test`: Run tests
+```bash
+npm run dev
+```
 
 ## Project Structure
 
 ```
-src/
-├── api/                    # API clients and interfaces
-│   └── sketchfab-client.ts
-├── assets/                 # Static assets (images, videos, etc.)
-├── components/            # React components
-│   ├── About/             # About section components
-│   ├── App/               # Root app component
-│   ├── Artist/            # Featured artist components
-│   ├── Client/            # Client page components
-│   ├── Contact/           # Contact form components
-│   ├── Contributions/     # Contributions section
-│   ├── ExpertiseSection/  # Expertise showcase
-│   ├── Footer/           # Footer component
-│   ├── Header/           # Navigation header
-│   ├── HeroBanner/       # Hero section components
-│   ├── Home/             # Home page components
-│   ├── Main/             # Main layout wrapper
-│   ├── Modal/            # Modal system components
-│   ├── ModalContact/     # Contact form modal
-│   ├── PdfModal/         # PDF viewer modal
-│   ├── SeascapeDivider/  # Decorative divider
-│   ├── shared/           # Shared/reusable components
-│   ├── Sketchfab/        # 3D viewer components
-│   └── Terms/            # Terms and conditions
-├── contexts/             # React contexts
-│   └── ModalContext/     # Modal management context
-├── data/                 # Static data and constants
-├── hooks/               # Custom React hooks
-│   ├── useActiveSection.ts
-│   ├── useApiErrorHandler.ts
-│   ├── useForm.ts
-│   ├── useLoading.ts
-│   ├── useMediaQuery.ts
-│   ├── useModal.ts
-│   ├── useNavigation.ts
-│   ├── useScroll.tsx
-│   ├── useScrollContext.ts
-│   ├── useScrollToSection.ts
-│   ├── useSketchfabApi.ts
-│   ├── useTransition.ts
-│   └── useViewport.ts
-├── types/               # TypeScript type definitions
-├── utils/              # Utility functions
-└── vendor/             # Third-party code/fonts
+beringia-refactor/
+├── public/                        # Static public assets
+│   ├── favicon.ico               # Site favicon
+│   ├── robots.txt               # SEO configuration
+│   ├── sitemap.xml              # SEO sitemap
+│   └── sketchfab/               # 3D model assets
+│       └── thumbnails/          # Model preview images
+├── src/
+│   ├── app/                      # App router (Next.js 14)
+│   │   ├── (routes)/            # Page routes by folder
+│   │   │   ├── about/
+│   │   │   │   └── page.tsx
+│   │   │   ├── clients/
+│   │   │   │   └── page.tsx
+│   │   │   ├── contact/
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx         # Home page
+│   │   ├── layout.tsx           # App shell
+│   │   ├── globals.css          # Base global styles
+│   │   └── metadata.ts          # Site meta info
+│   ├── components/              # UI & layout components
+│   │   ├── ui/                  # Design primitives
+│   │   │   ├── Button/
+│   │   │   │   ├── Button.tsx
+│   │   │   │   └── Button.module.css
+│   │   │   ├── Card/
+│   │   │   │   ├── Card.tsx
+│   │   │   │   └── Card.module.css
+│   │   │   └── Modal/
+│   │   │       ├── Modal.tsx
+│   │   │       └── Modal.module.css
+│   │   ├── layout/              # Layout components
+│   │   │   ├── Header/
+│   │   │   │   ├── Header.tsx
+│   │   │   │   └── Header.module.css
+│   │   │   ├── Footer/
+│   │   │   │   ├── Footer.tsx
+│   │   │   │   └── Footer.module.css
+│   │   │   └── Navigation/
+│   │   │       ├── Navigation.tsx
+│   │   │       └── Navigation.module.css
+│   │   ├── sections/            # Page sections
+│   │   │   ├── Hero/
+│   │   │   │   ├── Hero.tsx
+│   │   │   │   └── Hero.module.css
+│   │   │   ├── Contact/
+│   │   │   │   ├── Contact.tsx
+│   │   │   │   └── Contact.module.css
+│   │   │   └── Features/
+│   │   │       ├── Features.tsx
+│   │   │       └── Features.module.css
+│   │   └── clients/             # Client-specific modules
+│   │       ├── AnchorBot/
+│   │       │   ├── AnchorBot.tsx
+│   │       │   └── AnchorBot.module.css
+│   │       └── Hydrus/
+│   │           ├── Hydrus.tsx
+│   │           └── Hydrus.module.css
+│   ├── lib/                     # Core functionality
+│   │   ├── sanity.ts            # Sanity client config
+│   │   ├── fetchClients.ts      # Client data queries
+│   │   ├── sketchfab.ts         # Sketchfab API client
+│   │   └── email.ts             # Email service integration
+│   ├── types/                   # TypeScript types
+│   │   ├── client.ts            # Client data types
+│   │   ├── cms.ts               # CMS schema types
+│   │   └── api.ts               # API response types
+│   ├── contexts/                # React Context providers
+│   │   ├── ModalContext/
+│   │   │   └── ModalContext.tsx
+│   │   └── ThemeContext/
+│   │       └── ThemeContext.tsx
+│   ├── hooks/                   # Custom React hooks
+│   │   ├── useModal.ts
+│   │   ├── useTheme.ts
+│   │   └── useScroll.ts
+│   ├── styles/                  # Global styles
+│   │   ├── variables.css        # CSS variables
+│   │   └── mixins.css           # CSS mixins
+│   └── constants/               # Static data
+│       ├── routes.ts            # Route definitions
+│       └── config.ts            # App configuration
+├── cms/                         # Sanity Studio
+│   ├── schemas/                 # Content schemas
+│   │   ├── client.ts
+│   │   ├── post.ts
+│   │   └── page.ts
+│   ├── deskStructure.ts         # Studio UI config
+│   └── sanity.config.ts         # Studio config
+├── scripts/                     # Utility scripts
+│   ├── migrate.ts               # Data migration
+│   └── seed.ts                  # Seed data
+├── docs/                        # Documentation
+│   ├── CODE_EDITING_GUIDE.md
+│   ├── REFACTOR_PLAN.md
+│   └── API.md
+├── .env                         # Environment variables
+├── .env.example                 # Example env file
+├── tsconfig.json                # TypeScript config
+├── next.config.js               # Next.js config
+├── package.json                 # Dependencies
+└── README.md                    # Project documentation
 ```
 
-## Component Architecture
+## Component Architecture Highlights
+
+### Modal System
+
+- Centralized via React Context
+- Contact and PDF modals
+- Accessible, responsive, and animated
 
 ### Error Handling
 
-- ErrorBoundary component for catching React errors
-- HOC pattern for component-level error handling
-- Custom hook for API error management
-- Type-safe error interfaces
+- Global ErrorBoundary + localized handlers
+- API-level feedback with useApiErrorHandler
 
 ### Form Management
 
 - Custom useForm hook with validation
-- Real-time field validation
-- Type-safe form handling
-- Comprehensive error feedback
-
-### Modal System
-
-- Context-based modal management
-- Reusable modal components
-- PDF viewer modal for documentation
-- Contact form modal
-- Animated transitions
-- Responsive design
+- Realtime field-level feedback
 
 ### 3D Model Integration
 
-- Sketchfab API wrapper
-- Custom controls and UI
-- Loading states and error handling
-- Responsive iframe implementation
+- Dynamic Sketchfab embedding
+- Custom UI controls and loading states
 
-### PDF Viewer Integration
+### PDF Viewer
 
-- PDF.js implementation
-- Custom controls and navigation
-- Responsive design
-- Loading states and error handling
+- PDF.js integration
+- Navigation controls
+- Mobile-optimized
 
-## Future Improvements
+## Future Roadmap
 
-1. Enhanced 3D Interaction
+- ✅ CMS-backed blog & news system (planned)
+- 🧭 Case study library with filtering
+- 🔒 Form submission history and admin dashboard
+- 📊 Analytics & A/B testing integration
+- 🧩 Multi-model Sketchfab carousel
 
-   - Custom camera controls
-   - Multiple model support
-   - Annotation system
-   - Model measurements
+## Screenshots
 
-2. Performance Optimization
+### Desktop
 
-   - Lazy loading implementation
-   - Image optimization
-   - Code splitting
-   - Performance monitoring
+[Desktop screenshots to be added]
 
-3. Additional Features
+### Mobile
 
-   - Project portfolio gallery
-   - Blog/News section
-   - Team member profiles
-   - Case studies
-
-4. Enhanced Contact System
-
-   - Email integration
-   - Form submission tracking
-   - Auto-response system
-   - Contact history
-
-5. Analytics Integration
-   - User behavior tracking
-   - Performance metrics
-   - Conversion tracking
-   - A/B testing
+[Mobile screenshots to be added]
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+```bash
+# Fork, feature branch, commit, push, and open a PR
+```
 
 ## Security
 
-- Environment variables for sensitive data
-- Type safety throughout the application
-- Input validation and sanitization
-- Error handling for all API calls
-- Secure PDF handling
-- Protected API endpoints
+- Type-safe everywhere
+- API call error handling
+- Form input sanitization
+- Secure PDF rendering
+- Environment-separated secrets
 
-## Browser Support
+## Author
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Authors
-
-- **Jack Malzone** - _Initial work_ - [LinkedIn](https://www.linkedin.com/in/jackmalzone/)
+👤 **Jack Malzone**  
+Full-stack developer & creative technologist  
+[LinkedIn](https://linkedin.com/in/jackmalzone) →
 
 ## Acknowledgments
 
-- Sketchfab for 3D model integration
-- React team for the framework
-- My dad for the opportunity to have creative control over the project
-- Open source community for inspiration and tools
+- Sketchfab for 3D viewer integration
+- TripleTen for project support and structure
+- Chris Malzone for the opportunity to bring Beringia's vision to life
+- The open-source community for making tools like this possible
