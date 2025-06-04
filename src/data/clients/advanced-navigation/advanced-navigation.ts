@@ -126,121 +126,121 @@ export const advancedNavigation: ClientData = {
   },
   gallery: [
     {
-      id: 'hydrus-overview',
+      id: 'pptx1-overview',
       url: pptx1,
       alt: 'Overview of Hydrus autonomous underwater vehicle',
       type: 'image'
     },
     {
-      id: 'hydrus-auv',
+      id: 'pptx2-hydrus-auv',
       url: pptx2,
       alt: 'Detailed specifications of Hydrus AUV system',
       type: 'image'
     },
     {
-      id: 'hydrus-revolution',
+      id: 'pptx3-hydrus-revolution',
       url: pptx3,
       alt: 'Revolutionary features of Hydrus platform',
       type: 'image'
     },
     {
-      id: 'subsonus-overview',
+      id: 'pptx4-subsonus-overview',
       url: pptx4,
       alt: 'Overview of Subsonus underwater positioning system',
       type: 'image'
     },
     {
-      id: 'subsonus-usbl',
+      id: 'pptx5-subsonus-usbl',
       url: pptx5,
       alt: 'Subsonus USBL system capabilities',
       type: 'image'
     },
     {
-      id: 'subsonus-specifications',
+      id: 'pptx6-subsonus-specifications',
       url: pptx6,
       alt: 'Technical specifications of Subsonus system',
       type: 'image'
     },
     {
-      id: 'subsonus-tag-specs',
+      id: 'pptx7-subsonus-tag-specs',
       url: pptx7,
       alt: 'Specifications of Subsonus Tag transponder',
       type: 'image'
     },
     {
-      id: 'acoustic-navigation',
+      id: 'pptx8-acoustic-navigation',
       url: pptx8,
       alt: 'Acoustic navigation system overview',
       type: 'image'
     },
     {
-      id: 'acoustic-nav-specs',
+      id: 'pptx9-acoustic-nav-specs',
       url: pptx9,
       alt: 'Acoustic navigation system specifications',
       type: 'image'
     },
     {
-      id: 'hydrus-features',
+      id: 'pptx10-hydrus-features',
       url: pptx10,
       alt: 'Key features of Hydrus platform',
       type: 'image'
     },
     {
-      id: 'hydrus-payload',
+      id: 'pptx11-hydrus-payload',
       url: pptx11,
       alt: 'Hydrus payload capabilities',
       type: 'image'
     },
     {
-      id: 'navigation-capabilities',
+      id: 'pptx12-navigation-capabilities',
       url: pptx12,
       alt: 'Advanced navigation capabilities',
       type: 'image'
     },
     {
-      id: 'current-analysis',
+      id: 'pptx13-current-analysis',
       url: pptx13,
       alt: 'Current analysis and monitoring capabilities',
       type: 'image'
     },
     {
-      id: 'shipwreck-survey',
+      id: 'pptx14-shipwreck-survey',
       url: pptx14,
       alt: 'Shipwreck survey capabilities',
       type: 'image'
     },
     {
-      id: 'photogrammetry',
+      id: 'pptx15-photogrammetry',
       url: pptx15,
       alt: 'Underwater photogrammetry capabilities',
       type: 'image'
     },
     {
-      id: '3d-data',
+      id: 'pptx16-3d-data',
       url: pptx16,
       alt: '3D data collection and processing',
       type: 'image'
     },
     {
-      id: 'solutions-overview',
+      id: 'pptx17-solutions-overview',
       url: pptx17,
       alt: 'Overview of Advanced Navigation solutions',
       type: 'image'
     },
     {
-      id: 'trust-factors',
+      id: 'pptx18-trust-factors',
       url: pptx18,
       alt: 'Why trust Advanced Navigation',
       type: 'image'
     },
     {
-      id: 'catalyst-tech',
+      id: 'pptx19-catalyst-tech',
       url: pptx19,
       alt: 'Catalyst technology overview',
       type: 'image'
     },
     {
-      id: 'company-history',
+      id: 'pptx20-company-history',
       url: pptx20,
       alt: 'Advanced Navigation company history',
       type: 'image'

@@ -268,16 +268,6 @@ export const client = defineType({
               type: 'string',
             }),
             defineField({
-              name: 'url',
-              title: 'URL',
-              type: 'url',
-            }),
-            defineField({
-              name: 'alt',
-              title: 'Alt Text',
-              type: 'string',
-            }),
-            defineField({
               name: 'type',
               title: 'Type',
               type: 'string',
@@ -290,9 +280,27 @@ export const client = defineType({
               },
             }),
             defineField({
-              name: 'modelId',
-              title: 'Model ID',
-              type: 'string',
+              name: 'image',
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alt Text',
+                  description: 'Important for SEO and accessibility.',
+                },
+              ],
+              hidden: ({ parent }) => parent?.type !== 'image',
+            }),
+            defineField({
+              name: 'videoUrl',
+              title: 'Video URL',
+              type: 'url',
+              hidden: ({ parent }) => parent?.type !== 'video',
             }),
             defineField({
               name: 'videoOptions',
@@ -332,8 +340,21 @@ export const client = defineType({
                   },
                 }),
               ],
+              hidden: ({ parent }) => parent?.type !== 'video',
+            }),
+            defineField({
+              name: 'modelId',
+              title: 'Sketchfab Model ID',
+              type: 'string',
+              hidden: ({ parent }) => parent?.type !== 'sketchfab',
             }),
           ],
+          preview: {
+            select: {
+              title: 'id',
+              media: 'image',
+            },
+          },
         },
       ],
     }),
