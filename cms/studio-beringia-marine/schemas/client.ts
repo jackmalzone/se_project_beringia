@@ -1,5 +1,11 @@
 import { defineField, defineType } from 'sanity'
 
+// Define the model options directly in the schema
+const sketchfabModelOptions = [
+  { title: 'Hydrus Shipwreck', value: 'HYDRUS_SHIPWRECK' },
+  // Add other models as needed
+]
+
 export const client = defineType({
   name: 'client',
   title: 'Client',
@@ -25,6 +31,18 @@ export const client = defineType({
       name: 'logo',
       title: 'Logo',
       type: 'image',
+      description: 'The client logo image that will be displayed and used as a clickable link',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Alternative text for the logo image (important for accessibility)',
+        }),
+      ],
     }),
     // SEO
     defineField({
@@ -196,6 +214,25 @@ export const client = defineType({
         }),
       ],
     }),
+    // Interactive 3D Model
+    defineField({
+      name: 'modelId',
+      title: 'Interactive 3D Model',
+      type: 'string',
+      description: 'ID for the main interactive 3D model',
+    }),
+    defineField({
+      name: 'interactiveTitle',
+      title: 'Interactive Model Title',
+      type: 'string',
+      description: 'Title for the interactive 3D model section',
+    }),
+    defineField({
+      name: 'interactiveDescription',
+      title: 'Interactive Model Description',
+      type: 'text',
+      description: 'Description of the 3D model and its features',
+    }),
     // Value Proposition
     defineField({
       name: 'valueProposition',
@@ -217,6 +254,29 @@ export const client = defineType({
           title: 'Highlights',
           type: 'array',
           of: [{ type: 'string' }],
+        }),
+      ],
+    }),
+    // Demo
+    defineField({
+      name: 'demo',
+      title: 'Demo',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'text',
+        }),
+        defineField({
+          name: 'videoUrl',
+          title: 'Video URL',
+          type: 'url',
         }),
       ],
     }),
@@ -346,6 +406,14 @@ export const client = defineType({
               name: 'modelId',
               title: 'Sketchfab Model ID',
               type: 'string',
+              description: 'ID for the Sketchfab model',
+              hidden: ({ parent }) => parent?.type !== 'sketchfab',
+            }),
+            defineField({
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+              description: 'Description of the 3D model for accessibility',
               hidden: ({ parent }) => parent?.type !== 'sketchfab',
             }),
           ],
@@ -353,40 +421,18 @@ export const client = defineType({
             select: {
               title: 'id',
               media: 'image',
+              type: 'type',
+            },
+            prepare({ title, media, type }) {
+              return {
+                title,
+                subtitle: type,
+                media,
+              }
             },
           },
         },
       ],
-    }),
-    // Demo
-    defineField({
-      name: 'demo',
-      title: 'Demo',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'title',
-          title: 'Title',
-          type: 'string',
-        }),
-        defineField({
-          name: 'description',
-          title: 'Description',
-          type: 'text',
-        }),
-        defineField({
-          name: 'videoUrl',
-          title: 'Video URL',
-          type: 'url',
-        }),
-      ],
-    }),
-    // Technical Fields (moved to the end)
-    defineField({
-      name: 'modelId',
-      title: 'Model ID',
-      type: 'string',
-      description: 'ID for the main 3D model associated with this client',
     }),
   ],
 }) 
