@@ -2,12 +2,6 @@ import { useContext } from 'react'
 import { ModalContext } from '../../contexts/definitions/modalContext'
 import './Modal.css'
 
-interface ModalProps {
-  title?: string;
-  size?: 'small' | 'medium' | 'large';
-  onClose?: () => void;
-}
-
 const Modal = () => {
   const modalContext = useContext(ModalContext)
 

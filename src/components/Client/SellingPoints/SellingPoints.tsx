@@ -133,7 +133,7 @@ export const SellingPoints: React.FC<SellingPointsProps> = ({ title, points }) =
                       <span className="selling-points__doc-separator">|</span>
                       <button 
                         className="selling-points__doc-link"
-                        onClick={(e) => handlePdfClick(point.documentation!.benthicSurvey!, `${point.title} - Benthic Survey Evaluation`)}
+                        onClick={() => handlePdfClick(point.documentation!.benthicSurvey!, `${point.title} - Benthic Survey Evaluation`)}
                       >
                         Evaluation
                       </button>
