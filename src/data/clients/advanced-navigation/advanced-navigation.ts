@@ -63,7 +63,7 @@ export const advancedNavigation: ClientData = {
         documentation: {
           specs: 'https://www.advancednavigation.com/robotics/micro-auv/hydrus/datasheet/',
           manual: 'https://docs.advancednavigation.com/hydrus/Printed_Title.htm',
-          benthicSurvey: 'https://your-cloudflare-url.com/250819-Hydrus_Evaluation_Final.pdf'
+          benthicSurvey: 'https://pub-264ce0c4c88b4573839aee612dbbfd27.r2.dev/250819-Hydrus_Evaluation_Final.pdf'
         }
       },
       {
