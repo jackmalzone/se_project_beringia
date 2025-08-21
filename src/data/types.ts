@@ -28,6 +28,7 @@ export interface ClientData {
         documentation?: {
           specs: string;
           manual?: string;
+          benthicSurvey?: string;
         };
       }>;
     };

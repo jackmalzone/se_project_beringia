@@ -5,6 +5,7 @@ import logoTitle from '../../../assets/clients/advanced-navigation/logo-title.we
 import hydrusIcon from '../../../assets/clients/advanced-navigation/hydrus-icon.webp'
 import subsonusIcon from '../../../assets/clients/advanced-navigation/subsonus-icon.webp'
 import subsonusTagIcon from '../../../assets/clients/advanced-navigation/subsonus-tag-icon.webp'
+
 import pptx1 from '../../../assets/clients/advanced-navigation/pptx-1-hydrus.jpg'
 import pptx2 from '../../../assets/clients/advanced-navigation/pptx-2-subsonus.jpg'
 import pptx3 from '../../../assets/clients/advanced-navigation/pptx-3-catalyst.jpg'
@@ -61,7 +62,8 @@ export const advancedNavigation: ClientData = {
         link: 'https://www.advancednavigation.com/robotics/micro-auv/hydrus/',
         documentation: {
           specs: 'https://www.advancednavigation.com/robotics/micro-auv/hydrus/datasheet/',
-          manual: 'https://docs.advancednavigation.com/hydrus/Printed_Title.htm'
+          manual: 'https://docs.advancednavigation.com/hydrus/Printed_Title.htm',
+          benthicSurvey: 'https://your-cloudflare-url.com/250819-Hydrus_Evaluation_Final.pdf'
         }
       },
       {
