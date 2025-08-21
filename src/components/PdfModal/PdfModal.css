@@ -127,6 +127,133 @@
   }
 }
 
+/* Mobile-specific styles */
+.pdf-modal-content--mobile {
+  width: 95vw !important;
+  max-width: 400px;
+  min-height: auto;
+  max-height: 80vh;
+  margin: 20px auto !important;
+}
+
+.pdf-modal-body--mobile {
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.pdf-modal-mobile-content {
+  width: 100%;
+}
+
+.pdf-modal-mobile-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.pdf-modal-mobile-title {
+  color: #00a2b0;
+  font-family: "Domitian", serif;
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.pdf-modal-mobile-description {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 2rem 0;
+  opacity: 0.9;
+}
+
+.pdf-modal-mobile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.pdf-modal-mobile-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.pdf-modal-mobile-button--primary {
+  background: #00a2b0;
+  color: #fff;
+}
+
+.pdf-modal-mobile-button--primary:hover {
+  background: #008c99;
+  transform: translateY(-2px);
+}
+
+.pdf-modal-mobile-button--secondary {
+  background: transparent;
+  color: #00a2b0;
+  border: 2px solid #00a2b0;
+}
+
+.pdf-modal-mobile-button--secondary:hover {
+  background: #00a2b0;
+  color: #fff;
+}
+
+/* Loading and error states */
+.pdf-modal-loading,
+.pdf-modal-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #fff;
+  text-align: center;
+}
+
+.pdf-modal-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 162, 176, 0.3);
+  border-top: 3px solid #00a2b0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pdf-modal-error-button {
+  background: #00a2b0;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+.pdf-modal-error-button:hover {
+  background: #008c99;
+}
+
 @media (max-width: 768px) {
   .pdf-modal-content {
     width: 80vw;
