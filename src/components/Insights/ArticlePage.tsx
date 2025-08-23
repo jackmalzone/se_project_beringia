@@ -47,14 +47,14 @@ const mockArticles: ArticleData[] = [
     category: 'White Paper',
     author: 'Chris Malzone, Beringia Marine Inc',
     publishDate: '2025-05-28',
-    coverImage: '/src/assets/clients/advanced-navigation/hydrus-subsurface.jpeg',
+    coverImage: '/hydrus-subsurface.jpeg',
     tags: ['Hydrus', 'AUV', 'Benthic Survey', 'NOAA', 'Coral Reef', 'Photogrammetry'],
     slug: 'evaluating-hydrus-microauv-benthic-survey',
     pdfUrl: 'https://pub-264ce0c4c88b4573839aee612dbbfd27.r2.dev/250819-Hydrus_Evaluation_Final.pdf',
     seo: {
       title: 'Evaluating Hydrus MicroAUV for Benthic Survey | Beringia Marine',
       description: 'Comprehensive evaluation of the Hydrus 300m rated microAUV through NOAA-coordinated trials and field validation for benthic habitat mapping and ecological monitoring.',
-      ogImage: '/src/assets/clients/advanced-navigation/hydrus-subsurface.jpeg'
+      ogImage: '/hydrus-subsurface.jpeg'
     }
   }
 ];
