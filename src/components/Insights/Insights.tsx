@@ -71,7 +71,7 @@ const mockArticles: ArticleData[] = [
     seo: {
       title: 'Evaluating Hydrus MicroAUV for Benthic Survey | Beringia Marine',
       description: 'Comprehensive evaluation of the Hydrus 300m rated microAUV through NOAA-coordinated trials and field validation for benthic habitat mapping and ecological monitoring.',
-      ogImage: '/hydrus-subsurface.jpeg'
+      ogImage: '/desktop-insights.png'
     }
   }
 ];
