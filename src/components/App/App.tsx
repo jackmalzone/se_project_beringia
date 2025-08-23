@@ -12,6 +12,8 @@ import Main from '../Main/Main'
 import Terms from '../Terms/Terms'
 import About from '../About/About'
 import Client from '../Client/Client'
+import Insights from '../Insights/Insights'
+import ArticlePage from '../Insights/ArticlePage'
 import { ConfigContext } from '../../contexts/ConfigContext'
 import { ROUTES } from '../../utils/constants'
 import { HelmetProvider } from 'react-helmet-async'
@@ -93,6 +95,16 @@ function App() {
                             <Route path="/about" element={
                               <ErrorBoundary>
                                 <About />
+                              </ErrorBoundary>
+                            } />
+                            <Route path="/insights" element={
+                              <ErrorBoundary>
+                                <Insights />
+                              </ErrorBoundary>
+                            } />
+                            <Route path="/insights/:slug" element={
+                              <ErrorBoundary>
+                                <ArticlePage />
                               </ErrorBoundary>
                             } />
                             <Route path={`${ROUTES.CLIENTS}/:clientSlug/*`} element={

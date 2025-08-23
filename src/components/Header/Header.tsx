@@ -225,19 +225,19 @@ const Header: FC<HeaderProps> = () => {
               </Link>
 
               <Link 
+                to={ROUTES.INSIGHTS} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                Insights
+              </Link>
+
+              <Link 
                 to={ROUTES.CONTACT} 
                 className="header__nav-link"
                 onClick={handleNavClick}
               >
                 Contact
-              </Link>
-
-              <Link 
-                to={ROUTES.TERMS} 
-                className="header__nav-link"
-                onClick={handleNavClick}
-              >
-                Terms
               </Link>
             </div>
           </nav>
@@ -296,19 +296,19 @@ const Header: FC<HeaderProps> = () => {
               </Link>
 
               <Link 
+                to={ROUTES.INSIGHTS} 
+                className="header__nav-link"
+                onClick={handleNavClick}
+              >
+                Insights
+              </Link>
+
+              <Link 
                 to={ROUTES.CONTACT} 
                 className="header__nav-link"
                 onClick={handleNavClick}
               >
                 Contact
-              </Link>
-
-              <Link 
-                to={ROUTES.TERMS} 
-                className="header__nav-link"
-                onClick={handleNavClick}
-              >
-                Terms
               </Link>
             </div>
           </nav>

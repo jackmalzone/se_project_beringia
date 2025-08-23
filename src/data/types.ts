@@ -76,3 +76,23 @@ export interface GalleryItem {
     preload?: 'none' | 'metadata' | 'auto';
   };
 }
+
+export interface ArticleData {
+  id: string;
+  title: string;
+  subtitle: string;
+  abstract: string;
+  content: string;
+  category: 'Tech Article' | 'Case Study' | 'White Paper' | 'Field Note';
+  author: string;
+  publishDate: string;
+  coverImage: string;
+  tags: string[];
+  slug: string;
+  pdfUrl?: string;
+  seo?: {
+    title?: string;
+    description?: string;
+    ogImage?: string;
+  };
+}

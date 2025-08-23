@@ -79,9 +79,10 @@ const About = () => {
   return (
     <>
       <SEOHead
-        title="About Us | Beringia Marine"
-        description="Learn about Beringia Marine's expertise in marine technology consulting, our mission, and our commitment to advancing underwater exploration and research."
-        image={`${window.location.origin}${import.meta.env.BASE_URL}docs/assets/desktop-about.png`}
+        title="About Beringia Marine | Marine Technology Consulting & Solutions"
+        description="Learn about Beringia Marine's three decades of experience in marine technology, ocean engineering, and business development. Founded by Chris Malzone to bridge gaps in marine technology solutions."
+        url="/about"
+        image="/og-image.jpeg"
       />
       <div className="about">
         <ErrorBoundary>

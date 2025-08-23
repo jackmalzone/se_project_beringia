@@ -5,6 +5,7 @@ import Artist from '../Artist/Artist'
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary'
 import { useScrollToSection } from '../../hooks/useScrollToSection'
 import { SEOHead } from '../shared/SEOHead'
+import { OrganizationStructuredData } from '../shared/StructuredData'
 
 const Main = () => {
   const homeRef = useRef<HTMLDivElement>(null)
@@ -24,10 +25,12 @@ const Main = () => {
   return (
     <>
       <SEOHead
-        title="Beringia Marine | Marine Technology Consulting"
-        description="Expert marine technology consulting services specializing in underwater robotics, sonar systems, and advanced marine solutions. Discover how we're revolutionizing underwater exploration."
-        image={`${window.location.origin}${import.meta.env.BASE_URL}docs/assets/desktop-home.png`}
+        title="Beringia Marine | Integrated Marine Technology Solutions"
+        description="Connecting innovative marine technology manufacturers with end users across research, defense, and ocean exploration sectors. Specializing in autonomous underwater vehicles, marine robotics, and underwater systems."
+        url="/"
+        image="/og-image.jpeg"
       />
+      <OrganizationStructuredData />
       <main className="main">
         <ErrorBoundary>
           <section ref={homeRef} id="home">

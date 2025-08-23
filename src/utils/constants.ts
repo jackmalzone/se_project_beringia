@@ -6,5 +6,7 @@ export const ROUTES = {
   CONTACT: '/contact',
   TERMS: '/terms',
   CLIENTS: '/clients',
-  CLIENT: (slug: string) => `/clients/${slug}`
+  CLIENT: (slug: string) => `/clients/${slug}`,
+  INSIGHTS: '/insights',
+  ARTICLE: (slug: string) => `/insights/${slug}`
 } as const
