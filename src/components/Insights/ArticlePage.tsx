@@ -29,10 +29,10 @@ const mockArticles: ArticleData[] = [
         <li><strong>Prototyped AI for coral classification (YOLOv5)</strong> with promising early performance</li>
       </ul>
       
-      <h2>Key Findings</h2>
-      <p>One key insight from these deployments was the identification of a tuning imbalance in the INS, where the system was found to over-trust the thruster velocity model and under-trust the DVL, particularly during acceleration or when operating in strong currents. While this did not prevent successful mission execution, it did contribute to occasional drift and will be addressed through future tuning of the sensor fusion parameters.</p>
-      
-      <p>Despite this, Hydrus has demonstrated a reliable and scalable path forward for replacing or augmenting diver-based survey methods. It reduces personnel and vessel requirements by up to 50%, enables up to 15 missions per day, and improves safety and repeatability in high-frequency monitoring programs.</p>
+             <h2>Key Findings</h2>
+       <p>Hydrus demonstrated a reliable and scalable path forward for replacing or augmenting diver-based survey methods. It reduces personnel and vessel requirements by up to 50%, enables up to 15 missions per day, and improves safety and repeatability in high-frequency monitoring programs.</p>
+
+       <p>Valuable insights from these deployments included the opportunity to further refine the INS. While missions were successfully executed, the learnings are now guiding sensor fusion improvements to deliver even greater accuracy.</p>
       
       <h2>Performance Evolution</h2>
       <p>Through a structured program of real-world testing, iterative refinement, and stakeholder engagement, the Hydrus microAUV has evolved into a capable, scalable solution for shallow-water benthic surveys. From its early deployments in 2023 through its final validation during NOAA's 2025 Florida Keys field trials, Hydrus demonstrated substantial improvements in mission reliability, navigational accuracy, photogrammetric quality, and system autonomy.</p>
